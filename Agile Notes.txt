@@ -1,0 +1,227 @@
+Agile:
+
+SDLC: Software Development LifeCycle.
+The life cycle that any project goes thru.
+-Requirements Gathering
+-Analysis & Design
+-Development (Build)
+-Testing
+-Deployment
+-Maintenance
+
+Waterfall model:
+-Requirements Gathering
+	-Analysis & Design
+		-Development (Build)
+			-Testing
+				-Deployment
+					-Maintenance
+
+-Requirements Gathering (2 months)
+	Business Analysts (BAs)
+	What is to be developed?
+	what features are required?
+-Analysis & Design (1 month)
+	map the requirements to the technology.
+	Architects and Designers.
+	Define and design the architecture and ecosystem of the software.
+-Development (8 months)
+	Programmers / Coders
+	Develop (build) the system.
+-Testing (2 months)
+	Testers (QA, QC).
+	Test the entire system.
+	Verify that the system works as expected.
+-Deployment (1-2 week)
+	Make the system available to end-users.
+	GO-LIVE!
+-Maintenance
+	Bug fixes.
+	Enhancements.
+	
+	
+Timeframe from RG to Deployment can be anywhere from a few months to years.
+By the time the system gets to the Deployment phase,:
+	business may have changed. 
+	Requirements may change.
+	users may change.
+	Laws may change.
+	Audit requirements may change.
+	
+Agile Methodology / Process:
+focus is to deliver customer-centric products
+in a short devlopment cycle (known as sprints).
+It an iterative approach where in a specific period of time, bits and pieces of the software are delivered.
+
+Sprints: are usually 2 weeks
+"we are working on a 2-week Sprint Cycle"
+-Requirements Gathering
+-Analysis & Design
+-Development (Build)
+-Testing
+-Deployment
+
+ecommerce web site
+	new customer registration
+	login
+	logout
+	search for a product
+	place product in cart
+	view cart
+	modify cart
+	place order
+	make payment
+	
+All work in Agile happens in parallel:
+	BA - work on requirements
+	Architect/Designer/DBA will work on the design
+	Devs will start coding
+	Testers will start creating test cases
+	
+at the end of the Sprint (2 weeks):
+	Whatever has been developed & tested, is showcased to the client (Product Owner [PO]).
+	PO gives feedback:
+		All ok.
+		or some changes.
+next sprint:
+	team will pick up a few more features to be developed
+	And also, fix bugs / enhancements as suggested by the PO in the previous Sprint.
+	And any pending work from previous sprint.
+	
+Deployed (go live)
+
+Advantages of Agile:
+Adapt well with changing requirements.
+face-to-face interaction with team members and customers.
+focus is on technical excellence and good design
+fast and continuous development.
+enables collaboration and iteration
+ensure and promotes customer satisfaction
+faster feedback from customers
+quick identification of errors and also resolve them.
+
+Disadvantages of Agile:
+Lack of formal documentation and design
+Difficult to estimate resource requirement and effort
+Not good for small projects
+Risk of ever-lasting projects
+
+Product Owner:
+create Product Backlog
+	list of features to be developed
+	
+Development team: BA, Devs, Testers
+Scrum Master: co-ordinator b/w the PO and Dev Team.
+Project Manager: escalation, resource management, people issues.
+
+Usually an agile team is no larger than 5-8 resources.
+Sprint ceremonies:
+1. Daily Standup (DSU): (PO is optional)
+	max 15 minutes.
+	3 questions:
+		What did you do yesterday?
+		What are you going to do today?
+		Any issues / blockers / impediments?
+
+ideally: 1 SM for each team.
+1 SM attends to 2-3 teams.
+
+2. Sprint review (at end of Sprint)
+on the last day of the Sprint.
+Demo is given to the PO.
+
+3. Sprint retrospective
+3 questions:
+	What went well?
+	What did not go well?
+	Action items (to improve)?
+
+4. Product backlog refinement
+Product backlog items (PBI) are defined.
+Product Backlog:
+	Feature: A large module to be devloped. Customer management.
+	Epic: a large story that cannot be completed in a single sprint. Therefore, epic is sub-divided in to multiple, smaller user stories before they can be worked on. Customer registration management.
+	User story: these are the smallest unit that can be fitted and completed in one sprint. User stories are further split in to multiple tasks. New Registration. Verify email. Reset password.
+	Tasks: these are the detailed pieces of work that are used to turn the user stories in to workable components. 
+		Developer: coding and create/modify the database.
+		Tester: create test cases and perform system testing.
+		UI dev: create web page.
+		BA: define requirements.
+		
+PO has to ensure that the user stories are identified and included in the PB.
+PO can be assisted by the BA.
+
+5. Sprint backlog refinement.
+at the beginning of every Sprint (usually, before the Sprint starts)
+
+"Scrum" - just a subset of the Agile process.
+Scrum is a lightweight process framework that helps teams to work together and manage product development to deliver products in the shortest time.
+
+Scrums (teams): they have to also meet regularly.
+(AGILE) Scrum of Scrums: Meeting of Scrum Masters once in a week or 2 weeks.
+
+Three pillars of Scrum:
+Transparency
+Inspection
+Adaptation
+
+Story Points (SP):
+determining the complexity and efforts of a user story.
+H M L - cannot be measured.
+What can be measured is numbers.
+3 2 1 - can be done.
+Fibonacci Sequence:  1 1 2 3 5 8 13 21
+3 and 8 so that it can be taken up in asingle Sprint.
+if the SP is more than 8, then the story needs to be split further so that it can be taken up in smaller pieces in sprints.
+1 story with 13 SP, spilt it into 3 stories. US1: 3. US2: 3. US3: 5 
+Does not indicate the efforts involved.
+5 SP is not equal to 5 hours of work.
+13 SP does not equal 13 hours of work.
+Efforts will be based on individual tasks within the story (having 5 SPs).
+Dev: to code: 5 hours
+Tester: to test: 4 hours
+UI Dev: 2 hours
+
+Another story (having 5 SPs).
+Dev: to code: 8 hours
+Tester: to test: 5 hours
+UI Dev: 2 hours
+
+Use numbers directly to determine efforts and complexity:
+US1: 16 SPs (16 hours)
+US2: 12 SPs (12 hours)
+
+MVP: Minimum Viable Product
+Refers to a product that has just enough features to satisfy the needs of the customer and give them something to provide feedback on, based on which the future of the product will be built.
+
+Agile Manifesto:
+A document consisting of the values and principles that are part of Agile.
+4 values and 12 principles.
+4 values:
+1. Individuals and interactions over Processes and tools.
+2. Working software over comprehensive documentation.
+3. Customer collaboration over contract negotiation.
+4. Responding to a change over following a plan.
+
+12 principles:
+1. Customer satisfaction.
+2. Welcome change.
+3. Deliver frequently. 
+4. Work together.
+5. Motivated team. (Scrum master)
+6. Face-to-face.
+7. Working software.
+8. Constant Pace.
+9. Good design.
+10. Simplicity.
+11. Self-organization.
+12. Reflect and Adjust (retrospection).
+
+
+
+SP1: 42 SPs.
+SP2: 39 SPs.
+SP3: 58 SPs.
+SP4: 20 SPs.
+
+

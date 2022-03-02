@@ -1,0 +1,50 @@
+ajay.singala@revature.com
+
+Windows
+12 GB RAM - 16 GB Preferred
+SSD.
+
+Evaluations:
+Every Monday:
+	W2: Quiz for contents covered in W1. One-on-ones with me.
+	W3: Quiz for contents covered in W2. One-on-ones with me.
+	W4:
+	W5:
+	W6:
+	W7:
+	W8:
+	W9:
+	W10: Quiz for contents covered in W9. One-on-ones with me.
+
+Every Tuesday or Wednesday:
+	QC - Quality Check team.
+	Questions from previous week's topics.
+	
+	W11: Cumulative QC of all the weeks.
+	
+3 Projects:
+P1: W3, W4, W5. Foundation Project.
+P2: W7, W8, W9. Technology Project.
+P3: W10, W11, W12. Capstone Project.
+
+W8 or W9 onwards, work on your portfolios.
+
+HackerRank challenges.
+
+Hortonworks HDP Sandbox:
+-------------------------
+VirtualBox: www.virtualbox.org/
+www.cloudera.com
+	Hortonworks Sandbox HDP 2.6.5
+	https://www.cloudera.com/downloads/hortonworks-sandbox.html
+	Select VirtualBox from the dropdown.
+	Download 2.6.5 (Do not download 3.0.1)
+	For instructions: https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html
+
+For Custom VM for basic Unix:
+VirtualBox: www.virtualbox.org/
+Ubuntu VM: 20.04
+    https://ubuntu.com/download/desktop
+	https://thelinuxuser.com/install-ubuntu-20-04/
+
+Github account

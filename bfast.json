@@ -1,0 +1,45 @@
+{
+	"breakfast_menu": {
+		"food": [
+			{
+				"name": "Belgian Waffles",
+				"price": "5.95",
+				"description": "........",
+				"calories": "650",
+				"food_image": {
+					"url": "http://......",
+					"title": "belgian....."
+				}
+			},
+			{
+				"name": "Strawberry milkshake",
+				"price": "4.95",
+				"description": "........",
+				"calories": "600",
+				"food_image": {
+					"url": "http://......",
+					"title": "belgian....."
+				}
+			},{
+				"name": "Strawberry milkshake",
+				"price": "4.95",
+				"description": "........",
+				"calories": "600",
+				"food_image": {
+					"url": "http://......",
+					"title": "belgian....."
+				}
+			},{
+				"name": "Strawberry milkshake",
+				"price": "4.95",
+				"description": "........",
+				"calories": "600",
+				"food_image": {
+					"url": "http://......",
+					"title": "belgian....."
+				}
+			},
+				
+		]
+	}
+}

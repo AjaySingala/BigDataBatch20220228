@@ -1,0 +1,17 @@
+<breakfast_menu>
+	<food>
+		<name>Belgian Waffles</name>
+		<price>$5.95</price>
+		<description>Our famous Belgian Waffles with pleny of real maple syrup</description>
+		<calories>650</calories>
+	</food>
+	<food>
+		<name>Strawberry Milkshake</name>
+		<price>$4.95</price>
+		<description>Yummy milk shalke with real strawberry pieces.</description>
+		<calories>600</calories>
+	</food>
+	<food>
+		
+	</food>
+</breakfast_menu>

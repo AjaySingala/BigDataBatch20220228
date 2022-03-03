@@ -1,0 +1,338 @@
+UNIX and some basic unix commands:
+
+Computers:
+What is UNIX?
+It is an Operating System (OS, O/S).
+Windows
+MacOS
+
+Designed for Performance.
+
+No windows!!!
+DOS - Disk Operating System. Microsoft.
+Command line based O/S.
+Monochrome monitors.
+
+MacOS target was GUI.
+
+Windows 3.0, 3.1...Win 95
+Not for processing performance.
+For creating GUI-based applications.
+Mainly targetted desktops, individual users and workstations.
+Client-Server applications.
+
+Server-based O/S: Windows NT
+Windows Server
+Licensed.
+
+UNIX is free.
+Linux, Ubuntu, Debian.
+ALL OF THESE are eactually UNIX.
+Command-line-based.
+No GUI.
+Linux, Ubuntu have GUI as well.
+
+OS heart and soul of the computer.
+Occupies some memory space.
+RAM - Random Access Memory.
+640 KB of RAM
+1 GB RAM
+ROM - Read Only Memory
+
+8 GB RAM
+OS ~3GB RAM
+Process #1: 1 GB RAM
+P2: 1.5 GB RAM
+P1 ends.
+P3
+P4
+P5
+P6
+
+run out of RAM.
+Swap space.
+it is stored on disk, means that it will hamper the performance.
+Disk I/O is the most resource intensive operation on a computer.
+
+Processor and SSD: Hardwares.
+Processor the speed and capacity of your PC to execute and handle processes in your PC.
+How fast.
+How many processes can it manage at a given time.
+Dual core, physically there is only 1 processor, but the OS can use 2 cores (processors) virtually.
+Threads
+
+HDD: Hard Disk Drive
+SSD: Solid State Drive
+
+VMs: Virtual Machines.
+Today you need 2 servers.
+Later you may require 4 servers (holiday season).
+Capital Expenditure (CapEx).
+What happens to these extra servers after the "peak period"?
+Utilization of these servers will go down.
+	for e.g.; hardly >50%
+	space occupied by the servers: rent for room, electricty, maintenance, people.
+	
+VMs:
+Ghost copies: 
+1 server, which runs an OS and is configured with an application on a web server.
+It's like a backup, but a copy of the machine itself!
+When a new machine is to be condigured, of course need the physical server, but all you is copy/configure the "ghost copy" on this new server.
+
+Remote Desktop connection to the VM.
+Connectng to a Windows remote machine: RDP
+Connectng to a Linux remote machine: ssh
+maria_dev / maria_dev
+
+1. Connect using commandline ssh maria_dev@127.0.0.1 -p 2222
+2. use PuTTY: maria_dev@127.0.0.1 and change port to 2222, then click on Open.
+3. From browser, http://localhost:4200
+
+Enter user_id as maria_dev
+Enter password as maria_dev
+
+Unix was originally developed by a group at IBM in the late-1960s, (1969), Ken Thompson, Dennis Ritchie, Douglas McIlroy etc.
+A single Unix machine can be used by multiple users.
+A user can run multiple programs at the same time (multi-tasking).
+
+UNIX Architecture:
+Kernel: is the heart of the O/S.
+Shell: is a utility that process requests.
+	C Shell
+	Bourne shell
+	Korn shell
+
+awk programming
+
+Command and utilities:
+	ls
+	cp
+	mv
+	cat
+	vim
+	nano
+Files and Directories
+
+UNIX IS CASE SENSITIVE!!!
+home and HOME are different
+
+Info about users:
+/etc/passwd
+/etc/group
+
+Every user has a "home" directory.
+If I log on as maria_dev, there will a home directory maria_dev.
+If I log on as ajaysingala, there will a home directory ajaysingala.
+All users's home dirs are located within /home.
+	/home/maria_dev
+
+pwd: present working directory.
+cd: change directory
+cd without any params: takes you to the current user's home dir.
+cd ~: takes you to the current user's home dir.
+
+"~" represents the user's home dir. For e.g.; /home/maria_dev
+"/" is the ROOT directory.
+
+cd
+cd first/second/third
+cd /home/maria_dev/first/second /third
+cd ~/first/second/third
+
+echo: 
+
+any filename starting with "." is considered to be a hidden file. It is not usually visible with common listing commands.
+
+List files:
+ls
+ls -l: Long format
+ls -a: show all files (incl. hidden files)
+ls -al: show all files in long format
+ls -lh: "h" is for human readable format
+ls -r: reverse order
+ls -R: list files recursively through sub-dirs.
+
+alias 
+unalias
+
+cat: display the contents of a file.
+cat <filename>
+
+What is "." and ".."?
+. = current dir.
+.. = parent dir.
+
+Create a file:
+cat > <filename>
+	If the file exists, it will be overwritten.
+To append instead of overwrite, use >>:
+cat >> <filename>
+
+mkdir: make dir.
+	/home/maria_dev
+		Feb
+			dir1
+				dir2
+					dir3
+						dir4
+							dir5
+use mkdir -p to create sub-dirs:
+mkdir -p dir3/dir4/dir5
+
+Copy file:
+cp <source> <target>
+
+Move file:
+mv <source> <target>
+
+Remove (delete files and dirs).
+rm <filenanme>
+rmdir <dir name>: delete a folder
+rm -r <dir>: to delete a dir recursively.
+
+grep:  search files for a particular pattern of characters. And display the lines that match the pattern.
+This "pattern" that is being searched is aka "regular expression".
+
+unix a great os. unix is opensource. unix is free os.
+learn operating system.
+Unix linux which one you choose.
+uNix is easy to learn.unix is a multiuser os. Learn unix .unix is a powerful os.
+
+grep <options> "pattern" <filenanme>
+options:
+no options: case sensitive.
+-i: ignore case
+-c: gives the count of lines that match the pattern.
+-l: display filenames that have the matching pattern in the content.
+-w: match the whole word in the pattern.
+-o: will only display the matched pattern words and not the entire line.
+-v: invert the pattern match.
+-n: display the line number where pattern matched.
+-e: match multiple patterns.
+-f <pattern_file>: search for patterns from a given filename
+
+Pattern:
+^: beginning of line.
+$: end of line.
+
+grep -i "unix" <filename>
+
+grep -e "unix" -e "uNix" -e "Unix" -e "choose" <filename>
+
+File editors:
+vim or vi
+nano
+
+vi: One of the most powerful editors!!!
+modes:
+	Command mode (default)
+	Insert (Edit) mode.
+	
+ESC switch to command mode.
+i switch to insert mode. Insert text before cursor position.
+a switch to insert mode and insert text after cursor position.
+I move cursor to beginning of line and switch to insert mode.
+A move to end of line and switch to insert mode.
+^ (caret) move cursort to beginning of current line, stay in command mode.
+$ move cursort to end of current line, stay in command mode.
+o open a new line below the current line and switch to insert mode.
+O open a new line above the current line and switch to insert mode.
+u undo the last command.
+rc replace current (single) character with the character "c"
+R switch to replace mode (till you press ESC) and replace current line starting from cursor position.
+J Join the current line with the next line.
+dw delete current word from the cursor position.
+dd delete current line.
+D delete from current cursort position to end of line.
+yy copies entire line (y stands yank)
+p paste after cursor position/line.
+P paste before cursor position/line.
+
+ESC switch to command mode.
+:w save (write).
+:q quit vi.
+:wq write and quit vi.
+:q! quit without saving.
+:set number display line numbers
+:n jump to line no. "n".
+:$ jump to last line.
+
+Search and replace in vi:
+:s/foo/bar    search for foo,replace first occurance with bar on current line.
+:s/foo/bar/g   search for foo,replace all occurances with bar on current line.
+:%s/foo/bar/g   search for foo,replace all occurances with bar in the file.
+:%s/\<foo\>/bar/g   search for whole word "foo",replace all occurances with bar in the file.
+:%s/foo//g	search for foo, delete all occurances in the file.
+:s/foo/bar/gi   search for foo ignore case,replace all occurances with bar on current line.
+
+
+nano editor:
+There is no "command mode" like in vi.
+It is always in INSERT MODE!!!
+
+IDE: Visual Studio Code (VSCode)
+
+3 sets of permissions:
+r: read
+w: write
+x: execute
+
+User: the owner of the file.
+Group: members of the file's group.
+Other: any other user who is neither the owner nor a member of the file group.
+
+rwxrwxrwx
+
+rw-rw-rw-: User has RW. Group has RW. Others also have RW.
+rwxrw-rw-: User has RWX. Group has RW. Others also have RW.
+rwxrwxrw-: User has RWX. Group has RWX. Others also have RW.
+rwxrw-r--: User has RWX. Group has RW. Others also have R.
+
+chmod: change mode.
+u - User: the owner of the file.
+g - Group: members of the file's group.
+o - Other: any other user who is neither the owner nor a member of the file group.
+a - all
+
++ to add permissions
+- to remove permissions
+= to set specific permissions
+
+r
+w
+x
+
+chmod a+r sample.txt	Allow read permission for everyone.
+chmod a-x sample.txt	Deny execute permisison to everyone.
+chmod go+rw sample.txt	make the file readable and writeable by group and others.
+chmod u+x sample.txt	make file executable by the user (owner).
+
+
+rwxrw-r-- sample.txt
+chmod o+w sample.txt	allow others to read and write the file.
+rwxrw-rw- sample.txt
+
+chmod =rw sample.txt	give rwx permission to everyone.
+
+rwxrw---x sample.txt
+chmod o=rw sample.txt
+rwxrw-rw- sample.txt
+
+chmod using OCTAL numbers:
+1 - can execute
+2 - can write
+4 - can read
+
+3 (1+2): execute and write.
+6 (2+4): write and read.
+7 (1+2+4): execute, write and read.
+
+Position:
+1st: what owner can do
+2nd: what group can do
+3rd: what others can do
+
+chmod 600 sample.txt	owner can wr, group no access, others no access.
+chmod 666 sample.txt	all can read and write.
+chmod 777 sample.txt	all can rwx.
+chmod 764 sample.txt	owner can rwx, group can rw, others can only r.

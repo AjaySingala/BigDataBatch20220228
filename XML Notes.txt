@@ -1,0 +1,163 @@
+XML:
+eXtensible Markup Language.
+Was designed to store and transport data.
+Was designed to be both human and machine readable.
+
+<note>
+	<to>John</to>
+	<from>Joe</from>
+	<heading>Reminder</heading>
+	<body>Don't even think of having the party without me!</body>
+</note>
+
+XML Parsers
+
+<breakfast_menu>
+	<food>
+		<name>Belgian Waffles</name>
+		<price>$5.95</price>
+		<description>Our famous Belgian Waffles with plenty of real maple syrup</description>
+		<calories>650</calories>
+	</food>
+	<food>
+		<name>Strawberry Milkshake</name>
+		<price>$4.95</price>
+		<description>Yummy milk shake with real strawberry pieces.</description>
+		<calories>600</calories>
+	</food>
+	<food>
+		
+	</food>
+</breakfast_menu>
+
+Tags / Elements
+<>	Starting Tag
+</> Ending Tag
+Every starting tag must have matching ending tag!!!
+
+Well-formed XML.
+
+Why study XML?
+All DBs have their own format and compression algo to store data in DBs.
+So, it becomes difficult to share  / transmit data to other environments.
+The need was to have some kind of standard format to share and exchange data between systems, environment, networks, applications.
+XML is a STANDARD!!!
+XML became W3C recommendation in Feb 1998.
+
+In XML, there are no "predefined" tags, like in HTML.
+HTML: HyperText Markup Language. To create web pages.
+<BODY>
+<H1>This is heading 1<H1>
+<H2>
+<H3>
+:
+:
+<H6>
+<p> </p>
+<div> </div>
+<form> </form>
+<input> </input>
+<table> </table>
+<tr> </tr>
+<td> </td>
+
+XML separates data from presentation.
+XML: Data. HTML: Presentation (UI).
+Case sensitive.
+<DATA> vs <data>
+<image> and <IMAGE> are different.
+<food> and <FooD> are different.
+
+
+HTML case insensitive:
+<div> and <DIV> are same.
+<BODY> and <bOdY> are same.
+
+XML Tree.
+
+<root>
+	<sub-elem1 attr1="value">
+		<sub-elem2 someattr="somevalue" anotherattr="anothervalue">
+		<sub-elem2>
+	<sub-elem1>
+</root>
+Atributes are not predefined.
+
+DTD (Document Type Definition) and XSLT (Extensible Stylesheet Language Transformations)
+
+
+XML Prolog:
+<?xml version="1.0" encoding="UTF-8"?>
+It is optional.
+If it exists, it must come first in the document.
+XML documents that contain "international" characters, aka characters with accents.
+UTF-8 the default encoding for HTML, CSS, Javascript, PHP and SQL.
+
+Well formed XML:
+1. every start tag must have a matching end tag.
+2. Attribute values must always be quoted ("")
+3. Elements must be properly nested.
+
+XML is case sensitive.
+
+Entity References:
+<message>Salary < 1000</message>
+
+Use entity reference:
+<message>Salary &lt; 1000</message>
+&lt;		<
+&gt;		>
+&amp;		&
+&apos;		'
+&quot;		"
+
+<text>This & that</text>
+
+<!-- This is a comment -->
+
+XML Elements Naming Rules:
+case-sensitive.
+must strt with a letter or underscore.
+cannot start with the letters "xml" (or XML, or Xml etc.)
+Can contain letters, numbers, hyphens, underscore and periods.
+	<first.name>
+	<first_name>
+	<first-name>
+	<firstname>
+	<address1>
+	<address_1>
+	<address-1>
+	<address.1>
+Cannot contain spaces.
+
+
+XML Namespaces:
+<root>
+	<p:person xmlns:p="http://www.mysite.org/person">
+		<p:firstName>John<p:/firstName>
+		<p:lastName>Smith<p:/lastname>
+	</p:person>
+	<emp:person xmlns:emp="http://www.mysite.org/employee">
+		<emp:firstName>Mary<emp:/firstName>
+		<emp:lastName>Jane<emp:/lastname>
+	</e:person>
+	<c:person xmlns:c="http://www.mysite.org/customer">
+		<c:firstName>Neo<c:/firstName>
+		<c:lastName>Trinity<c:/lastname>
+	</c:person>
+</root>
+
+What about JSON?
+JavaScript Object Notation.
+Purpose is same as XML (more or less), to share and transmit and exchange data.
+The content (data) in JSON are key-value pairs.
+
+In recent times, JSON is becoming the defacto data exchange format and not XML.
+
+Log files:
+	text files
+	in DB
+
+log files are moving from plain text to JSON format.
+JSON or CSV (comma separated values).
+Hadoop, Hive, Spark, Kafka configuration files are XML.

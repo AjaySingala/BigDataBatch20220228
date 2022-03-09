@@ -1,0 +1,88 @@
+Cloud computing:
+What is cloud computing?
+	Exchange between networks.
+	Using the internet servers to exchange information over the network.
+	Distributed servers (geographically) to server users locally.
+	Easily allows companies to scale server capacities and storage.
+	
+	Internet.
+	Sharing.
+	Pay for what you use.
+	Accessible from anywhere at any time.
+	Disaster Recovery.
+	SLA: 99.99995% up time 
+		this % increases depending on how many servers (VMs) you have provisioned to share the load.
+	Automated provisioning and de-provisioning (Elasticity).
+		If CPU utilization > 80% for 5 minutes, give me 3 more VMs.
+		If CPU utilization > 45% for 5 minutes, remove 2 VMs.
+		At any given point in time, make sure there are at least 4VMs running.
+	Security:
+		VMs can be accessed only if you have the creds.
+	
+	All VMs for the same application will never be provisioned on the same Rack.
+	All VMs for the same application will never be taken up for upgrade / patches together.
+	Power Backups.
+	
+	Options to create "backups" (replication) to other regions / locations.
+		You have to pay for it.
+		10 VMs
+		Data
+	
+Types of Clouds:
+	Public
+	Private
+	Hybrid
+	
+On-premises: You own everything. The machine, all resources.
+
+3 Core Services:
+	IaaS: Infrastructure as a Service.
+		made of highly scalable, automated compute resources.
+		VMs, Storage, RAM, Processor, Networking.
+		If we provision a VM, then we have to manage the VM.
+		AWS EC2 (Elastic Compute Cloud). Azure Compute. Google Compute Engine.
+		Pros:
+			Time saving.
+			It is cost-effective.
+			Scalability.
+			You have complete control over the resources.
+		Cons:
+			If you do not manage / control the usage, the cost can shoot up.
+			You have complete control over the resources.
+			You will have to train your resources on managing cloud infra.
+			
+	PaaS: Platform as a Service.
+		Provider provides cloud components to certain software / frameworks which can be used by developers to build their own applications.
+		All servers, storage, networking is managed by a 3rd party, while the developer can manage the application that is being built.
+		Devs can build and customize their applications, but with no direct access to the infrastructure.
+		Components / frameworks that Devs can use to build and test applications.
+		Force.com: It's part of SalesForce, but for Devs.
+		Microsoft Azure platform itself is a PaaS.
+		Pros:
+			highly scalable.
+			cost-effective.
+			Don't have to worry about the underlying infra.
+		Cons:
+			Coding knowledge is required.
+			You have less control over the infra.
+			Have operational limitations.
+			Your application is part of the platform. So, if the platform itself goes down, your app (including code) also goes down with it (always better to have a copy of the code somewhere).
+	SaaS: Software as a Service.
+		The entire application / software is available in the cloud and you use it as-is.
+		You do not have direct access to the infra nor the application (the code) itself.
+			e.g.; Microsoft 365, SalesForce, Dropbox, JIRA.
+		Mostly works on subscription basis.
+		SaaS eliminates the need to download the software.
+		Pros:
+			you can use the software on any device.
+			saving time and money.
+			you don't have to worry about upgrading, installing or managing.
+		Cons:
+			Data security "concern".
+			Integration with other apps may be limited.
+			You are handing over control to a 3rd party vendor.
+			You are completely dependent on their maintenance schedule.
+			
+AWS - Amazon Web Service (AWS EMR)
+Microsoft Azure
+GCP - Google Cloud Platform

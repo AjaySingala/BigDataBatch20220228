@@ -1,0 +1,325 @@
+DBMS: DataBase Management System.
+	Kind of a"repository" that stores data in a specific pre-defined format.
+	There is a pre-defined "schema" to store the data.
+
+Entities:
+Customers
+Products
+Orders
+
+Which product were purchased by customers between 01-Dec-2021 and 31-Dec-2021:
+	How much was purchased
+	At what price
+	Which cities did the customers belong to.
+	
+RDBMS: Relational DataBase Management System.
+SQL to query the results.
+SQL: Structured Query Language.
+	The DB language used to perform operation on an existing database to:
+		Create		C		INSERT
+		Retrieve	R		SELECT
+		Update		U		UPDATE
+		Delete		D		DELETE
+	data.
+	
+SQL Command Categories:
+	DDL	- Data Definition Langauage
+	DML - Data Manipulation Language
+	DQL - Data Query Language
+	DCL - Data Control Language
+	TCL - Transaction Control Language
+	
+DDL:
+	CREATE: Create database, tables, indexes, views, stored procedures, functions etc.
+	
+CREATE TABLE Customers			===> TABLE
+(
+	Id NVARCHAR(50),			===> FIELDS / Columns
+	Email NVARCHAR(20),			===> FIELDS / Columns
+	Firstname NVARCHAR(50),		===> FIELDS / Columns
+	Lastname NVARCHAR(50)		===> FIELDS / Columns
+)
+
+Data Types:
+Varchar
+Int
+DateTime
+Decimal
+Bit (either a 0 or 1)
+NVARCHAR	=> UNICODE
+
+	DROP
+		DROP TABLE <tablename>
+	
+	ALTER
+	TRUNCATE
+	
+DML: INSERT:
+	INSERT rows.
+	
+Syntax:
+INSERT INTO <table> (col1, col2, col3...coln) VALUES (val1, val2, val3...valn)
+
+INSERT INTO Customers 
+(Id, Firstname, Lastname, Email)
+VALUES( 101, 'John', 'Smith', 'jsmith@gmail.com')
+
+INSERT INTO Customers
+(Id, Firstname, Lastname, Email)
+VALUES( 102, 'Mary', 'Jane', 'mjane@outlook.com')
+
+INSERT INTO Customers
+VALUES( 103, 'Joe', 'Fields', 'jfields@outlook.com')
+Disadvantages of this format/syntax:
+	1. You have to know the sequence of the columns.
+	2. You have to know the data type of each column.
+	3. What if there are 50 columns in the table?
+
+When inserting data, you may not be providing values for ALL columns.
+	For e.g.; 20 columns in the table, 15 of them are optional.
+	
+DML: SELECT:
+	SELECT col1, col2,...coln
+	FROM tablename
+	
+	SELECT *
+	FROM tablename
+
+	SELECT * FROM Customers
+	SELECT Firstname FROM Customers
+	SELECT Firstname, Lastname FROM Customers
+	SELECT Lastname, Firstname FROM Customers
+	
+Examples:
+Display customer's id, customername and City with the orderId and date of the order they have placed.
+JOIN the tables!!!
+
+Syntax of JOIN:
+SELECT col1, col2,...coln
+FROM table1
+INNER JOIN table2 ON table1.pk = table2.fk
+
+Example:
+SELECT customers.CustomerId, customers.CustomerName, customers.City,
+orders.OrderId, orders.OrderDate
+FROM Customers
+INNER JOIN Orders ON Customers.CustomerId = orders.CustomerId 
+
+DDL: CREATE, DROP.
+DML: INSERT, SELECT (DQL)
+
+How to filter records?
+WHERE clause:
+
+Syntax:
+SELECT col1, col2...coln
+FROM table
+WHERE <condition1>
+AND <condition2>
+
+SELECT col1, col2...coln
+FROM table
+WHERE <condition1>
+OR <condition2>
+
+Example:
+SELECT CustomerId, CustomerName, City, Country
+FROM Customers
+WHERE Country = 'Germany'
+
+WHERE LIKE clause:
+
+Sorting:
+ORDER BY <column>
+Default is in Ascending Order.
+
+Sort on multpile cols:
+ORDER BY <column1, col2,...coln>
+
+
+GROUP BY clause:
+Used for aggregations.
+SUM
+AVG
+COUNT
+MAX
+MIN
+
+Example: Show me how much quantity was sold for each product.
+REMEMBER: When using GROUP BY, never ever ever use "SELECT *".
+
+HAVING clause, which is used with GROUP BY.
+WHERE vs HAVING???
+	WHERE is performed before the grouping.
+		Filters records before the GROUP BY clause is applied to the query.
+	HAVING is performed after the grouping.
+		Filters records after the GROUP BY clause is applied.
+
+When using GROUP BY, only those columns can be mentioned in the SELECT clause that are listed in the GROUP BY clause
+Aggregate functions can also be specified in the SELECT clause with GROUP BY.
+
+Example:
+SELECT od.ProductId, SUM(od.Quantity) as 'TotalQuantity',
+FROM OrderDetails od
+	INNER JOIN Products p ON p.ProductId = od.ProductId
+	INNER JOIN Categories c ON c.CategoryID = p.CategoryId
+WHERE c.CategoryName = 'Produce'
+GROUP BY od.ProductId
+HAVING TotalQuantity > 45
+
+Relational DB terminologies:
+Attribute: Columns. They are properties that define a relation/table.
+Tuple: Each row in a relation/table is known as a Tuple.
+Degree: The number of attributes in the relation/table is known as the Degree of the Relation/Table.
+Cardinality: The number of tuples in a relation/table.
+
+WHERE IN Clause:
+Display products that have id 1 or 2 or 3 or 6.
+
+Sub-query (nested query)  using the "WHERE IN" clause
+SELECT o.OrderId, o.OrderDate, o.CustomerId, o.ShipperId
+FROM Orders o
+WHERE o.CustomerId IN (
+   SELECT c.CustomerId
+   FROM Customers
+   WHERE City IN ('Berlin', 'London', 'Bern')
+)
+
+SELECT o.OrderId, o.OrderDate, o.CustomerId, o.ShipperId
+FROM Orders o
+WHERE o.CustomerId IN (1,4,11,14,16,19,53,72)
+
+On MySQL:
+Syntax:
+1. CREATE DATABASE <db-name>
+
+Example: 
+CREATE DATABASE ecommerce;
+
+2. Create tables.
+	- Decide beforehand what tables to create, what PKs to define and what FKs to define, what contraints to define.
+	- Constraints:
+		- NOT NULL
+		- UNIQUE
+		- CHECK
+		- DEFAULT
+		
+CREATE TABLE Customers
+(
+	Id INT NOT NULL,
+	CustomerName VARCHAR(50) NOT NULL,
+	ContactName VARCHAR(50),
+	City VARCHAR(50),
+	State VARCHAR(50),
+	Country VARCHAR(50) DEFAULT 'USA',
+	Email VARCHAR(25) UNIQUE,
+	Age INT CHECK(Age >= 18)
+	PRIMARY KEY (Id)
+)
+
+CREATE TABLE Orders
+(
+	Id INT NOT NULL,
+	OrderDate DateTime NOT NULL,
+	CustomerId INT NOT NULL,
+	Remarks VARCHAR(50),
+	
+	PRIMARY KEY(Id),
+	FOREIGN KEY (CustomerID) REFERENCES Customers(Id)
+)
+
+DDLs:
+CREATE TABLE
+DESCRIBE <tablename>
+DROP TABLE Orders;		Delete the table.
+TRUNCATE TABLE Orders;	Deletes all records from the table, but not the table itself.
+
+ALTER TABLE: used to make changes to an existing table. For e.g.; adding a new column.
+Ad to a new column:
+ALTER TABLE Customers
+ADD Phone VARCHAR(15)
+
+Drop/Delete a column:
+ALTER TABLE Customers
+DROP COLUMN Phone
+
+Modify a column (change it's data type):
+SQL Server / MS Access:
+ALTER TABLE Customers
+ATLER COLUMN Phone INT
+
+MySQL / Oracle:
+ALTER TABLE Customers
+MODIFY COLUMN Phone INT
+
+INNER JOIN:
+SELF JOIN: FK points to the PK in the same table.
+
+TABLEX
+Id
+AntoherId		FK pointing to the Id in the same table.
+
+Multiplicity:
+1:1	1 Employee 1 Manager
+1:* 1 Customer Many Orders
+1:* 1 Department Many Employees
+*:1 Many Employees 1 Department
+*:* Many-to-Many
+
+Referential Integrity:
+Depends on how well the PK-FK relations have been defined.
+INSERT CONSTRAINT: Cannot insert record without a valid and existing value for the FK.
+DELETE CONSTRAINT. Cannot delete the PK record if a FK record exists in any other table.
+DELETE CASCADE. If the PK record is deleted, it will also delete all MATCHING FK records in all other tables.
+
+ER Diagram: Entity Relationship Diagram.
+
+DELETE:
+Syntax:
+DELETE FROM <tablename>
+WHERE <condition>
+
+Example:
+DELETE FROM Products
+WHERE ProductId = 1
+
+DELETE FROM OrderDetails
+WHERE ProductId = 1
+
+NEVER USE A DELETE command WITHOUT ANY CONDITION!!!
+IT WILL DELETE ALL RECORDS IN THE TABLE.
+DELETE FROM Products
+
+UPDATE:
+Used to update existing records.
+Syntax:
+UPDATE <tablename>
+SET col1 = value, col2 = valeue,...coln = value
+WHERE <condition>
+
+Example:
+UPDATE Products
+SET ProductName = 'Maple Syrup', Unit = '15 - 600 ml bottles'
+WHERE ProductId = 3
+
+NEVER USE AN UPDATE command WITHOUT ANY CONDITION!!!
+IT WILL UPDATE ALL RECORDS IN THE TABLE.
+
+
+Exercise:
+Create a new DB on MySql
+Create tables for:
+	Customers
+	Products
+	Order
+	OrderDetails
+There are proper PK - FK relations between these 4.
+Insert records in all 4.
+Try the SELECT, UPDATE, DELETE statements.
+	Try WHERE, WHERE IN, WHERE AND/OR, WHERE LIKE
+	Try GROUP BY, ORDER BY, HAVING clauses
+	
+Display order no., order date, Customer name, product name, qty, price, amount
+optional:
+	for customers from Berlin.
+	

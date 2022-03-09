@@ -312,7 +312,7 @@ rwxrw-r-- sample.txt
 chmod o+w sample.txt	allow others to read and write the file.
 rwxrw-rw- sample.txt
 
-chmod =rw sample.txt	give rwx permission to everyone.
+chmod =rw sample.txt	give rw permission to everyone.
 
 rwxrw---x sample.txt
 chmod o=rw sample.txt

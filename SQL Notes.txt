@@ -254,6 +254,11 @@ MODIFY COLUMN Phone INT
 
 INNER JOIN:
 SELF JOIN: FK points to the PK in the same table.
+Example:
+SELECT e1.Id, e1.FirstName, e1.LastName, e1.ReportsTo,
+	e2.Id, e2.FirstName, e2.LastName
+FROM Employees e1
+INNER JOIN Employees e2 ON e1.Reportsto = e2.Id
 
 TABLEX
 Id
@@ -323,3 +328,301 @@ Display order no., order date, Customer name, product name, qty, price, amount
 optional:
 	for customers from Berlin.
 	
+DDL: CREATE, DROP, TRUNCATE.
+DML: SELECT, INSERT, UPDATE, DELETE.
+DQL: SELECT
+DCL: Data Control Lanaguage
+	GRANT
+	REVOKE
+	(usually used by Database Administrators)
+	
+	GRANT syntax:
+	GRANT <privilege_to_be_granted> ON <object_name>
+	TO <username>
+	
+	Example:
+	USE MyProjectDB;
+	GRANT INSERT ON Employees TO ajaysingala
+	GRANT INSERT, SELECT ON Employees TO ajaysingala
+	
+	REVOKE syntax:
+	REVOKE <privilege_to_be_revoked> ON <object_name>
+	FROM <username>
+	REVOKE INSERT  ON Employees FROM ajaysingala
+
+TCL: Transaction Control Language.
+Transaction Management.
+COMMIT
+ROLLBACK
+
+Syntax:
+SQL Server:
+BEGIN TRANSACTION
+	UPDATE
+	
+	UPDATE
+	
+	IF @HASERROR <> 0 THEN
+		ROLLBACK
+	ELSE
+		COMMIT
+END
+
+MySQL:
+START TRANSACTION;
+
+UPDATE ....
+INSERT
+DELETE
+
+COMMIT;
+
+ROLLBACK;
+
+STORED PROCEDURES
+
+BEGIN
+	DECLARE 'fail' bool DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET 'fail' = 1;
+	START TRANSACTION
+	Insert
+	update
+	delete
+	
+	IF 'fail' = 1 THEN
+		ROLLBACK;
+	ELSE
+		COMMIT;
+	END IF;
+END
+
+Where you perform multiple operations as part of a single txn.
+eCommerce:
+I place an order for 10 boxes of blue White Board Marker.
+Currently the stock of Blue White Board Marker is 100 boxes.
+Records created / updated:
+	1. An Orders record.
+	2. An OrderDetails record.
+	3. Stock of Blue White Board Markers is updated (reduced by 10 boxes) (Products table)
+	
+
+VIEWS:
+Like tables, but not physical tables.
+
+SELECT o.OrderId, o.OrderDate, o.CustomerId, c.CustomerName, c.ContactName, od.ProductId, p.ProductName, od.Quantity, p.Price, p.CategoryId, ct.CategoryName, p.SupplierId, s.SupplierName
+FROM Orders o
+INNER JOIN Customers c ON c.CustomerId = o.CustomerId
+INNER JOIN OrderDetails od ON o.OrderId = od.OrderId
+INNER JOIN Products p ON p.ProductId = od.ProductId
+INNER JOIN Categories ct ON ct.CategoryId = p.CategoryId
+INNER JOIN Suppliers s ON s.SupplierId = p.SupplierId
+
+
+CREATE VIEW OrderInfoView
+AS
+	SELECT o.OrderId, o.OrderDate, o.CustomerId, c.CustomerName, c.ContactName, od.ProductId, p.ProductName, od.Quantity, p.Price,
+		p.CategoryId, ct.CategoryName, p.SupplierId, s.SupplierName
+	FROM Orders o
+		INNER JOIN Customers c ON c.CustomerId = o.CustomerId
+		INNER JOIN OrderDetails od ON o.OrderId = od.OrderId
+		INNER JOIN Products p ON p.ProductId = od.ProductId
+		INNER JOIN Categories ct ON ct.CategoryId = p.CategoryId
+		INNER JOIN Suppliers s ON s.SupplierId = p.SupplierId
+
+SELECT * FROM OrderInfoView
+
+JOINS:
+-INNER JOIN
+-LEFT OUTER JOIN
+-RIGHT OUTER JOIN
+-FULL OUTER JOIN
+-SELF JOIN
+
+INNER JOIN
+Returns records that have matching values in both tables.
+
+SELECT p.ProductId, p.ProductName, p.CategoryId, c.CategoryName
+FROM Products p
+INNER JOIN Catrgories c ON c.CategoryId = p.CategoryId
+
+LEFT OUTER JOIN or LEFT JOIN:
+Returns all records from the left table, and matching records from the right table.
+
+SELECT p.ProductId, p.ProductName, p.CategoryId, c.CategoryId, c.CategoryName
+FROM Categories c 
+LEFT OUTER JOIN products p ON c.CategoryId = p.CategoryId
+
+
+RIGHT OUTER JOIN a.k.a. RIGHT JOIN:
+Returns all records from the gright table, and matching records from the left table.
+
+SELECT p.ProductId, p.ProductName, p.CategoryId, c.CategoryId, c.CategoryName
+FROM Products p
+RIGHT OUTER JOIN Categories c ON c.CategoryId = p.CategoryId
+
+FULL (OUTER) JOIN:
+Returns all records when there is a match in either the left or the right table.
+
+SELECT p.ProductId, p.ProductName, p.CategoryId, c.CategoryId, c.CategoryName
+FROM Products p
+FULL OUTER JOIN Categories c ON c.CategoryId = p.CategoryId
+
+SELECT DISTINCT
+
+Indexing:
+By Default, when you create a PK on a table, it will also create an INDEX for that table on the PK column.
+
+SELECT * FROM Products
+WHERE ProductId = 101
+
+Pages
+
+SELECT * FROM Customers
+WHERE City = 'Berlin'
+
+SELECT * FROM Customers
+WHERE City = 'London'
+
+Syntax:
+CREATE INDEX <index_name)
+ON <table_name> (col1)
+
+CREATE INDEX <index_name>
+ON <table_name> (col1, col2,...coln)
+
+Example:
+CREATE INDEX idxCustomersCity
+ON Customers (City)
+
+CREATE INDEX idxCustomersCityCountry
+ON Customers (City, Country)
+
+SELECT * FROM Customers
+WHERE City = 'London'
+AND Country = 'Germany'
+
+The more indexes have on a table, it will impact the performance of INSERT (UPDATE & DELETE) Queries on that table.
+
+In your DB Design and Application development, NEVER EVER EVER delete (rows) physically.
+No DELETE anywhere!!!!
+DELETE FROM Orders
+WHERE ;
+
+For auditing purposes!!!
+INACTIVE!!!
+
+
+ARCHIVE
+
+SET Operators:
+-UNION
+-INTERSECT
+-EXCEPT
+
+UNION:
+Used to combine result sets from two or more tables using a SELECT statement.
+So how is it different from using a JOIN?
+Produces a result set that is a "UNION" of both SELECT statements.
+
+Syntax:
+SELECT col1, col2,...coln
+FROM table1
+UNION
+SELECT col1, col2,...coln
+FROM table2
+
+Rules:
+1. Every SELECT statement that is part of the UNION must have the same number of columns.
+This is wrong:
+SELECT Id, Firstname
+FROM Customers
+UNION
+SELECT Id, City, Country
+FROM Suppliers
+
+2. The columns must also have similar data types.
+
+This is wrong:
+SELECT Id, Firstname, Lastname
+FROM Customers
+UNION
+SELECT OrderId, OrderDate, CustomerId
+FROM Orders
+
+3. The order of the columns in both SELECT statements should be same.
+This is wrong:
+SELECT Id, Firstname, Lastname
+FROM Customers
+UNION
+SELECT EmployeeFirstName, EmployeeId, EmployeeLastname
+FROM Employees
+
+UNION operator will show only unique values.
+
+UNION ALL operator:
+To sell duplicate values as well, use UNION ALL.
+
+You can use WHERE and ORDR BY with UNION and UNION ALL.
+
+INTERSECT operator:
+Used to combine two or more SELET statements, and the result set will be an intersection of the data, meaning it will only return rows that are common to both the SELECT statements.
+
+
+EXCEPT operator:
+Returns those rows that are result of the first SELECT and not returned by the second SELECT.
+
+
+Normalization:
+Process of organizing data in a sensible and logical manner.
+Keeping mind performance, storage and usability.
+It is done to reduce redundancy of data in the DB.
+It helps improving the data integrity of the DB.
+
+If you do not normalize properly, there can be 3 anomalies:
+1) Insertion Anomaly: It occurs when we cannot insert data into a table without the presence of another attribute.
+2) Update anomaly: It is data inconsistency that results from data redundancy.
+3) Deletion anomaly: It occurs when certain attributes are lost because of deletion of other attributes.
+
+1st Normal Form (1NF):
+Here, we tackle the problem of atomicity. Meaning, individual columns in the table should not have multiple values.
+If any column in the table contains composite values (mulit-valued attribute), it violates the 1NF.
+
+2nd Normal Form (2NF):
+1. Table must already be in 1NF.
+2. There should be no partial dependency.
+All atrributes (columns) in the table must depend on the Primary Key.
+
+3rd Normal Form (3NF):
+1. Table must already be in 2NF.
+2. Non-primary key columns should not depend on other non-primary key columns.
+3. Remove data that does not depend on the table's PK.
+4. There is no Transitive functional dependency.
+
+A Transitive functional dependency is when non-key column might cause any of the other non-key columns to change.
+
+ACID (guiding principles that ensure database transactions are processed reliably):
+-Atomicity
+-Consistency
+-Isolation
+-Durability
+
+Atomicity:
+Commits finish entire an operation (txn) successfully Or if it fails, everything is rolled back.
+Either everything succeeds or everything fails.
+An atomic transaction ensure that any commit finishes the entire operation successfully. Or in case of a failure (exception, error), the DB is rolled back to it's previous state before the transaction started.
+
+Consistency:
+Any change done should maintain the data integrity.
+This is in in a way achieved via Atomicity.
+Any changes or transactions must not violate the integrity of the data.
+
+Isolation:
+Any read/write will not be impacted by any other read/write.
+Separation of transactions.
+
+Durability:
+As long as a transaction is commited, the data is survive permanently.
+Durability ensures that there data integrity.
+It also ensures any changes made to the database and successfully committed, will survive permanently.
+
+

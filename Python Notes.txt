@@ -1,0 +1,265 @@
+Python:
+Invented by Guido van Rossum (from Netherlands) in the early 90s.
+Named after Monty Python.
+Open sourced from the beginning.
+Considered to be a scripting language, but it is actually a lot more.
+It is object oriented.
+It is also an interpreted language.
+It is very scalable.
+Google has been using it for a very long time.
+Increasingly popular, especially with ML.
+
+Factors:
+It is object oriented as well as non-OO.
+Is very strict about indentation of the code.
+It is case-sensitive.
+Open source.
+Portable.
+Automatic memory management.
+Easy to use and learn.
+
+
+Python "REPL mode".
+REPL: Read-Evaluate-Print-Loop
+
+print("hello")
+
+Jupyter Notebooks (creates files with extension .ipynb).
+
+Pyhton Idnetifiers and Keywords:
+What are keywords?
+	predefined and reserved words in Python.
+	
+and
+or
+not
+if
+else
+elif
+for
+while
+break
+as
+def
+pass
+lambda
+return
+True
+False
+try
+with
+class
+continue
+finally
+import
+from
+None
+yield
+raise
+in
+global
+is
+
+Identifiers:
+Variables that hold values:
+width = 10
+Here, width is a variable / identifier.
+Function names:
+def foo():
+	print("This is foo()")
+Here, "foo" is an identifier.
+
+Rules for identifiers:
+- It is a combination of alphabets and numbers and underscores.
+- It should start with an alphabet (A-Z, a-z) or an underscore (_) followed by other alphabets, numbers (0-9) and underscores.
+- Cannot have special characters like @, !, $, %, &, #, * etc.
+- Variable names cannot be keywords.
+
+For e.g.: valid identifiers:
+var
+var1
+_var1
+_var_1
+var_1
+
+Invalid identifiers:
+1var
+!var
+var!
+var$
+var#1
+2_var
+
+You cannot use a keyword as an identifier. For e.g.;, the following will not work:
+and = 10
+def while():
+	: some code :
+
+All keywords in Python are in lower case, except True and False.
+
+True and False are booleans.
+=  is  used to assign a value to a variable.
+== is used for comparison (to check for a condition)
+
+if-else block
+Syntax:
+if(condition):
+	1 or more statements
+else:
+	1 or more statements
+
+and: Logical operator.
+if(cond1 and cond2):
+	print("....")
+else:
+	....
+
+With "and", even if one of the conditions fails (is False), the entire expression fails.
+T and T = T
+T and F = F
+F and T = F
+F and F = F
+
+or: Logical operator.
+if any one of the conditions is True, the entire expression is True.
+T or T = T
+T or F = T
+F or T = T
+F or F = F
+
+Order of precedence:
+if((a or b) and c)
+and takes precedence over or.
+but parentheses () take precedence over everything else.
+
+x = a and b
+if(a and b):
+	if(x or c):
+
+
+!= not equals operator
+
+!True is False
+!False is True
+not variablename denotes you are checking for "variablename == False" or "variablename != True"
+
+if-elif-else means if-else if-else
+
+Simple and Compound Statements:
+In Python we write code blocks.
+Each code block contains a set of statements.
+These statements can be classified as Simple or Compound statements.
+A Python program contains a collection of these statements: assingments, expressions, functions, loops, computations etc.
+
+Simple Statements:
+meant for simple operations and are mostly written in a single line of code.
+For e.g.;
+x = 10
+assign the literal value 10 to the variable x. It is an assignment expression.
+
+x = 10 * 13
+This is an expression statement, which is also a simple statement as it is simply evaluating the expression 10 * 13 and assigning the result to the variable x.
+
+Other simple statements in Python:
+break
+continue
+return
+import
+
+Compound Statements:
+Comprise of a group of statements (blocks of code) that are executed when a specific condition is satisfied.
+Statements in a function, that will be executed only when you call the function.
+For e.g.;
+The if statement
+The different loops: 
+	while 
+	for
+The try statement (a.k.a. exception handling block).
+
+Values, Types and Variables.
+Values can be characters, numbers, a combo of these etc.
+Values belong to different types like integer, string, boolean etc.
+
+Built-in data types in Python:
+String: str
+Numbers: int, float, complex
+Booleans: bool
+Sequence Types: list, tuple, range
+Mapping type: dict
+Set types: set, frozenset
+
+Loops:
+The "while" loop: 
+	execute a block of code as long as a condition is satisfied.
+	When the condition is not satisfied (false), exit out of the loop.
+	
+Syntax:
+
+while(condition):
+	code
+	code
+	code
+	if(some condition):
+		break
+		
+	if(some other condition):
+		continue`
+	
+	code
+	code
+
+Code outside of the while loop
+code
+code
+
+The 'for" loop:
+for variable in a_range_of_values:
+	statements
+
+Assignments can be chained.
+a = b = c = d = 25
+
+Swap values:
+x,y = 2,3
+print(x)
+print(y)
+
+x,y = y,x   # swap the numbers.
+print(x)
+print(y)
+
+Functions:
+def function_name([parameters]):
+	statements
+	statements
+	
+function_name()
+function_name(1,2)
+
+Tuples:
+A collection of values.
+A simple immutable ordered sequence of items.
+Items can be of mixed types, including other collections.
+Are represented using parentheses.
+
+Any literals are immutable. These won't work.
+2 = 10
+"John Smith" = "Ajay"
+
+('John', 32, 123.45)
+('John', 32, 123.45, (555-1234, 555,6789))
+
+Slicing is later.
+
+people = (
+('John', 32, 123.45, ('555-1234', '555-6789')), 
+('Mary', 33, 456.78, ('555-3324', '555-8889')),
+('Joe', 28, 185.78, ('555-1324', '555-0889'))
+)
+
+print(people) 
+print(people[0])
+print(people[0][0])
+print(people[0][3])
+print(people[0][3][0])
+

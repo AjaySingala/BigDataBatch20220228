@@ -263,3 +263,293 @@ print(people[0][0])
 print(people[0][3])
 print(people[0][3][0])
 
+Re-declare variables.
+
+Python variables have 2 scopes: Global and Local.
+If a variable is defined outside a function, it cannot be directly referenced / used within any function.
+A variable defined within a function is accessible only within the function where it has been defined and it does not have any impact on the variable of the same name defined globally (i.e.; outside any function).
+
+Identifying a variable as "global" within a function makes that variable (which was defined outside the function) accessible and mutable inside the function. Any changes made to this global variable (value updated) will be visible even after the function completes.
+
+Python Process Map.
+
+In Visual Studio Code (VSC), create your . py file and save it.
+Press CTRL+SHIFT+P to open the command pallette and enter Python: Select Interpreter
+Select the appropriate Python executable.
+Then, Run -> Run Without Debugging (or press CTRL+F5)
+
+Comment line(s) in VSC: CTRL+K, CTRL+C.
+UnComment line(s) in VSC: CTRL+K, CTRL+U.
+
+Slicing:
+t[n:m]
+	Start from element #n (elements/indexes starts from 0) and return elements upto m-1.
+t[1:4] this will give elements from 1 to 3 and not 1 to 4.
+t[:2]
+if "n" is omitted, it starts from the 1st element, which is position 0.
+this will return values from 0 to 1 (2-1)
+
+t[2:]
+will return from elem 2 till end of the collection.
+if "m" is omitted, it returns all vaules till the end.
+
+List:
+A collection of values.
+A mutable ordered sequence of items.
+Items can be of mixed types, including other collections.
+Are represented using square brackets [].
+
+list1 = [1,2, "abc"]
+
+The "in" operator:
+To look for values with a list or tuple.
+print(32 in list1)
+print("John" in list1)
+
+The "+" operator concats tuples / lists.
+	(1,2,3) + (4,5,6) will give (1,2,3,4,5,6)
+The "*" operator multiplies the values in the list/tuple for the given number.
+	(1,2,3) * 3 will give (1,2,3,1,2,3,1,2,3)
+	
+Operations that be performed on a list but not on a tuple:
+append(value) - add value to the end of the list.
+insert(n, value) - insert the value at position "n" (0-based index).
+sort() - sort the list in-place.
+count(value) - count the no. of occurances of value.
+remove(value) - remove the 1st occurance of value.
+index(value) - index no. of the 1st occurance of value.
+
+
+Multipline statements are created using the back-slash (\).
+
+Arithmetic Operators: + - * / % **
+Relational operators: = == > >= < <= != 
+Logical operator: and or not
+Assignment operators: += -= *= /=
+Identity operators: is, is not
+	is - returns true of 2 variables point to the same object and false otherwise.
+	is not - it returns false of 2 variables are pointing to the same objec and true otherwise.
+Membership Operators: in, not in.
+	in - returns true of value is found in a sequence (list/tuple).
+	not in - returns true of value is not found in a sequence (list/tuple).
+
+Order of precedence:
+PEMDAS: Parentheses, Exponent, Multiply, Divide, Add, Subtract.
+
+Taking input from the user:
+name = input()
+
+Comments:
+# This is a single line comment.
+
+""" Here is an example of a multi-line comment.
+Enter any number of lines between the quotes."""
+
+'''
+Here is an example of a multi-line comment.
+Enter any number of lines between the single quotes.
+'''
+
+DOCSTRING:
+It is a multi-line comment used to provide documentation for functions, classes etc.
+
+Nested conditions:
+if(cond):
+	code
+	code
+	if(cond2):
+		code
+		code
+	
+	code
+	code
+	
+	if(cond3):
+		code
+		code
+else:
+		code
+		code
+	
+
+Exception handling:
+try:
+	code
+	code
+	code
+except:
+	code (usually, display a user-friendly message)
+
+Functions:
+We need functions for abstraction and reusability.
+DRY: Don't Repeat Yourself
+Gives you modularity.
+Easy to maintain code.
+
+def read_file(filename):
+	code
+	
+def process_file(filename):
+	code
+	return result
+	
+def write_file(data_to_be_written):
+	code
+	
+while(...):
+	# read one file at a time.
+	read_file(filename)
+	res = process_file(filename)
+	write_file(res)
+
+Random:
+import random
+
+for i in range(5):
+    x = random.random()
+    print(x)
+
+random.randint(5,10)
+random.randint(25,100)
+
+numbers = [1,2,5,8,9,21,30]
+random.choice(numbers)
+    
+Math functions:
+import math
+print(math.pi)
+print(math.sqrt(16))
+
+Positional parameters:
+Interpolation: enclose variables in {} when printing. Use print(f"{variable}")
+def foo(qty, item, price):
+    print(f"{qty} numbers orderd for {item} at {price} per unit")
+
+foo(10, "Pens", 3.99)
+foo(10, "Pens")		# Error.
+
+Keyword arguments (named parameters):
+def foo(qty, item, price):
+    print(f"{qty} numbers orderd for {item} at {price} per unit")
+
+foo(qty = 24, item = "apples", price = 2.59)
+foo(item = "apples", price = 2.59, qty = 24)
+foo(item = "apples", qty = 24)		# Error.
+
+Default values for parameters.
+# Positional Arguments.
+def foo(item, qty = 15, price = 2.99):
+    print(f"{qty} numbers orderd for {item} at {price} per unit")
+    # amount = qty * price
+    # print(amount)
+
+foo(10, "Pens", 3.99)
+foo(10, "Pens")
+
+foo(qty = 24, item = "apples", price = 2.59)
+foo(item = "apples", price = 2.59, qty = 24)
+foo(item = "apples", qty = 24)
+
+Lambda Functions a.k.a. Anonymous Functions:
+Lambdas are little, anonymous functions with a very specific syntax.
+Example:
+lambda x: x + 1
+
+Equivalent to:
+def lambda2(x):
+	return x + 1
+
+to use: lambda2(10)
+
+lambda x: x + 1
+Here,
+	lambda is the keyword to define the anon function.
+	x is a bound variable.
+	x + 1 is the body of the function.
+	
+Examples:
+print((lambda x: x + 1)(10))
+
+add_one = lambda x: x + 1
+print(add_one(20))
+
+answer = add_one(100)
+print(answer)
+
+fullname = lambda firstname, lastname: f'Full name is: {lastname}, {firstname}'
+print(fullname("John", "Smith"))
+
+add_two_numbers = lambda x, y: x + y
+print(add_two_numbers(10,20))
+print(add_two_numbers(110,120))
+
+res = (lambda x, y: x + y)(10,20)
+print(res)
+
+# named params (keyword arguments)
+print((lambda x,y,z: x + y + z)(1,2,3))
+print((lambda x,y,z=5: x + y + z)(1,2))
+print((lambda x,y,z=5: x + y + z)(1, y=10))
+
+print(fullname(firstname="Mary", lastname="Jane"))
+
+summ_of_nums = lambda *numbers: sum(numbers)
+print(summ_of_nums(1,2,3))
+print(summ_of_nums(1,2,3,4,5,6))
+
+Exceptions: try-except block.
+Error vs Exception?
+
+try:
+
+except:
+
+else:
+
+finally:
+
+You can raise an exception using "raise".
+what is "pass"? It is a placeholder.
+
+# Handle specific exceptions.
+try:
+    with open('file.txt') as file:
+        lines = file.read()
+        print(lines)
+
+    divide(10,2)
+
+    #raise Exception("This is to test multiple except blocks...")
+except FileNotFoundError as fnf_error:
+    #print("File could not be read")
+    print(fnf_error)
+except ZeroDivisionError as dbz_error:
+    print(dbz_error)
+except:
+    print("Something went wrong...")
+else:
+    print("This executes when there are NO EXCEPTIONS!!!")
+finally:
+    print("Is executed no matter what, whether there was an exception or not!")
+	
+
+else: 		block is executed when there are no exceptions.
+finally: 	block is executed whehter or not there was an exception. It is always executed!
+			finally block is used for "clean up" purposes.
+
+
+Strings:
+A String is also a sequence (or collection) of characters.
+So, it can be accessed using index numbers (like a list).
+
+
+How to delete or remove items from a list:
+list.remove(value)
+pop operator: list.pop(n)	- pops (removes) element no. "n" from the list and returns that value.
+del operator: del list[n]	- removes the element no. "n", does not return anything.
+
+x = list.pop(1)
+
+list.pop(1) is same as del list[1]
+
+

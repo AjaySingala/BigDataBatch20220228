@@ -264,6 +264,11 @@ print(people[0][3])
 print(people[0][3][0])
 
 Re-declare variables.
+x = 10
+:
+:
+x = "ABC"
+
 
 Python variables have 2 scopes: Global and Local.
 If a variable is defined outside a function, it cannot be directly referenced / used within any function.
@@ -552,4 +557,146 @@ x = list.pop(1)
 
 list.pop(1) is same as del list[1]
 
+Collections:
+Dictionary: a mapping of key-value pairs. Represented using curly-braces {}.
 
+dict1 = dict()
+dict1["one"] = 1
+dict1["two"] = 2
+
+Access values:
+dict1["one"]
+dict1.get("one")
+
+Change or add elements in a dictionary:
+dict[key] = value
+if the key exists, the value will be overwritten.
+if the key does not exist, a new key-value pair will be added to the dictionary.
+You cannot change the key itself.
+
+Get list of values and keys:
+print(dict1.values())
+print(dict1.keys())
+
+# Check if a value exists in a dictionary.
+vals = dict1.values()
+keys = dict1.keys()
+
+print("Tri" in vals)
+print("Three" in keys)
+
+Delete a value from a dictionary:
+
+# Delete a specific key-value item.
+print(dict1.pop("Four"))
+print(dict1)
+
+del dict1["Three"]
+print(dict1)
+
+# Delete an arbitrary key-value pair.
+print(dict1.popitem())
+
+Some other dictionary functions:
+clear()	- remove all items.
+copy() - creates a copy.
+items() - returns a list of the key-value pairs as tuples. Each KV pairs is a tuple in the list.
+
+
+for item in dict1.items():
+    print(item)
+
+print(list(sorted(dict1.keys())))
+
+
+Collection: Sets:
+Unordered, unique elements, mutable.
+x = set(['foo', 'bar', 'foobar', 'bar', 'quad', 'foo'])
+
+Represented using {}.
+
+Object Oriented Programming Concepts:
+To create a class, use the keyword class followed by the class name.
+For e.g.;
+class Dog:
+	methods
+	properties
+	
+__init__() is a constructor (ctor) method of a class.
+
+class BMW:
+	color
+	engineType
+	
+	Start():
+	
+	Stop():
+	
+bmw = new BMW()
+bmw2 = new BMW()
+bwm3 = new BMW()
+
+In Python, you inherit by speicifying the parent class as a "param" to the sub-class
+class Student(Person):
+	code
+	code
+	
+Polymorphism can be achieved only if there is Inheritance!!!
+
+OOP Concepts to remember:
+Inheritance
+Polymorphism
+Abstraction
+Encapsulation
+
+File I/O or File handling:
+open(filename, mode)
+possible mode values are:
+	r	for reading
+	w	for writing
+	a	for appending
+	r+	for reading and writing
+	x	Creates a new file. If already exists, the operation fails.
+	t 	Opens the file in text mode (default mode)
+	b	This is for binary mode.
+	+	same as r+ (reading and writing)
+	
+"mode" param is optional.
+If not provided, it defaults "rt"
+
+file = open("file.txt")
+file = open("file.txt", "r")
+print(file.read())
+
+Methods to read files:
+read()
+readlines()
+
+Write to files:
+write()
+append()
+
+
+main(), __name__, modules:
+
+Logging in Python:
+Levels of severity:
+	DEBUG
+	INFO
+	WARNING
+	ERROR
+	CRITICAL
+
+By default, the logging level is set to "WARNING".
+
+
+Regular Expressions:
+^ beginning of line
+$ end of line
+* 0 or more characters
+. a single character
+
+[a-m]
+he..o hello, heiio, helio, 
+fail | pass
+ai{2} exactly 2 occurances of "ai".

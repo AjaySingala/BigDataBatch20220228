@@ -55,8 +55,10 @@ try:
 except FileNotFoundError as fnf_error:
     #print("File could not be read")
     print(fnf_error)
+    # log error to file.
 except ZeroDivisionError as dbz_error:
     print(dbz_error)
+    # log error to file.
 except:
     print("Something went wrong...")
 else:

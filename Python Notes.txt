@@ -700,3 +700,155 @@ $ end of line
 he..o hello, heiio, helio, 
 fail | pass
 ai{2} exactly 2 occurances of "ai".
+
+APIs:
+Application Programming Interface.
+Utilities or programs that were reusable (assemblies) - .DLL (Dynamic Linked Libraries)
+
+web sites:
+Web Services: are web sites without a UI.
+	XML-based
+	No proper standardization of webServices between different platforms (.NET C#, Java).
+Web APIs:
+	they are web services only, but better.
+	most APIs send and receive data in JSON format by default.
+	much easier to use and simpler to understand.
+	
+Why APIs:
+The data is changing quickly: Stocks price data.
+There is a lot of data, but you only need a subset of it: Reddit.
+
+Web Services:
+https://jsonplaceholder.typicode.com/todos?id=5
+
+https://jsonplaceholder.typicode.com/customers/?firstname=john&lastname=smith
+
+Modern APIs, they work on the concept of REST (RESTful APIs).
+REST: REpresentational State Transfer
+
+Features (guidelines) of REST Architecture:
+Stateless: The API does not maintain state (it does not remember what the client (user) did in the previous request).
+Client-server: there is a client and a server.
+Cacheable: What is caching? Cache the data.
+Uniform Interface: 
+	https://jsonplaceholder.typicode.com/todos/5	GET a specific record.
+	https://jsonplaceholder.typicode.com/todos		GET ALL DATA.
+
+HTTP Methods:
+GET		: Retrieve an existing resource (data).
+POST	: Create a new resource.
+PUT		: Update an existing resource.
+DELETE	: Delete an existing resource.
+
+HTTP Response Codes:
+2xx	: Successful operation.
+3xx	: Redirection.
+4xx	: Client error.
+5xx	: Server error.
+
+Some typical response codes:
+200	OK						The requested action was successful.
+201	Created					A new resource was created successfully.
+400	Bad request				A malformed request.
+401 Unauthorized			The client is not authorized to perform the specific action.
+404	Not found				The requested resource was not found.
+500	Internal Server Error	The server threw an error when processing the request.
+
+Using APIs in Python:
+Install a module/package called "requests"
+	pip install requests
+	OR
+	python -m pip install requests
+	OR
+	py -m pip install requests
+	
+URLS for the HTTP Methods:
+GET: 	https://jsonplaceholder.typicode.com/todos			# Get all resources.
+		https://jsonplaceholder.typicode.com/todos/1		# Get a single resource with id 1.
+POST:	https://jsonplaceholder.typicode.com/todos			# Requires data in the body.
+PUT:	https://jsonplaceholder.typicode.com/todos/1		# Update an existing resource with id 1. Requires data in the body.
+DELETE:	https://jsonplaceholder.typicode.com/todos/1		# Deletes an existing resource with id 1.
+
+
+https://jsonplaceholder.typicode.com/todos			GET ALL or POST?
+https://jsonplaceholder.typicode.com/todos/1		GET a resources OR PUT or DELETE??
+
+Unit Testing:
+Unit testing is the first level of testing of the smallest unit of work created by a developer.
+It is done by the developer themself for the work created by them.
+
+1 form of unit testing is doing manual testing by running the code.
+But what is required is automation. Does the code work properly when excuted from another code? Proobably with different values.
+Also, does it handle invalid data properly?
+
+AAA approach of unit testing:
+- Arrange	: Arrange (configure, setup, gather the data).
+- Act		: Call the method to be tested with appropriate data.
+- Assert	: Check if the method returns expected data/value.
+
+In Python, use the "unittest" framework for unit testing.
+Test fixture: baseline environment for running your tests.
+Test Case: a set of conditions or scenarios that you will be testing.
+Test Suite: a collection of test cases.
+Test Runner: the tool / component used for the execution of the unit tests.
+
+
+PyTest:
+pip install pytest
+OR
+python -m pip install pytest
+OR
+py -m pip install pytest
+
+
+Automation:
+Developer completes coding and pushes the code to the project repository, an automatic build is triggered that will compile and build and package the application and immediately deploy it to the server.
+One of the tasks in this automated build-n-deploy is executing Unit Tests!!!
+So, if any unit test fails, the build job fails!!!
+
+As part of unit tsting, you should test for positive as well as negative tests.
+
+Coverage:
+How many lines of code is your unit tests covering?
+
+def foo(x):
+	code
+	code
+	if(x < 10):
+		code
+		code
+		
+	code
+	code
+	
+	if(x > 10 and x < 50):
+		code
+		code
+		
+	code
+	
+	return something
+	
+def test1_with10():
+	assert foo(5) = something
+	
+def test1_with10():
+	assert foo(12) = something
+	
+coverage run -m pytest 
+coverage run -m pytest test_filename
+coverage html
+	this will generate a folder named "htmlcov".
+	In this folder, open the index.html file in a browser to view coverage details.
+	
+JSON:
+key-value pairs.
+Dictionary.
+
+PyLint:
+pip install pylint
+OR
+python -m pip install pylint
+OR
+py -m pip install pylint
+

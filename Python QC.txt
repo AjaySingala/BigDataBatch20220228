@@ -1,0 +1,32 @@
+QC is on Wednesday @ 10:00 EST.
+Tomorrow MongoDB.
+
+List, Tuple, Set, Dict.
+how to add/delete elements from collections.
+how to merge lists / tuples.
+OOP concepts
+	Inheritance
+	Polymorphism
+	Encapsulation
+	Abstraction
+	
+Abstract classes.
+slicing
+lambda
+REPL
+how to merge lists / tuples.
+File handling
+exception handling
+	try
+	except
+	else
+	finally
+logging levels
+interpolation (f"some string {varname}")
+keywords
+what identifiers and rules to declare identifiers
+how to define classes
+how to inherit a class
+ctor __init__
+unit testing
+	AAA - Arrange Act Assert

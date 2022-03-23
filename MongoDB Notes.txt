@@ -368,3 +368,235 @@ db.inventory.aggregate( [
 	
 	{ $group: {_id: "$items.tags", totalSalesAmount: { $sum: { $multiply: ["$items.price", "$items.quantity"] }} }}
 ])
+
+Indexes:
+Similar to indexes in other DB systems.
+In MongoDB, indexes are at the collection level (In RDBMS, it is at table level).
+Indexes can be on any field (attr) or subfield (sub-attr) of the documents in a collection.
+
+By default, MongoDB creates an index on the _id attribute. It is called an "_id Index".
+You can create indexes on other attributes / fields as well as follows:
+db.collectioname.createIndex( { attribute: direction } )
+
+For e.g.;
+db.customers.createIndex( { name: 1 } )		# Single field index.
+db.customers.createIndex( { name: -1 } )	
+
+Indexes on multiple attrs as:
+db.orders.createIndex( { item: 1, quantity: -1 } )		# Compound index.
+
+Give a name to an index:
+db.orders.createIndex( 
+	{ item: 1, quantity: -1 },
+	{ name: "index for orders" }
+)
+
+Retrieve indexes on a collection:
+db.customers.getIndexes()
+
+Drop an index:
+db.customers.dropIndex("index name")
+
+Drop all indexes of a collection:
+db.users.dropIndexes()
+
+List all indexes for a DB:
+db.getCollectionNames().forEach(function(collection) {
+	indexes = db[collection].getIndexes()
+	print("Indexes for the collection " + collection + ": ")
+	printjson(indexes)
+})
+
+db.customers.createIndex({ name: 1} )
+db.customers.find( {name: "John" } )
+
+
+Schemas and Relations:
+NoSQL does not have a fixed schema for collections.
+We are dealing with a huge number of rows (documents).
+
+// Patron document.		// patrons collection.
+{
+	"_id": "joe",
+	"name": "joe smith"
+}
+
+// address document		// patron_addresses collection.
+{
+	"patron_id": "joe",
+	"street": "123 Some Street",
+	"city": "Fake city",
+	"state": "WA"
+	"zip": "12345"
+}
+
+Embedded documents:
+// patron document.			// patrons collection.
+{
+	"_id": "joe",
+	"name": "joe smith",
+	"address": {
+		"street": "123 Some Street",
+		"city": "Fake city",
+		"state": "WA"
+		"zip": "12345"
+	}
+}
+
+NoSQL follows de-normalization!!!
+
+// customer document:		// customers collection.
+{
+	"_id": 101,
+	"firstname": "john",
+	"lastname": "smith",
+	"city": "Dallas",
+	"state": "TX",
+	:
+	:
+}
+
+// order document:			// orders collection.
+{
+	"_id": "ORD-901",
+	"orderDate" : "2022-03-10",
+	"customer_id": 101,
+	:
+	:
+}
+
+1. First get a list of orders.
+2. for each order, extract the custonmer id
+3. Get the customer's data.
+4. print the order and customer data together.
+
+// embedded order document:			// orders collection.
+{
+	"_id": "ORD-901",
+	"orderDate" : "2022-03-10",
+	"customer": {
+		"id": 101,
+		"firstname": "john",
+		"lastname": "smith"
+	},
+	:
+	:
+}
+
+After 6 months, new requirement to do some analysis on customers from states.
+// new order embedded document with state:
+{
+	"_id": "ORD-901",
+	"orderDate" : "2022-03-10",
+	"customer": {
+		"id": 101,
+		"firstname": "john",
+		"lastname": "smith",
+		"state": "TX"
+	},
+	:
+	:
+}
+
+Dynamic schema.
+
+Subset pattern: a document within a document.
+
+An example of a subset pattern:
+users collection:
+{
+	"_id": 101,
+	"name": "John",
+	:
+	"ratings_given": [
+		{ "movie_id": 1, "rating": 4.5 },
+		{ "movie_id": 21, "rating": 7 },
+		{ "movie_id": 198, "rating": 6.5 }
+	]
+}
+{
+	"_id": 1763,
+	"name": "Mary",
+	:
+}
+{
+	"_id": 1456,
+	"name": "Joe",
+	:
+}
+
+A movies collection:
+{
+	"_id": 1,
+	"title": "Star Wars - A New Hope",
+	"poster": "http://www.someserver.com/images/star_wars_ep4.jpg",
+	"genres": ["sci-fi", "action"],
+	:
+	:
+}
+
+// votes collection: _id is auto-generated with ObjectId("......")
+{
+	"userid": 101,
+	"movie": { "movieid", 1, "title": "Star Wars - A New Hope", "rating": 9}
+}
+{
+	"userid": 101,
+	"movie": { "movieid", 123, "title": "Tenet", "rating": 6.5}
+}
+{
+	"userid": 101,
+	"movie": { "movieid", 785, "title": "The Batman", "rating": 6}
+}
+
+One-to-many relationships with document references:
+// book document.
+{
+	"_id": 123456,
+	"title": "MongoDB Cookbook",
+	"authors": ["John Smith", "Mary Jane"],
+	"published_date": "2021-01-28",
+	"pages": 345,
+	"publisher": {
+		"name": "O'Reilly Media",
+		"location": "CA",
+		"founded": 1980
+	}
+}
+{
+	"_id": 789012,
+	"title": "Python Made Easy",
+	"authors": ["Joe Smith", "Ajay Singala"],
+	"published_date": "2020-03-15",
+	"pages": 267,
+	"publisher": {
+		"name": "O'Reilly Media",
+		"location": "CA",
+		"founded": 1980
+	}
+}
+
+Split into separate collections with 1..* references:
+// publisher document:
+{
+	"_id": 123
+	"name": "O'Reilly Media",
+	"location": "CA",
+	"founded": 1980,
+	"books": [123456, 789012, ...]			// mutable, growing arrays/lists.
+}
+
+// book document:
+{
+	"title": "MongoDB Cookbook",
+	"authors": ["John Smith", "Mary Jane"],
+	"published_date": "2021-01-28",
+	"pages": 345
+}
+{
+	"title": "Python Made Easy",
+	"authors": ["Joe Smith", "Ajay Singala"],
+	"published_date": "2020-03-15",
+	"pages": 267
+}
+

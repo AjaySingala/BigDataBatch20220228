@@ -600,3 +600,226 @@ Split into separate collections with 1..* references:
 	"pages": 267
 }
 
+MongoDB Driver- PyMongo
+Installation:
+On the Windows command prompt / terminal:
+pip install pymongo
+OR
+python -m pip install pymongo
+OR
+python3 -m pip install pymongo
+OR
+py -m pip install pymongo
+
+On the Unix command prompt / terminal:
+sudo pip install pymongo
+
+How to use PyMongo:
+Create a Python program (a .py file) and use as follows:
+from pymongo import MongoClient
+
+client = MongoClient()								# connect to the server.
+db = client.test									# returns an object pointing to the DB named "test".
+collections = db.list_collection_names()
+for i in range(len(collections)):
+	aCollection = collections[i]
+	collObject = db.get_collection(aCollection)
+	for doc in collObject.find({"size": 2}):
+		print(doc)
+		
+
+# Get an object to a DB.
+db = client.test
+db = client["test"]
+
+# Get an object to a collection.
+coll = db.boyDiapers
+coll = db["boyDiapers"]
+	
+pprint.pprint(doc)		# to print the json in pretty format.
+coll.insert_one(doc) 	# to insert a document in a collection.
+coll.find({})			# returns a list of matching docs.
+coll.find_one({})		# returns a single matching doc.
+doc_id = collection.insert_one(doc).inserted_id		# returns the id of the newly inserted doc.
+
+To Search on the _id, you have import the ObjectId module as follows:
+from bson.objectid import ObjectId
+
+Then use it as:
+coll.find_one( { "_id" : ObjectId("23474hfr8484ofhfh"} )
+coll.find( { "_id" : ObjectId("23474hfr8484ofhfh"} )
+
+Avoid using find() when searching based on _id.
+
+Bulk insert:
+coll.insert_many(docs)
+Returns an object that also contains a list ObjectIds (in an attr called "inserted_ids") of the newly inserted docs.
+result = coll.insert_many(docs)
+print(result.inserted_ids)
+
+Counting docs:
+>>> collection.count_documents({})
+>>> collection.count_documents({"size": 4})
+
+Sorting:
+>>> for doc in collection.find().sort("color"):
+...    print(doc)
+
+by default, sort order is ASC.
+>>> for doc in collection.find().sort("color", 1):		# ASC
+...    print(doc)
+>>> for doc in collection.find().sort("color", -1):		# DESC
+...    print(doc)
+
+Query with equality (projection) operators:
+>>> for doc in collection.find({"size" : {"$gt" : 2}}):
+...    print(doc)
+
+Create a collection:
+db.create_collection("collection name")
+
+E.g.;
+from datetime import datetime
+
+db.create_collection("posts")
+posts = db["posts"]
+docs = [
+	{"author": "John", "text": "This is a post by John", "tags": ["bulk", "insert"], "date": datetime(2022,3,24,11,45) },
+	{"author": "Mary", "text": "This is a post by Mary", "tags": ["bulk", "insert"], "date": datetime(2022,3,22,14,23) }
+]
+result = posts.insert_many(docs)
+print(result.inserted_ids)
+
+dt = datetime(2022,3,23)
+for post in posts.find({"date": {"$lt": dt}}):
+   print(post)
+   
+Projection operators:
+Comparison:
+$eq
+$gt
+$gte
+$lt
+$lte
+$ne
+
+Logical:
+$and
+$or
+$not
+
+Indexes:
+from pymongo import ASCENDING, DESCENDING
+posts.create_index([("author", ASCENDING)])
+
+Get list of indexes on a collection:
+collection.index_information()
+
+For e.g.;
+posts.index_information()
+
+To get only the names of indexes:
+list(posts.index_information())
+
+Delete:
+from bson.objectid import ObjectId
+result = inv.delete_one({"_id": ObjectId("623a2bf4543332a41e90abaa")})
+print(result.deleted_count)
+
+result = boyDiapers.delete_many({"size": 901})
+print(result.deleted_count)
+
+Update:
+upate_one()
+update_many()
+
+result = boyDiapers.update_one({"size": 100}, {"$set": {"color": "green"}})
+result.matched_count
+
+result = boyDiapers.update_many({"size": 4}, {"$set": {"color": "gray"}})
+result.matched_count
+result.modified_count
+
+Replace:
+result = boyDiapers.replace_one({"_id" : ObjectId("623c8c8865aefa831c50790a"),}, {"size": 4, "color": "brown", "brand": "prince"})
+result.matched_count
+result.modified_count
+
+Limit:
+coll.find(limit=5)
+
+Projection:
+Limit the columns returned.
+Display all columns except the _id column:
+for doc in inv.find(projection = {"_id": False}):
+   print(doc)
+   
+Display only the _id:
+for doc in inv.find(projection = {"_id": True}):
+   print(doc)
+
+for doc in inv.find(projection = {"_id": True, "item": True}):
+   print(doc)
+
+
+Between 01-Jan-2022 and 31-03-2022:
+docs = posts.find({"$and": [{"date": {"$gte": datetime(2022,1,1)}}, {"date": {"$lte": datetime(2022,3,31)}}] })
+for aPost in docs:
+   print(aPost)
+
+
+MongoDB Connection String:
+localhost:27017
+mongodb://server:port
+mongodb://username:password@server:port
+mongodb://server:port/dbname
+mongodb://username:password@server:port/dbname
+
+mongodb://localhost:27017
+mongodb://acme.mongodbserver.com:27017
+mongodb://acme.mongodbserver.com:9876
+mongodb://admin:admin@acme.mongodbserver.com:27017
+mongodb://localhost:27017/inventory
+mongodb://acme.mongodbserver.com:27017/products
+mongodb://admin:admin@acme.mongodbserver.com:27017/products
+
+client = MongoClient('mongodb://server:port')
+client = MongoClient('mongodb://localhost:27017')
+client = MongoClient('mongodb://acme.mongodbserver.com:27017')
+client = MongoClient('mongodb://admin:admin@acme.mongodbserver.com:27017')
+
+client = MongoClient('mongodb://server:port/products')
+client = MongoClient('mongodb://localhost:27017/products')
+client = MongoClient('mongodb://acme.mongodbserver.com:27017/products')
+client = MongoClient('mongodb://admin:admin@acme.mongodbserver.com:27017/products')
+
+Group By - Having:
+#It's the equivalent of the following SQL instruction:
+# SELECT COUNT(*) FROM Table
+# GROUP BY your_field
+# HAVING COUNT(*) > N
+query = db.collection.aggregate([
+
+    { 
+      "$group": { "_id": "$your_field", #GROUP BY your_field
+    			"count": {"$sum":1} }   #COUNT(*)
+    },
+    
+    { "$match": { "count": { "$gt": N } } } #HAVING COUNT(*) > N
+])
+
+query = db.orderDetails.aggregate([
+    { 
+      "$group": { "_id": "$productId",
+    			"productCount": {"$sum":1} } 
+    },
+    
+    { "$match": { "productCount": { "$gt": 10 } } }
+])
+
+Similar to:
+SELECT ProductId, COUNT(*) as 'productCount'
+FROM OrderDetails
+GROUP BY ProductId
+HAVING productCount > 10
+

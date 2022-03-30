@@ -1,0 +1,312 @@
+Matplotlib:
+Plotting library. To create charts based on the data provided.
+
+from matplotlib import pyplot 
+from matplotlib import pyplot as plt
+
+Example:
+import numpy as np
+from matplotlib import pyplot as plt
+
+x = np.arange(1,11)		# x axis.
+y = 2 * x + 5			# y axis.
+
+plt.title("First MatplotLib Demo")
+plt.xlabel("This is the x axis")
+plt.ylabel("This is the y axis")
+
+plt.plot(x, y)
+plt.show()
+
+Here,
+An ndarray object is create from np.arange(), used as data for x axis.
+The y axis data is also an ndarray object.
+
+Formatting the charts with characters:
+"-" for solid line (hyphen)
+"--" for dashed line.
+"-." dash dot
+"." dot (point marker)
+":" dotted line
+"o" circle marker
+"v" triangle down marker
+"^" triangle up marker
+"<" triangle left marker
+">" triable right marker
+"1" triangle down marker
+"2" triangle up marker
+"3" triangle left marker
+"4" triable right marker
+"s" square marker
+"p" pentagon marker
+"*" star marker
+"h" hexagon marker
+"H" hexagon marker
+"+" plus marker
+"x" X marker
+"D" diamond marker
+"d" thin diamond marker
+"|" Vertical Line (VLine) marker
+"_" Horizontal Line (HLine) marker
+
+Colors:
+"b" blue 
+"g" green
+"r" red
+"c" cyan
+"m" magenta
+"y" yellow
+"w" white
+"k" black
+
+Bar chart:
+import numpy as np
+from matplotlib import pyplot as plt
+
+x = [5,8,10]
+y = [12,16,6]
+
+x2 = [6,9,11]
+y2 = [6,17,7]
+
+plt.title("Bar chart")
+plt.xlabel("This is the x axis")
+plt.ylabel("This is the y axis")
+
+plt.bar(x,y, align = "center", color="red")
+plt.bar(x2,y2, align = "center", color = "g")
+
+plt.show()
+
+
+Pandas:
+-------
+Python lib used to analyze data using data sets.
+Has functions for analysing, cleaning, manipulate data etc.
+The name is a reference to "Panel Data" and "Python Data Analysis".
+Mostly used for statistical analysis, ML, AI.
+Created by Wes McKinney in 2007 or 2008.
+
+What can Pandas do?:
+- if there is a correlation b/w 2 or more columns.
+- get average value.
+- max value
+- min value
+- Cleaning data:
+	- delete rows that are irrelevant
+	- delete rows that have wrong values (empty or null)
+
+pip install pandas
+OR
+python -m pip install pandas
+OR
+py -m pip install pandas
+
+Check version:
+print(pd.__version__)
+
+Example:
+import pandas as pd
+
+ds = { 
+    "cars": ["BMW", "Audi", "Volvo"],
+    "rating": [5,7,9] 
+     }
+
+df = pd.DataFrame(ds)
+print(df)
+
+Pandas Series:
+--------------
+Is like a column in table.
+It's a 1-D array holding any data type.
+
+a = [1,7,2]
+col = pd.Series(a)
+print(col)
+
+Labels:
+Values are labeled with their index numbers.
+col[0] will give the first value in the series.
+
+Create Labels:
+a = [1,7,2]
+col = pd.Series(a, index = ["x", "y", "z"])
+
+print(col)
+print(col["x"])
+print(col["y"])
+print(col["z"])
+
+Key/Value objects as series:
+Create a series from a dictionary.
+run = {"day1": 12, "day2": 13, "day3": 12, "day4": 15 }
+ser = pd.Series(run)
+print(ser)
+
+Here, the keys become the labels.
+
+Create Series using only some of the data from the dictionary:
+run = {"day1": 12, "day2": 13, "day3": 12, "day4": 15 }
+ser = pd.Series(run, index = ["day1", "day2"])
+print(ser)
+
+DataFrame:
+Data sets that are multi-dimensional tables.
+If Series is a column, DataFrame is the whole Table!
+
+Create the DS (Data Set)
+Load the data (DS) into a DF (DataFrame)
+And then use the DF (to display, process, clean etc.)
+
+Locate a Row:
+using the DataFrame's "loc" attribute (which is a collection).
+print(df.loc[0])
+
+Locate multiple rows using a list of indexes:
+print(df.loc[[0,1]])
+
+Here, specify the indexes as a multi-dim array.
+When you use [], it returns a Pandas DF.
+
+Create Label for rows.
+ds = {
+    "miles": [12, 13, 12, 15],
+    "duration": [10, 11, 10, 13]
+}
+
+df = pd.DataFrame(ds, index=["day1", "day2", "day3", "day4"])
+
+print(df)
+
+Locate rows with labels:
+print(df.loc["day2"])
+
+Load files into a DF:
+---------------------
+df = pd.read_csv("data.csv")
+print(df)
+
+Analyze Pandas DFs:
+df.head():	returns by default the 1st 5 rows with the headers and the data propery formatted in a table.
+
+You can specify the no. of rows to return:
+df.head(10)
+
+Similarly, you can get the last few rows using .tail():
+df.tail()
+df.tail(10)
+
+Info about the DF:
+df.info()
+
+
+Cleaning Data:
+Means fixing bad data in the data set.
+Possible bad data could be:
+	- Empty cells
+	- Data is in wrong format
+	- duplicates
+	- wrong data
+	
+1. Empty cells:
+Possible solution is to remove the rows that have empty cells.
+new_df = df.dropna()
+df.dropna(inplace = True)
+
+2. Replace empty values:
+df.fillna(130, inplace = True)
+
+This will replace all column values that have empty data with tye no. 130, which may not be ideal.
+
+To replace empty values in specific series (columns), use:
+df["series"].fillna(130, inplace = True)
+
+df["Calories"].fillna(130, inplace = True)
+
+Replace empty values using mean(), median() and mode():
+.mean(): the average value (sum of all values divided by the no. of values).
+calories_mean = df["Calories"].mean()
+df["Calories"].fillna(calories_mean, inplace = True)
+
+.median(): the value in the middle, after sorting all values in ASC order.
+# Replace empty values with median() in specific Series (column).
+df = pd.read_csv("dirtydata.csv")
+print(df.to_string())
+
+print("After replacing...")
+calories_median = df["Calories"].median()
+df["Calories"].fillna(calories_median, inplace = True)
+
+print(df.to_string())
+
+
+.mode(): the value that appears most frequently.
+# Replace empty values with mode() in specific Series (column).
+df = pd.read_csv("dirtydata.csv")
+print(df.to_string())
+
+print("After replacing...")
+calories_mode = df["Calories"].mode()[0]
+df["Calories"].fillna(calories_mode, inplace = True)
+
+print(df.to_string())
+
+Removing duplicates:
+--------------------
+use .duplicated() to determine the duplicate rows.
+remove using df.drop_duplicates(inplace = True)
+
+Pandas Correlations:
+--------------------
+using corr() method.
+Calculates the correlation b/w each column in the data set.
+the number displayed for each corr is between -1 and 1.
+1 means it is a perfect correlation (or 1 to 1 relationship).
+	every time the value goes up in first column, the value in the other column also went up.
+0.9 is good relationship: if one value goes up, the other value will probably go up as well.
+-0.9 this is as good as 0.9, but the way it works is, if one value goes up, the other value will probably go down.
+0.2 Not a good relation, if one value goes up, does not mean the other value will also up.
+
+A good corr is around 0.6.
+
+Pandas Plotting:
+----------------
+using plot().
+
+Scatter plot:
+-------------
+# Pands plotting.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("data_pandas_plot.csv")
+df.plot(kind = "scatter", x = "Duration", y = "Calories")
+
+plt.show()
+
+# Pands plotting. A scatter plot where there is no relation b/w columns (Series). 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("data_pandas_plot.csv")
+df.plot(kind = "scatter", x = "Duration", y = "Maxpulse")
+
+plt.show()
+
+Histogram:
+Requires only one column to render.
+Shows the frequency of the each interval, for e.g.; how many workouts lasted b/w 50 and 60 minutes.
+
+# Histogram.
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("data_pandas_plot.csv")
+df["Duration"].plot(kind = "hist")
+
+plt.show()
+
+As per the histogram rendered, it shows that there were ~100 workouts that lasted b/w 50 and 60 minutes.
+
+

@@ -28,7 +28,7 @@ MongoDB:
 	SQL: used for solving the ACID problems. NoSQL: solving the problem of availability of data.
 	SQL: ACID. NoSQL: BASE - Basically Available, Soft state, Eventually consistent.
 	BASE:
-		Basically Available: The sysytem is guranteed to be available in the event of a failure. This is due to the distributed nature of NoSQL DBs.
+		Basically Available: The system is guranteed to be available in the event of a failure. This is due to the distributed nature of NoSQL DBs.
 		Soft state: The state of the data could change without  application interactions due to eventual consistency.
 		Eventual consitency: The system will be eventually consistent after data is given to the system (DB). The data will be replicated to different nodes and will eventually reach a consistent state.
 		
@@ -90,7 +90,7 @@ It uses dynamic schema.
 MongoDB client drivers exist for many programming languages like Python, Scala, Java etc.
 It does not support SQL. But it has its own non-SQL, ad-hoc query syntax.
 Usually used in content management system, social media sites/apps, analytics, ecommerce, logging.
-It does not support transactions. Noi ACID. But there is BASE.
+It does not support transactions. No ACID. But there is BASE.
 It also supports caching of data. It keeps all most recently used data in RAM.
 
 

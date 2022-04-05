@@ -1,0 +1,36 @@
+2022.04.04 14:36:31 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\lsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.04.04 14:36:32 INFO  logging to file C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\metals.log
+2022.04.04 14:36:32 INFO  Started: Metals version 0.11.2 in workspace 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt' for client Visual Studio Code 1.65.2.
+2022.04.04 14:36:32 INFO  Parse release: 11.0.12
+2022.04.04 14:36:37 INFO  time: initialize in 5.27s
+2022.04.04 14:36:38 WARN  Build server is not auto-connectable.
+2022.04.04 14:36:53 INFO  running 'C:\Program Files\Java\jdk-11.0.12\bin\java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar C:\Users\AJAYJA~1\AppData\Local\Temp\metals1237456778315721128\sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2022.04.04 14:36:55 INFO  [info] welcome to sbt 1.6.2 (Oracle Corporation Java 11.0.12)
+2022.04.04 14:36:59 INFO  [info] loading settings for project firstsbt-build-build from metals.sbt ...
+2022.04.04 14:37:00 INFO  [info] loading project definition from C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\project\project
+2022.04.04 14:37:09 INFO  [info] loading settings for project firstsbt-build from metals.sbt ...
+2022.04.04 14:37:09 INFO  [info] loading project definition from C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\project
+2022.04.04 14:37:28 INFO  [success] Generated .bloop\firstsbt-build.json
+2022.04.04 14:37:28 INFO  [info] compiling 1 Scala source to C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\project\target\scala-2.12\sbt-1.0\classes ...
+2022.04.04 14:37:36 INFO  [info] done compiling
+2022.04.04 14:37:36 INFO  [success] Total time: 26 s, completed 04-Apr-2022, 2:37:36 PM
+2022.04.04 14:37:44 INFO  [info] loading settings for project root from build.sbt ...
+2022.04.04 14:37:44 INFO  [info] set current project to FirstSbt (in build file:/C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/)
+2022.04.04 14:37:47 INFO  [success] Generated .bloop\root.json
+2022.04.04 14:37:47 INFO  [success] Generated .bloop\root-test.json
+2022.04.04 14:37:47 INFO  [success] Total time: 3 s, completed 04-Apr-2022, 2:37:47 PM
+2022.04.04 14:37:47 INFO  time: ran 'sbt bloopInstall' in 54s
+2022.04.04 14:37:47 INFO  Attempting to connect to the build server...
+2022.04.04 14:37:57 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.04 14:38:01 INFO  Attempting to connect to the build server...
+2022.04.04 14:38:01 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\project\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.04 14:38:03 INFO  time: Connected to build server in 15s
+2022.04.04 14:38:03 INFO  Connected to Build server: Bloop v1.4.13
+2022.04.04 14:38:03 INFO  time: Imported build in 0.16s
+2022.04.04 14:38:29 INFO  time: indexed workspace in 26s
+2022.04.04 14:38:58 INFO  shutting down Metals
+2022.04.04 14:38:58 INFO  Shut down connection with build server.
+2022.04.04 14:38:58 INFO  Shut down connection with build server.
+2022.04.04 14:39:34 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\lsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2022.04.04 14:39:37 INFO  logging to file C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\metals.log
+2022.04.04 14:39:37 INFO  Started: Metals version 0.11.2 in workspace 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt' for client Visual Studio Code 1.65.2.

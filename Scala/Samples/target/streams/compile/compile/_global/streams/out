@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Temp\BigDataBatch20220228\Scala\Samples\src\main\scala\Hello.scala:1:8: HelloWorld is already defined as object HelloWorld[0m
+[0m[[0m[31merror[0m] [0m[0mobject HelloWorld {[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

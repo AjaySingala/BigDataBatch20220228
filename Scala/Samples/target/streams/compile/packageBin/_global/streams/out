@@ -1,0 +1,25 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\samples_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\customers[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\customers[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\customers\ManageCustomers$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\customers\ManageCustomers$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\customers\ManageCustomers.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\customers\ManageCustomers.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\First$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\First$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\First.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\First.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\HelloWorld$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\HelloWorld$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	examples\HelloWorld.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\examples\HelloWorld.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	foo[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\foo[0m
+[0m[[0m[0mdebug[0m] [0m[0m	foo\MyFoo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\foo\MyFoo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	foo\MyFoo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Temp\BigDataBatch20220228\Scala\Samples\target\scala-2.12\classes\foo\MyFoo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

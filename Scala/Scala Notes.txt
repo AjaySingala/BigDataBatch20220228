@@ -1,0 +1,474 @@
+Scala:
+After Python, it is one of most popular programming languages for Big Data.
+Java-based, it runs on the JVM.
+Not derived from "La Scala" - Italian staircase / ladder.
+It is an abbreviation for SCAlable LAnguage
+Professor Martin Odersky in ~2003.
+High-performance, scalable, functional programming language, Object Oriented Language.
+It runs on the JVM - Java Virtual Machine.
+
+Scala is an Object Oriented Language:
+It is a pure OO language in the sense that every value in Scala is an object.
+Types & object behaviors are described by classes and traits.
+
+Achieve inheritance (classes are extended) by subclassing.
+
+Scala is Functional:
+Every function is a value, and every value is an object, so ultimately, every function is also an object.
+
+Scala provides Anonymous Functions, it supports Higher-Order Functions., also supports nested functions.
+
+Scala is Statically typed:
+Most progamming languages require you to specify a type, but Scala does not expect you to do that.
+Scala has it's own defined sets of types.
+
+It runs on the JVM - Java Virtual Machine:
+You write code in Scala.
+When you compile it, it is convered into Java Byte Code, which is then executed by the JVM.
+Compiling is done using the command "scalac" and execution is done using "scala".
+
+Create a source code file: first.scala
+scalac will compile it and create first.class
+scala will execute the byte code first.class
+
+Scala can execute Java code as well.
+
+Scala vs Java:
+- All types are objects.
+- Type inference.
+- Nested functions.
+- Functions are objects.
+- Traits.
+
+Functional Programming:
+-----------------------
+Uses functions as a building block of programs.
+We strive to use "pure" functions and immutable values.
+
+Immutability:
+State (value) of variables (objects) cannot be changed. We can create a new object, but we cannot modify the existing object's state.
+
+Pure Functions:
+A pure function has tow key properties:
+1) It always returns the same value for the same input.
+2) It has no side effects. A function does not interact with anything (variable/object) outside of the function. This could be global variables, mutable objects, I/O operations etc.
+
+Functions are treated as "First Class Citizens":
+------------------------------------------------
+Scala treats all functions as First Class functions/citizens by default.
+Functions are values:
+- a function can be assigned to a variable.
+- it can be passed as an argument to other function.
+- it can be returned as a value from other functions.
+
+function add(a, b) {
+	some code
+	:
+}
+
+
+objectAdd = add
+objectAdd(10,20)
+
+function math(fn, x, y) {
+	fn(x,y)
+}
+
+math(objectadd, 10,20)
+
+function foo() {
+	fnAdd = add
+	:
+	:
+	:
+	return fnAdd
+
+}
+
+Higher-Order Functions (HOF):
+-----------------------------
+A HOF is a function that has at least one of the following properties:
+1. Takes one or more functions as parameters.
+2. Returns a function as a result.
+
+def calcAnything(number: Int, calcFunction: Int => Int): Int = calcFunction(number)
+
+def calcSquare(num: Int): Int = num * num
+
+def calcCube(num: Int): Int = num * num * num
+
+val squareResult = calcAnything(2, calcSquare)			// returns 4.
+val cubeResult = calcAnything(3, calcCube)				// returns 27.
+
+Concpets of Functional Programming:
+- Pure functions
+- Variables are immutable
+- Functions are First-class and can be Higher-order
+- Recursion
+
+
+Installing Scala:
+JDK 8
+SBT = Scala Build Tool
+	Alternative to scalac and scala
+Scala
+
+JDK: https://www.oracle.com/java/technologies/downloads/#java8-windows (select x64 installer)
+Scala: https://www.scala-lang.org/download/2.13.6.html
+SBT: https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.msi
+
+Ensure the following Environment variables are created and properly initialized:
+JAVA_HOME: path to the JDK folder. For e.g.; C:\Program Files\Java\jdk-11.0.12
+In the PATH variable, add these:
+	Path to the JDK's bin folder. For e.g.; C:\Program Files\Java\jdk-11.0.12\bin
+	Path to the SBT bin folder. For e.g.; C:\Program Files (x86)\sbt\bin
+	Path to the Scala bin folder. For e.g.; C:\Program Files (x86)\scala\bin
+	
+Scala execution modes:
+- Interactive Mode (REPL)
+	- Command/Terminal window
+- Script Mode
+	- IDE (VS Code)
+	- Using scalac, scala
+	- sbt
+	
+Scala is case-sensitive!
+
+sbt project structure:
+	project folder
+		project
+		target
+		src
+			main
+				scala
+				
+
+Create a new folder
+run sbt
+From another command window or File Explorer:
+	create folder structure in the new folder mentioned above:
+			project
+			target
+			src
+				main
+					scala
+						<package folder> For e.g.; examples
+
+Using an editor, create a .scala file in src\main\scala\examples
+
+From the sbt prompt, execute the command "compile".
+Then, from the sbt prompt, execute the command "run".
+
+Command to create a sbt project for Scala with folders and build.sbt file:
+sbt new scala/scala-seed.g8 (preferred)
+OR 
+sbt new sbt/scala-seed.g8
+
+
+The folder where the build.sbt file is located is the "root" folder of your project.
+This root folder will also have the "src" folder.
+ 
+In VSC, install the following extensions:
+- Scala (Metals) by Scalameta
+- Scala (sbt) by Lightbend
+- Scala Syntax (official) by Scala-Lang
+	
+To declare a variable, use either val or var. For e.g.:
+val x = 10
+val name = "Ajay Singala"
+
+Scala REPL, Variables and Values:
+---------------------------------
+REPL: Read Evaluate Print Loop
+Scala is not really an interpreted language. It is a compiled language.
+A literal:  data that appears as-is directly in the code. For e.g.; the number 7, the character A, or the string "Hello".
+A value: is an immutable, typed storage unit. A value can be assigned data when it is defined, but cannot be reassigned.
+val x = 10
+x = 20			// Not possible.
+A variable: is a mutable, typed storage unit. A variable can be assigned data  when it is defined, and can also be reassigned data at any time.
+var x = 10
+x = 20			// Will work.
+
+Scala Data Types:
+-----------------
+Basic Data Types: (Value Types)
+Boolean:	true or false
+Int
+Char
+Float
+Double
+Byte
+Short
+Long
+
+(Reference Types)
+String
+List
+Array
+
+Advanced Data Types:
+Unit:	Means to no value.
+Null:	Null or empty reference.
+Nothing:Subtype of every other type, includes no values.
+Any:	Supertype of all other type; any object is of type Any.
+AnyRef: Supertype of any reference type.
+
+Passing by value:
+def foo(x: Int) {
+	x = x * 2
+	println(x)	// 20
+}
+
+var i = 10
+println(i)		// 10
+foo(i)
+prinln(i)		// 10
+
+Basic Syntax and Terms in Scala:
+--------------------------------
+Object - Objects have states and behaviors. An object is a runtime instance of a Class. For e.g.; a Dog has states: color, name, breed. has behavior: wagging, barking, eating, running.
+Class: A template / blueprint, which describes the behaviors/states of the class.
+Fields: Each object has its own unique sets of instance variables, known as fields.
+	dogA - Max, black, German Shepherd.
+	dogB - Tommy, brown, Terrier.
+Traits: 
+	Most modern programming languages do not allow mulitple inheritance.
+	But there can be situations where you want to inherit from multple classes.
+	In such scenarios, we use Traits (in other languages, equivalent are abstract classes and interfaces). 
+	Traits are very similar to classes.
+	A trait encapsulates (has) methods and field definitions, just like a class.
+	But, in a trait, you can define a method without it's implementation (just provide the signature).
+		- such methods are known as abstract methods.
+
+Scala Coding Conventions:
+-------------------------
+Case sensitivity - scala is case sensitive.
+Class names: Capitalized words For e.g.; class MyFirstClass
+Method names: start with a lower case For e.g.; def getCustomerName()
+Program Filename: the filename must be same as the object created in the program. For e.g.; if the code is this:
+object MyFirst {
+	def main(args: Array[String]) {
+		:
+		:
+	}	
+}
+
+Then the filename should be MyFirst.scala
+
+Starting point: the main method as follows:
+	def main(args: Array[String]) {
+
+	}
+
+Scala Identifiers:
+------------------
+Names used for objects, classes, functions, variables are called Identifiers.
+Legal alphanumeric identifiers: Should start with either an alphabet or an underscore ( _ )
+	- For e.g.; age, salary, _firstName, _first_name, last_name, __order_number 
+Illegal identifiers: Cannot start with $, -, number
+	- For e.g.; $salary, 123age, -firstname
+	
+Scala Keywords:
+---------------
+def	do	while	if	else	class	extends		false	true	import	this	throw	val	var	yield	lazy	abstract	case
+match	return	with finally	trait	object	override	protected	sealed	new	Try	catch	for 
+: 	=	=> @ <-
+
+Variable Declaration:
+Either use val or var.
+val a = 10
+var name = "Ajay"
+
+Variable Data Types (semi-colon is optional):
+val x: Int = 10;
+var name: String = "John";
+
+Multiple assignments:
+val (num1: Int, name: String) = (40, "John")
+
+You cannot declare a variable without an initial value. The following will give an error:
+val a: Int;
+val name: String;
+
+To define character vaiables, use single quotes and provide a single character only! For e.g.:
+val aChar = 'A'
+
+Using multiple expressions with the help of curly braces {}:
+val x  = { val a = 100; val b = 200; a + b }
+println(x)
+
+OR on multiple lines:
+scala> val x = {
+     | val a = 100
+     | val b = 200
+     | a + b
+     | }
+
+Comments:
+Using double forward slash: //
+
+Lazy Loading:
+Lazy initialization means the value is not assigned "now" (during declaration).
+It will be assigned when the variable is first accessed.
+
+If you are going to store millions of values into a variable, you may not want to do this when a program starts (or a function starts).
+You just lazy load the data and the actualy loading / assignment of the data will happen ONLY when the variable is accessed for the first time after the declaration.
+
+Converting Data Type:
+val strNum = "10"
+val i: Int = strNum			// Error.
+val i: Int = strNum.toInt	// Works!
+
+Strings:
+--------
+val msg = "This is line one. \nThis is line two."
+val greeting = "Hello " + "World"		// Concat.
+val greeting: String = Hello World
+
+scala> val isMatching = (greeting == "Hello World")
+val isMatching: Boolean = true
+
+scala> val isMatching = (greeting == "Hello, World")
+val isMatching: Boolean = false
+
+scala> val ttt = "Na" * 16 + "Something"
+val ttt: String = NaNaNaNaNaNaNaNaNaNaNaNaNaNaNaNaSomething
+
+scala> val ttt = "Na" + 16 + "Something"
+val ttt: String = Na16Something
+
+Multiline strings using """text goes here""" (triple quotes):
+val msg = """For formatting text and adding a new line, 
+specify a \n. And for tabs, specify \t.
+This way, you can format your text properly.
+""" 
+
+Triple quotes do not encode/decode escape sequences. The above will print \n and \t and not a newline and tab.
+
+String interpolation:
+scala> val a = 10
+val a: Int = 10
+
+scala> val b= 5
+val b: Int = 5
+
+scala> val c = a / b
+val c: Int = 2
+
+Concat:
+scala> println("a = " + a + ". b = " + b + ". c = " + c)
+a = 10. b = 5. c = 2
+
+Use interpolation instead:
+scala> println(s"a = $a. b = $b. c = $c")
+a = 10. b = 5. c = 2
+
+scala> val item = "pencil"
+val item: String = pencil
+
+scala> println(s"There are 4 $item")
+There are 4 pencil
+
+scala> println(s"There are 4 ${item * 3}")
+There are 4 pencilpencilpencil
+
+if-else expression block:
+-------------------------
+if usage:
+---------
+if(cond) <expression>
+
+if(a == b) {
+	// do something
+	// more code
+}
+
+
+val soemVariable = (a == b)
+
+if-else usage:
+--------------
+
+if(cond) {
+	// code
+}
+else {
+	// code
+}
+
+if( x > y) x else y
+Or
+if(x > y) {
+	x
+}
+else {
+	y
+}
+
+if-else-if usage:
+-----------------
+if(cond1) {
+	// expression
+}
+else if(cond2) {
+	// expr
+}
+else if(cond3) {
+	// expr
+}
+else {
+	// expr
+}
+
+Match Expressions:
+------------------
+An efficient alternative to if-else-if statements.
+Similar to switch-case statement in C#, Java etc.
+        status match {
+            case "New" => {
+                println("A new document...")
+            }
+            case "In Progress" => println("The document is being reviewed...")
+            case "Approved" => println("The document is Approved...")
+            case "Rejected" => println("The document is Rejected...")
+            case _ => println("Status unknown!!!")		// Using wildcard.
+        }
+
+Example:		
+scala> val x = 10
+val x: Int = 10
+
+scala> val y = 20
+val y: Int = 20
+
+scala> val max = x > y match {
+     | case true => x
+     | case false => y
+     | }
+val max: Int = 20
+
+
+Example:		
+	chkDOW("MON")
+	chkDOW("FRI")
+	chkDOW("SAT")
+	
+    def chkDOW(day: String) {
+        println(s"\nChecking Day of the week $day...")
+        day match {
+            case "MON" | "TUE" | "WED" | "THU" |"FRI" => println("Weekday!")
+            case "SAT" | "SUN" => println("Weekend!!!")
+        }
+    }
+	
+Mathcing with Pattern Guards:
+scala> val result : String = null
+val result: String = null
+
+scala> result match {
+     | case s if s != null => println(s"The value is $s")
+     | case s => println("ERROR! Value is null!!!")
+     | }
+ERROR! Value is null!!!
+
+Here, "s" will have the value of "result" and in the 1st case, it checks if it is != null.

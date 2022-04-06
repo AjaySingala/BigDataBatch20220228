@@ -205,6 +205,7 @@ Long
 String
 List
 Array
+Class
 
 Advanced Data Types:
 Unit:	Means to no value.
@@ -232,7 +233,7 @@ Fields: Each object has its own unique sets of instance variables, known as fiel
 	dogA - Max, black, German Shepherd.
 	dogB - Tommy, brown, Terrier.
 Traits: 
-	Most modern programming languages do not allow mulitple inheritance.
+	Most modern programming languages do not allow multiple inheritance.
 	But there can be situations where you want to inherit from multple classes.
 	In such scenarios, we use Traits (in other languages, equivalent are abstract classes and interfaces). 
 	Traits are very similar to classes.
@@ -472,3 +473,632 @@ scala> result match {
 ERROR! Value is null!!!
 
 Here, "s" will have the value of "result" and in the 1st case, it checks if it is != null.
+
+Loops:
+------
+The "for" loop:
+for( <identifier> <- <iterator>) <expression>
+for( <identifier> <- <iterator>) { <expression> ... }
+
+For e.g.:
+for(i <- 1 to 7) {
+	println(i)
+}
+
+The "yield" keyword:
+for(i <- 1 to 7) yield {
+	s"Day $i"
+}
+
+For every value iterated in a for lopo, yield generates a value and remembers it in an internal (hidden) buffer.
+When the loop completes, it returns this hidden buffer.
+this hidden buffer (collection) that is returned is of the same type that we are iterating on. If we were iterating on a List, it returns a List. If we were iterating on a Map, it will return a Map.
+
+Using guards with "for" loop:
+for(i <- 1 to 10 if i > 5) yield {
+	i
+}
+
+for(i <- 1 to 10 if i % 2 == 0) yield {
+	i
+}
+
+Use "until" instead of "to" in for loop:
+for(i <- 1 until 10) print(i)
+
+"until" means upto the number/value on the right side, but not including that number/value.
+
+Use "by" to specify an increment:
+for(i <- 1 to 10 by 2) print(i)
+This will print nos. 1,3,5,7,9 skipping every alternate value.
+
+for( <identifier> <- m to n [guard])[yield] <expression>
+for( <identifier> <- m until n [guard]) [yield] <expression>
+for( <identifier> <- m to n [by <increment>])[yield] <expression>
+for( <identifier> <- m until n [by <increment>])[yield] <expression>
+
+Nested iterators:
+for { x <- 1 to 2
+ y <- 1 to 3 }
+ { print(s"($x,$y)  ") }
+
+Similar to:
+for(x < 1 to 2) {
+	for(y <- 1 to 3) {
+		print(s"($x,$y) ")
+	}
+}
+
+while loop:
+while(<condition>) <expression>
+while(<condition>) {
+	<expression>
+	// remember to increment / decrement
+}
+
+var x = 1
+while(x <= 10) {
+	print(s"$x:")
+	// x = x + 1
+	x += 1
+}
+
+var x = 10
+while(x > 0) {
+	print(s"$x:")
+	x -= 1
+}
+
+var x = 1
+while(x <= 10) {
+	print(s"$x:")
+	x += 1
+	if(x > 5) {
+		break
+	}
+}
+
+Breaking out of a loop in Scala:
+1) You have to create "named loops".
+import scala.util.control._
+
+object BreakDemo {
+  def main(args: Array[String]) {
+    var a = 0
+    val nums = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    var myLoop = new Breaks
+
+    myLoop.breakable {
+      for (a <- nums) {
+        print(s"$a: ")
+
+        if (a > 5) {
+          myLoop.break
+        }
+      }
+    }
+  }
+}
+
+2) without named loops:
+  def demo2() {
+    println("\nDemo 2...")
+    // This requires: import scala.util.control.Breaks._
+    breakable {
+      for (i <- 1 to 10) {
+        if (i == 6) {
+          break
+        }
+        print(s"$i: ")
+      }
+    }
+  }
+
+I either case, you have to define a "breakable" expression block.
+
+Breaking Nested Loops:
+def demo3() {
+    println("\nDemo 3 - Breaking Nested Loops...")
+    val nums1 = List(1,2,3,4,5)
+    val nums2 = List(11,12,13)
+
+    val outer = new Breaks
+    val inner = new Breaks
+
+    outer.breakable {
+        for(a <- nums1) {
+            println(s"$a")
+
+            inner.breakable {
+                for(b <- nums2) {
+                    println(s"\t$b")
+
+                    if( b % 2 == 0) {
+                        inner.break
+                    }
+                }	// for(b).
+            }	// inner breakable.
+        }	// for(a).
+    }	// outer breakable.
+  }
+  
+do-while Loop:
+do <expression> while(<condition>)
+do {
+	<expression>
+	// remember to increment / decrement
+} while(<condition>)
+
+
+Traits:
+-------
+A trait is like an interface with partial implementation.
+In other languages (Java, C#, C++), interfaces cannot have any implementation. If partial implementation is required, you have define it as an abstract class.
+It's like a mix of interface and abstract class.
+You can create a trait that has all abstract methods or some abstract methods and some non-abstract methods.
+Traits in Scala are partially implemented interfaces.
+
+1. Define a Trait:
+scala> trait Greeting {
+     |     def welcome(): Unit		// abstract method.
+     | }
+	 
+2. Create a class that implements this Trait. The class must implement the abstract method "welcome":
+scala> class Introduce extends Greeting {
+     |     def welcome() : Unit = {
+     |       println("Hello and welcome to Scala Traits...")
+     |     }
+     | }
+	 
+3. Create an instance of the class:
+scala> var intro = new Introduce()
+
+4. Call the welcome() method on the instance:
+scala> intro.welcome()
+
+This will not work:
+scala> class Introduce extends Greeting {
+     |     def welcome() : Unit
+     | }
+	 
+You have to provide an implementation for all abstract methods of a Trait when creating a class that extends (implements) the Trait.
+
+This is a combo of abstract and non-abstract methods:
+trait Greeting {
+	def welcome(): Unit
+	def show(): Unit
+	def add(x: Int, y: Int): Unit = {
+		val z = x + y
+		println(s"$x + $y = $z")
+	}
+}
+
+This will not work as 2 abstract methods are not implemented:
+class Introduce extends Greeting {
+
+}
+
+This will work:
+class Introduce extends Greeting {
+	def welcome(): Unit = {
+		println("Hello and welcome to Scala Traits")
+	}
+	
+	def show(): Unit = {
+		println("This is a demo on Scala Traits")
+	}
+}
+
+val intro = new Introduce
+intro.welcome()
+intro.show()
+intro.add(10,200
+
+Multiple inheritance using Traits:
+Modern OOP languages do not support multiple inheritance of classes.
+This is not allowed:
+class ClassA
+
+class ClassB
+
+class C extends ClassA, ClassB
+
+To overcome this limiation, OOP languages like Java, C#, C++ etc. have "interfaces".
+And Scala has "traits".
+
+trait TraitA {
+	def showA(): Unit
+}
+
+
+trait TraitB {
+	def showB(): Unit
+}
+
+class MyClass extends TraitA with TraitB {
+	def showA(): Unit = {
+		println("This is the showA() method...")
+	}
+
+	def showB(): Unit = {
+		println("This is the showB() method...")
+	}
+}
+
+val classObj = new MyClass
+classObj.showA()
+classObj.showB()
+
+Packages:
+---------
+project's root folder
+	src
+		main
+			scala
+				example
+					a.scala
+					b.scala
+					c.scala
+				ecommerce
+					admin
+						customers
+							Demo1.scala
+							
+// Either import individually:
+import ecommerce.admin.customers.CustomersTrait
+import ecommerce.admin.customers.AddCustomers
+
+// OR Import everything:
+import ecommerce.admin.customers._
+ 
+// Using alias:
+import ecommerce.admin.customers.{CustomersTrait => ct}
+import ecommerce.admin.customers.{AddCustomers => ac}
+
+class CustomersClass extends ct {
+	:
+}
+
+val addCust = new ac
+
+Classes and Objects (Object Oriented Programming) in Scala:
+-----------------------------------------------------------
+Any class that is created or is built-in, is derived from AnyRef.
+
+scala> class User {
+     |    val name: String = "John"
+     |    def message: String = s"Hello $name"
+     | }
+	 
+scala> val usr = new User
+
+scala> print(usr.message)
+
+scala> class User {
+     |    val name: String = "John"
+     |    def message: String = s"Hello $name"
+     |    override def toString = s"User is $name"
+     | }
+	 
+scala> val usr = new User
+
+scala> print(usr.toString())
+
+Using ctor:
+class User(val name: String) {
+	def message: String = s"Hello $name"
+	override def toString = s"User is $name"
+}
+
+scala> println(usr.message)
+
+scala> println(usr.name)
+
+scala> val userList = List( new User("John"), new User("Mary"), new User("Joe") )
+scala> val sortedList = userList.sortBy(_.name)
+scala> sortedList(0).name
+val res29: String = Joe
+
+scala> sortedList(1).name
+val res30: String = John
+
+scala> sortedList(2).name
+val res31: String = Mary
+
+Inheritance:
+class A {
+	def message = "Hello"
+}
+
+class B extends A {
+}
+
+val objB = new B()
+println(objB.message)
+
+class C extends B {
+	override def message = "Welcome!"
+	
+	val foo = "This is foo"
+	def show: Unit = {
+		println("This is C.show()...")
+	}
+}
+val objC = new C()
+println(objC.message)
+
+Access Modifiers:
+private
+protected
+public
+
+By default, all class members (variables/methods) are "public", meaning accessible outside of the class.
+
+private:
+private members of classes are visible only inside the class / object that contains the definition.
+
+class Outer {
+	class Inner {
+		private def foo() {
+			println("This is Inner.foo()...")
+		}
+		
+		class InnerMost {
+			foo()			// Will work!
+		}
+	}
+	
+	//(new Inner).foo()		// Will not work.
+}
+
+protected:
+Protected members of a class are only accessible from subclasses of the class in which the member is defined and the class itself where it has been defined.
+
+class Super {
+	protected def foo() {
+		println("This is Super.foo()...")
+	}
+	
+    def printFoo() {
+        foo()
+    }	
+}
+
+class SubClassA extends Super {
+	foo()
+}
+
+
+class Outsider {
+	(new Super).foo()
+}
+
+With class definitions, 
+	you can specify params for the ctor.
+	when creating objects, you can use named params.
+	you can also have default values for the params.
+	
+Example:
+package example
+
+class Car(val make: String, val year: Int, var reserved: Boolean = false) {
+    def reserve(status: Boolean): Unit = {
+        reserved = status
+    }
+}
+
+object CarDemo {
+  def main(args: Array[String]) {
+      val car1 = new Car("Honda", 2019)
+      val car2 = new Car("Audi", 2020)
+      val car3 = new Car("BMW", 2021)
+      
+      println(s"${car1.make} from the year ${car1.year}")
+      println(s"${car2.make} from the year ${car2.year}")
+      println(s"${car3.make} from the year ${car3.year}")
+
+      val car4 = new Car(year=2020, make="Toyota")      // using named params (keyword identifiers))
+      println(s"${car4.make} from the year ${car4.year}")
+
+      val car5 = new Car(year=2020, make="Toyota", reserved = false)      // using named params (keyword identifiers))
+      println(s"${car5.make} from the year ${car5.year} is reserved? ${car5.reserved}")
+      car5.reserve(true)
+      println(s"${car5.make} from the year ${car5.year} is reserved? ${car5.reserved}")
+
+  }
+}
+
+Abstract Classes:
+An Abstract Class cannot be instantiated.
+It can only be extended by other classes.
+
+abstract class Car {
+	val year: Int
+	var make: String
+	def color: String
+}
+
+val car1 = new Car()		// Error!
+
+class RedBMW(val year: Int) extends Car {
+	def color = "Red"
+	var make = "BMW"
+}
+
+Anonymous Class:
+A nameless and non-reusable class.
+
+abstract class Listener {
+	def trigger
+}
+
+val myListener = new Listener {
+	def trigger {
+		println("This is the trigger() method in myListener as an Anon class...")
+	}
+}
+
+Case Classes:
+Are like any other regular class, good for creating (modeling) immutable data.
+They are immutable by default.
+Define using the keyword "case".
+
+case class ClassName(params)
+
+case class Book(name: String)
+
+val hp1 = Book("The Philosopher's Stone")
+
+case class Message(sender: String, receiver: String, body: String)
+
+val msg1 = Message("Ajay Singala", "John smith", "This is a sample message.")
+
+println(msg1.body)
+msg1.sender = "Mary Jane"			// Error! Immutable!!!
+
+val msg2 = Message("ajay@abc.com", "Jsmith@xyz.com", "This is another sample message.")
+
+Comparison:
+val msg3 = Message("ajay@abc.com", "Jsmith@xyz.com", "This is another sample message.")
+
+msg1 == msg2	// false
+msg2 == msg3	// true
+
+Copying:
+val msg4 = msg3.copy(sender=msg3.receiver, receiver="joe@yus.com")
+val msg5 = msg3.copy()
+msg5.sender = "new@email.com"	// Error! Immutable.
+
+Overloaded Methods:
+Within the class, 2 (or more) functions with the same name but different parameters. Signature of ,methods must be different.
+Return type is NOT part of the signature.
+Different params means (method signature):
+	no. of params
+	type of the params
+	order of the params
+	
+class Math {
+	def add(a: Int, b: Int) : Int = { a + b }
+	def add(x: Int, y: Int, z: Int) : Int = { x + y + z}
+	def add(x: Float, y: Float): Float = {x + y}
+
+	def add(x: int, y: Float): Float = {x + y}
+	def add(x: Float, y: int): Float = {x + y}
+	
+	def add(x: int, y: int): Float = {x + y}		// Error as return type is not part of the method signature.
+
+}
+
+val m = new Math()
+println(m.add(5,5))
+println(m.add(8,25,156))
+println(m.add(105.25f, 245.90f))
+
+
+class Car {
+	def start() {
+	
+	}
+	
+	def start(mode: String) {
+	
+	}
+}
+
+
+val c1 = new Car()
+c1.start()
+c1.start("mobile")
+
+
+Final classes:
+You cannot extend a "final" class. Defined using the "final" modifier.
+
+scala> final class Employee {
+     |    var name = "John"
+     | }
+
+scala> class Manager extends Employee
+                             ^
+       error: illegal inheritance from final class Employee
+	   
+Sealed classes:
+Used to restrict the extension of classes. It allows to extend, but the subclass must be defined in the same source file.
+Defined using the "sealed" keyword / modifier.
+
+sealed class ClassName
+
+Tuples:
+-------
+Ordered container / collection of two or more values.
+All values may be of different types.
+Created using comma separated values within parantheses.
+Tuples are immutable.
+
+val data = (25, "John Smith", "Dallas", "TX")
+
+Values in tuples can be accessed using their 1-based index.
+data._1		// 25
+data._2		// John Smith.
+
+scala> data.productIterator.foreach(println)
+25
+John Smith
+Dallas
+TX
+
+Create tuple using the -> operator, a.k.a. the relation operator.
+val red = "red" -> "0xff0000"
+
+scala> val reversed_red = red._2 -> red._1
+
+scala> val t = new Tuple3(1,2,3)
+val t: (Int, Int, Int) = (1,2,3)
+
+scala> val nums = (4,3,2,1)
+val nums: (Int, Int, Int, Int) = (4,3,2,1)
+
+scala> val sum = nums._1 + nums._2 + nums._3 + nums._4
+val sum: Int = 10
+
+Iterate over a Tuple:
+using foreach{}
+val nums = (4,3,2,1)
+
+nums.productIterator.foreach { i => println(s"Value is $i") }
+
+Convert to string:
+val t = ("Hello", "There")
+println(t.toString())
+
+val t = (12, "Hello", "There")
+println(t.toString())
+
+Swapping:
+val t = ("Hello", "There")
+println(t.swap)
+
+To return multiple values from a function, use Tuple:
+package example
+
+object TupleDemo {
+    def main(args: Array[String]) {
+        val result = foo()
+        result.productIterator.foreach(println)
+    }
+
+    def foo() = {
+        val data = (25, "John Smith", "Dallas", "TX")
+
+        data
+    }
+}
+
+Comments:
+---------
+3 types:
+//			Single line comments.
+/* */		Multi-line comments.
+/** */		Documentation comments.
+		

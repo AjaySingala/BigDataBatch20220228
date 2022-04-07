@@ -1101,4 +1101,753 @@ Comments:
 //			Single line comments.
 /* */		Multi-line comments.
 /** */		Documentation comments.
-		
+
+Functions:
+----------
+Are reusable, named expressions.
+They may be parameterized. Not mandatory to have params.
+They may return a value. Not mandatory to return value.
+We create and use functions to reduce duplicate code.
+Try to keep functions as small as possible. Modularize!
+
+def calculateSalary(empId: Int): Float {
+	// determine leaves taken.
+	val leaves = getLeaves(empId)
+	// do basic calc of salary.
+	val basicSalary = calcBasicSalary(empId, 3, 2022)
+	// determine tax applicable.
+	val taxPayable = calcTax(empId, basicSalary)
+	// any other calc.
+	val others = otherCalcs(empId, 3, 2022)
+	
+	// calc final salary.
+	val salary = // some calc.
+	salary
+}
+
+def getLeaves(empId: Int): Int {
+
+}
+
+def calcBasicSalary(empId: Int, month: Int, year: Int): Float {
+
+}
+
+def calcTax(empId: Int, basicSalary: Float): Float {
+
+}
+
+def otherCalcs(empId: Int, month: Int, year: Int): Float {
+
+}
+
+Pure Functions:
+- Has one or more input params.
+- Returns a value.
+- Performs calculations using only the input params.
+- Always returns the same value for the same input.
+- Deos not use or affect any data outside of the function.
+- Is not affected by any data outside of the function.
+
+scala> def formatData(amount: Double): String = {
+     |  f"USD $amount%.2f"
+     | }
+def formatData(amount: Double): String
+
+scala> println(formatData(1234.5789))
+USD 1234.58
+
+Print the $ sign:
+scala> def formatData(amount: Double): String = {
+     |  f"$$ $amount%.2f"
+     | }
+def formatData(amount: Double): String
+
+scala> println(formatData(1234.5789))
+$ 1234.58
+
+Another way to create a function as a single expression:
+def formatData(amount: Double) = f"$$ $amount%.2f"
+
+Call functions with expression blocks:
+scala> formatData { val rate = 1.12; 0.235 + 0.1723 + rate * 5.32 }
+val res93: String = $ 6.37
+
+The above is similar to this:
+def calcAmount(): Double = { 
+	val rate = 1.12
+	0.235 + 0.1723 + rate * 5.32 
+}
+
+formatData(calcAmount())
+
+Function with variable parameters (variable no. of arguments):
+printStrings("Hello")
+printStrings("Hello", "there")
+printStrings("Hello", "there", "Welcome")
+
+One solution Function Overloading.
+printStrings("Hello", "there", "Welcome", "How", "are", "you", "doing")
+
+def printStrings(args: String*) = {
+	var i = 1
+	for(arg <- args) {
+		println(s"Argument #$i is $arg")
+		i += 1
+	}
+}
+
+Nested Functions:
+def max(x: Int, y: Int, z: Int) = {
+	def max2(a:Int, b: Int) = {
+		if(a > b) a else b
+	}
+	
+	max2(x, max2(y,z))
+}
+
+Named parameters:
+def greet(name: String, title: String) {
+	println(s"Hello $title. $name. Welcome!")
+}
+
+Params with default values:
+def greet(name: String, title: String = "Mr.") {
+	println(s"Hello $title $name. Welcome!")
+}
+
+Higher-Order functions:
+- Takes a function as a param
+- Returns a function
+- or both
+
+Anonymous functions (lambda), a.k.a Function Literals:
+val doubler = (x: Int) => x * 2
+
+scala> val multiply = (x:Int, y: Int) => x * y
+val multiply: (Int, Int) => Int = $Lambda$1462/0x00000001008eb840@a50d0f9
+
+scala> print(multiply(2,5))
+10
+scala> val multiply = (x:Int, y: Int) => {val z = x * y; z }
+val multiply: (Int, Int) => Int = $Lambda$1463/0x00000001008eb040@38a392bd
+
+scala> print(multiply(2,5))
+10
+
+Exception Handling:
+-------------------
+package example
+
+import java.io.IOException
+
+object ExceptionDemo {
+    def main(args: Array[String]) {
+
+        println(divide(10,2))
+        println(divide(10,0))
+    }
+
+    def divide(x: Int, y: Int): Any = {
+        try {
+            println(s"Dividing $x by $y...")
+            var result = x / y
+
+            //throw new Exception("This is a manual excecption for testing...")
+            result
+        }
+        catch {
+            case ex: ArithmeticException => {
+                println(s"ERROR! Divide operation failed!!! ($ex)")
+            }
+            case fex: IOException => {
+                println(s"ERROR! File operation failed!!! ($fex)")
+            }
+            case a: Throwable => println(s"Some exception happened!!! ($a)")
+        }
+        finally {
+            println("This block will always execute.")
+        }
+    }
+}
+
+Scala Collections:
+------------------
+2 types:
+- mutable
+	- scala.collection.mutable
+- immutable
+	- scala.collection.immmutable
+
+Traversable trait methods:
+head:		returns the first element of collection.
+tail:		returns all elements except the first one.
+init:		returns all elements except the last one.
+last:		returns the last element.
+isEmpty:	checks if coll is empty or not. Returns true or false.
+max:		returns the largest element in the coll.
+min:		returns the smallest element in the coll.
+size:		returns the size of the coll (no. of elements).
+sum:		returns the sum of all elements.
+toArray:	converts coll into an Array.
+toList:		converts coll into a List.
+toSet:		converts coll into a Set.
+toSeq:		converts coll into a Sequence.
+
+Scala Set Collection:
+Is an immutable, unordered collection of unique elements.
+Used to store unique values.
+
+val uniqueNums = Set(10, 20, 30, 20, 40, 50, 20)
+val set1 = Set()	// An empty set.
+
+Merge 2 Sets using the ++ operator:
+val games = Set("Baseball", "Hockey", "Football", "Tennis")
+val alphabets = Set("A", "B", "C", "D", "E")
+val mergedSet = games ++ alphabets
+scala> println(games.size)
+4
+
+scala> println(alphabets.size)
+5
+
+scala> println(mergedSet.size)
+9
+
+Check if a value exists in a Set:
+println(games.contains("Tennis"))
+
+Add/Remove elements from a Set:
+scala> var games = Set("Baseball", "Hockey", "Football", "Tennis")
+var games: scala.collection.immutable.Set[String] = Set(Baseball, Hockey, Football, Tennis)
+scala> games += "Formula 1"
+
+scala> println(games)
+
+scala> games += "Golf"
+
+scala> games -= "Hockey"
+scala> games -= "Swimming"		// No error if does not exist.
+
+Iterate a Set:
+for(game <- games) {
+	println(game)
+}
+
+games.foreach( (elem: String) => println(elem) )
+
+Set Operations on Scala Set collection:
+-intersect: common elements between sets.
+-union: values from the sets ignoring duplicates between them.
+-&	:	alternative to intersect.
+
+var games = Set("Baseball", "Hockey", "Football", "Tennis", "C")
+val alphabets = Set("A", "B", "C", "D", "E", "Football")
+
+val intersectSet = games.intersect(alphabets)
+val unionSet = games.union(alphabets)
+val intersect2 = games & alphabets			// Intersect.
+
+import scala.collection.immutable.SortedSet
+
+val numbers = SortedSet(5,8,1,12,9,20,4)
+//val numbers: SortedSet[Int] = SortedSet(5,8,1,12,9,20,4)
+numbers.foreach( (num: Int) => println(num) )
+
+Scala Seq Collection:
+Seq is a trait.
+It represents indexed sequences that are immutable and ordered.
+You can access elements using their 0-based indexes.
+Can have duplicates.
+
+import scala.collection.immutable._
+
+val nums = Seq(5,8,1,12,9,20,4)
+nums.foreach( (num: Int) => println(num) )
+println(nums(0))
+println(nums(1))
+println(nums(4))
+
+println(nums.contains(12))
+
+Seq methods:
+indexOf()		: returns the first index of the value/element.
+lastIndexOf()	: returns the last index of the value.
+reverse()		: returns the elements in reverse order.
+endsWith()		: check if the Seq ends with a sequence of elements.
+
+val nums = Seq(5,8,1,12,9,20,4,20,8)
+
+Scala List Collection:
+----------------------
+An immutable collection.
+Are use to store ordered elements.
+It extends the LinearSeq trait.
+They work in a LIFO (Last In, First Out) pattern,. like a stack.
+It can have duplicates.
+They are like Arrays. Meaning, all elements in a List have the same type.
+
+val numbers = List(5,8,1,12,9,20,4,20,8)
+val colors = List("Red", "Green", "Blue")
+
+println(colors.size)
+println(s"There are ${colors.size} colors in the list: $colors")
+
+scala> colors.head
+val res164: String = Red
+
+scala> colors.tail
+val res165: List[String] = List(Green, Blue)
+
+scala> colors.isEmpty
+val res166: Boolean = false
+
+println(colors(1))
+
+Iterate a list:
+var total = 0
+for( i <- numbers) {
+	total += i
+}
+println(total)
+
+for( color <- colors) { println(color) }
+
+colors.foreach( (col: String) => println(col) )
+
+Using map and reduce with Lists:
+map()	: takes a function that convert a single list element into another value/type.
+val sizes = colors.map( (col: String) => col.size )
+
+reduce():	takes a function that combines two list elements into a single element.
+val total = numbers.reduce( (a: Int, b: Int) => a + b)
+
+List can contain other lists:
+scala> val oddsAndEvens = List( List(1,3,5), List(2,4,6) )
+val oddsAndEvens: List[List[Int]] = List(List(1, 3, 5), List(2, 4, 6))
+
+List can contain tuples:
+scala> val kvPairs = List( ('A', 65), ('B', 66), ('C', 67) )
+val kvPairs: List[(Char, Int)] = List((A,65), (B,66), (C,67))
+
+Nil an instance of List[Nothing]
+scala> val emptyList = List()
+val emptyList: List[Nothing] = List()
+
+scala> println(emptyList == Nil)
+true
+
+scala> val names = List("John")
+val names: List[String] = List(John)
+
+scala> names.head
+val res176: String = John
+
+scala> names.tail
+val res177: List[String] = List()
+
+scala> names.tail == Nil
+val res178: Boolean = true
+
+Append data to a list using the :+= operator:
+Declare the list as a "var".
+var numbers = List(5,8,1,12,9,20,4,20,8)
+scala> numbers :+= 15
+
+scala> println(numbers)
+List(5, 8, 1, 12, 9, 20, 4, 20, 8, 15)
+
+scala> var names = List("John", "Mary")
+var names: List[String] = List(John, Mary)
+
+scala> names :+= "Joe"
+
+scala> names
+val res184: List[String] = List(John, Mary, Joe)
+
+Merge lists:
+val moreNumbers = List(16, 19, 34)
+val mergedList = numbers ++ moreNumbers
+
+Sort list:
+val sortedList = mergedList.sorted
+
+Reverse list:
+val reversedList = sortedList.reverse
+
+distinct() is used to delete duplicate elements from a list:
+val distinctList = sortedList.distinct
+
+filter() is used to select elements based on a condition (prediate):
+val filteredList = distinctList.filter(_ < 15)
+
+Scala ListBuffer:
+Mutable collection.
+It supports append and prepend operations.
+Once your ListBuffer is ready, you can convert it into a List by using the toList() method.
+import scala.collection.mutable.ListBuffer
+
+var names = new ListBuffer[String]()
+var names = new ListBuffer("John", "Mary", "Joe")
+
+Add values to ListBuffer by using the += operator.
+scala> var names = new ListBuffer[String]()
+var names: scala.collection.mutable.ListBuffer[String] = ListBuffer()
+
+scala> names += "John"
+val res186: scala.collection.mutable.ListBuffer[String] = ListBuffer(John)
+
+scala> names += "Mary"
+val res187: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary)
+
+scala> names += "Jone"
+val res188: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary, Jone)
+
+scala> names
+val res189: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary, Jone)
+
+scala> names.append("Joe")
+val res190: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary, Jone, Joe)
+
+Remove elements using -=:
+scala> names -= "Jone"
+val res191: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary, Joe)
+
+Remove elements using remove():
+names.remove(0)	// Removes elem #0 from the list and also returns the elem.
+names.remove(1,3)	// removes starting from element 1 and 3 elements, so it removes elems 1,2,3
+names.remove(m,n)	remove starting from elem "m" and remove the next "n" elems including the mth elem.
+
+Prepend values to a list using the +=: operator:
+Syntax: new_value +=: list
+
+scala> "John" +=: names
+val res206: scala.collection.mutable.ListBuffer[String] = ListBuffer(John, Mary, Walter, Caleb)
+
+Scala Maps:
+An immutable collection of key-value pairs.
+a.k.a. hasmap, dictionary
+The keys have to be unique.
+Values can be duplicated.
+Created using the -> operator.
+Syntax is Map(key -> value)
+
+scala> val colorMap = Map( "red" -> "0xff0000", "green" -> "0xFF00", "blue" -> "0xFF")
+val colorMap: scala.collection.immutable.Map[String,String] = Map(red -> 0xff0000, green -> 0xFF00, blue -> 0xFF)
+
+scala> val nums = Map("One" -> 1, "Two" -> 2, "Three" -> 3)
+val nums: scala.collection.immutable.Map[String,Int] = Map(One -> 1, Two -> 2, Three -> 3)
+
+Retrieve values from a map using the "key":
+scala> colorMap("red")
+val res207: String = 0xff0000
+
+val colorMap = Map( "red" -> 0xff0000, "green" -> 0xFF00, "blue" -> 0xFF)
+
+scala> colorMap("green")
+val res210: Int = 65280
+
+scala> colorMap("blue")
+val res211: Int = 255
+
+scala> val cyan = colorMap("green") | colorMap("blue")
+val cyan: Int = 65535
+
+Check if value exists in Map:
+scala> colorMap.contains("white")
+val res212: Boolean = false
+
+scala> colorMap.contains("red")
+val res213: Boolean = true
+
+Iterate a map:
+scala> for( colorPair <- colorMap) { println(colorPair) }
+(red,16711680)
+(green,65280)
+(blue,255)
+
+Add / Remove elements in Map:
+scala> var map = Map("A"->"Apple", "B"->"Ball")
+var map: scala.collection.immutable.Map[String,String] = Map(A -> Apple, B -> Ball)
+
+scala> map("A")
+val res222: String = Apple
+
+scala> map("B")
+val res223: String = Ball
+
+scala> var newMap = map+("C"->"Cat")
+var newMap: scala.collection.immutable.Map[String,String] = Map(A -> Apple, B -> Ball, C -> Cat)
+
+scala> map
+val res224: scala.collection.immutable.Map[String,String] = Map(A -> Apple, B -> Ball)
+
+scala> newMap
+val res225: scala.collection.immutable.Map[String,String] = Map(A -> Apple, B -> Ball, C -> Cat)
+
+List Operators and Methods:
+++			merge.
+== 			compare.
+distinct	returns a list with distinct values.
+drop		drops the first n elements from a list.
+			List(11,21,32,45,58) drop 2
+filer		returns elements that match a condition (predicate)
+			scala> List(40, 28, 1, 15, 18, 9).filter(_ < 10)
+			val res228: List[Int] = List(1, 9)
+
+			scala> List(40, 28, 1, 15, 18, 9) filter(_ < 10)
+			val res229: List[Int] = List(1, 9)
+flatten		Converts a list of lists into a single list of elements.
+			scala> val numbers = List( List(1,2), List(3,4), List(5,6) )
+			val numbers: List[List[Int]] = List(List(1, 2), List(3, 4), List(5, 6))
+
+			scala> println(numbers)
+			List(List(1, 2), List(3, 4), List(5, 6))
+
+			scala> val flattenedList = numbers.flatten
+			val flattenedList: List[Int] = List(1, 2, 3, 4, 5, 6)
+
+			scala> println(flattenedList)
+			List(1, 2, 3, 4, 5, 6)
+
+			scala> val names = List("John", "Mary")
+			val names: List[String] = List(John, Mary)
+
+			scala> println(names.flatten)
+			List(J, o, h, n, M, a, r, y)
+reverse		Reverses the list.
+slice		Returns a section of the list from the first index to the last one, but not including the last one.
+			scala> List(2,3,5,7,8).slice(1,3)
+			val res234: List[Int] = List(3, 5)
+
+			scala> List(2,3,5,7,8).slice(1,5)
+			val res235: List[Int] = List(3, 5, 7, 8)
+
+			scala> List(2,3,5,7,8).slice(1,4)
+			val res236: List[Int] = List(3, 5, 7)
+sortBy		orders the list based on the given function
+			scala> List("apple", "tomato", "kiwi", "car", "reversedList").sortBy(_.size)
+			val res237: List[String] = List(car, kiwi, apple, tomato, reversedList)
+sorted		orders a list by it's natural values.
+splitAt		Groups elements into tuples of two lists based on if they fall before or after the given index number (1-based).
+			scala> List(2, 3, 5, 7) splitAt 2
+			val res238: (List[Int], List[Int]) = (List(2, 3),List(5, 7))
+
+			scala> List(2, 3, 5, 7, 8) splitAt 2
+			val res239: (List[Int], List[Int]) = (List(2, 3),List(5, 7, 8))
+
+			scala> List(2, 3, 5, 7, 8, 9, 20, 100) splitAt 2
+			val res240: (List[Int], List[Int]) = (List(2, 3),List(5, 7, 8, 9, 20, 100))
+take 		Extracts the first n elements from the list.
+			scala> List(2,6,10,29,50).take(3)
+			val res241: List[Int] = List(2, 6, 10)
+
+
+map() and flatMap():
+--------------------
+map() transforms a collection by applying a function to each element in that collection.
+
+val languages = List("Scala", "Python", "C#", "Java", "COBOL", "Visual Basic")
+scala> languages.map(lang => lang.toUpperCase)
+val res243: List[String] = List(SCALA, PYTHON, C#, JAVA, COBOL, VISUAL BASIC)
+
+scala> languages.map(_.toUpperCase)
+val res244: List[String] = List(SCALA, PYTHON, C#, JAVA, COBOL, VISUAL BASIC)
+
+scala> val sizes = languages.map(_.length)
+val sizes: List[Int] = List(5, 6, 2, 4, 5, 12)
+
+scala> println(sizes)
+List(5, 6, 2, 4, 5, 12)
+
+flatMap() is similar to map() with the difference that flatMap() flattens the elements.
+It returns a Seq if the collection being worked on is a Seq.
+It returns a List if the collection being worked on is a List.
+
+scala> val names = Seq("John", "Mary")
+val names: Seq[String] = List(John, Mary)
+
+scala> println(names.flatMap(_.toLowerCase))
+List(j, o, h, n, m, a, r, y)
+
+scala> val nm = names.flatMap(_.toLowerCase)
+val nm: Seq[Char] = List(j, o, h, n, m, a, r, y)
+
+Split using flatMap():
+scala> val names = List("John,Mary,Joe")
+val names: List[String] = List(John,Mary,Joe)
+
+scala> println(names.flatMap(_.split(",")))
+List(John, Mary, Joe)
+
+Filtering:
+----------
+scala> val nums = List(1,2,3,4,5,6,7,8,9,10)
+val nums: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+scala> val evens = nums.filter( (num: Int) => num % 2 == 0)
+val evens: List[Int] = List(2, 4, 6, 8, 10)
+
+Code:
+package example
+
+case class Person(firstName: String, lastName: String, title: String)
+
+object FilterDemo {
+    def main(args: Array[String]) {
+        val people = Seq(
+            Person("John", "Smith", "Mr."),
+            Person("Mary", "Jane", "Ms."),
+            Person("Joe", "Caleb", "Mr.")
+        )
+
+        val labels = people.map( person => s"${person.title} ${person.firstName} ${person.lastName}")
+        println(labels)
+
+        val peopleThatStateWithJ =people.filter(_.firstName.startsWith("J"))
+        println(peopleThatStateWithJ)
+    }
+}
+
+Using "reducers" on collections:
+scala> List(41,59,89,10).max
+val res252: Int = 89
+
+scala> List(41,59,89,10).min
+val res253: Int = 10
+
+scala> List(41,59,89,10).product
+val res254: Int = 2152910
+
+scala> List(41,59,89,10).sum
+val res255: Int = 199
+
+Boolean Reduction Operations:
+contains:
+scala> List(2,6,10,29,50).contains(29)
+val res256: Boolean = true
+
+scala> List(2,6,10,29,50).contains(26)
+val res257: Boolean = false
+
+endsWith:
+scala> List(2,6,10,29,50).endsWith(List(29,50))
+val res258: Boolean = true
+
+scala> List(2,6,10,29,50).endsWith(List(29,51))
+val res259: Boolean = false
+
+startsWith:
+scala> List(2,6,10,29,50).startsWith(List(0))
+val res264: Boolean = false
+
+scala> List(2,6,10,29,50).startsWith(List(2))
+val res265: Boolean = true
+
+scala> List(2,6,10,29,50).startsWith(List(2,6))
+val res266: Boolean = true
+
+exists:
+scala> List(2,6,10,29,50).exists(_ < 25)
+val res261: Boolean = true
+
+scala> List(2,6,10,29,50).exists(_ > 125)
+val res262: Boolean = false
+
+Pattern Matching with Collections:
+----------------------------------
+scala> val statuses = List(500, 404)
+val statuses: List[Int] = List(500, 404)
+
+scala> val msg = statuses.head match {
+     | case s if s < 500 => "OKAY!"
+     | case _ => "Some error occured..."
+     | }
+val msg: String = Some error occured...
+
+scala> val msg = statuses match {
+     | case s if s contains(500) => "ERROR!!!!"
+     | case _ => "All A-OK!"
+     | }
+val msg: String = ERROR!!!!
+
+val msg = statuses match {
+	case List(404,500) => "not found & server error"
+	case List(500,404) => "server error & not found"
+	case List(200,200) => "All Okay!"
+	case _ => "Not sure what happened."
+}
+
+File I/O:
+---------
+
+Inheritance in Scala:
+Super (base) Class
+Sub Class
+
+class subclass extends superclass {
+	// methods and fields.
+	
+}
+
+Types of inheritance:
+Single inheritance:
+class Person {
+}
+
+class Employee extends Person {
+}
+
+Multi-level inheritance
+class Vehicle {
+}
+
+class Car extends Vehicle {
+}
+
+class BMW extends Car {
+}
+
+
+Hierarchical inheritance:
+class Vehicle {
+}
+
+class Car extends Vehicle {
+}
+
+class Vehicle {
+}
+
+class Truck extends Vehicle {
+}
+
+class MotorBike extends Vehicle {
+}
+
+Multiple inheritance:
+trait Mobile {
+}
+
+trait Laptop {
+}
+
+class Tablet extends Mobile with Laptop {
+}
+
+trait Tablet extends Mobile with Laptop {
+}
+
+Hybrid inheritance:
+trait Device {
+}
+
+trait Mobile extends Device {
+}
+
+trait Laptop  extends Device {
+}
+
+class Tablet extends Mobile with Laptop {
+}
+

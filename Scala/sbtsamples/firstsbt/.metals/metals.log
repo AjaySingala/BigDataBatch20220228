@@ -674,3 +674,794 @@ where cases = List()
 2022.04.05 17:14:53 WARN  Could not load snapshot text for C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\IfElseDemo.scala
 2022.04.05 17:14:53 WARN  4 deprecations (since 2.13.0); re-run with -deprecation for details
 2022.04.05 17:14:53 INFO  time: compiled root in 0.98s
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 104)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 98)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 100)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 102)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 102)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/BreakDemo.scala, 89, 89, 102)
+2022.04.06 11:04:46 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.06 11:04:46 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.06 11:04:46 INFO  Connected to Build server: Bloop v1.4.13
+2022.04.06 11:04:46 INFO  Connected to Build server: Bloop v1.4.13
+2022.04.06 11:04:46 INFO  compiling root (1 scala source)
+2022.04.06 11:04:47 WARN  1 deprecation (since 2.13.0)
+2022.04.06 11:04:47 WARN  1 deprecation (since 2.13.3)
+2022.04.06 11:04:47 WARN  2 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:04:47 INFO  time: compiled root in 1.83s
+2022.04.06 11:05:48 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\BreakDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\BreakDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+Apr 06, 2022 11:06:20 AM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+Apr 06, 2022 11:06:20 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: null
+java.lang.NullPointerException
+	at scala.reflect.internal.Definitions$DefinitionsClass.isByNameParamType(Definitions.scala:419)
+	at scala.reflect.internal.TreeInfo.isStableIdent(TreeInfo.scala:140)
+	at scala.reflect.internal.TreeInfo.isStableIdentifier(TreeInfo.scala:113)
+	at scala.reflect.internal.TreeInfo.isPath(TreeInfo.scala:102)
+	at scala.tools.nsc.interactive.Global.stabilizedType(Global.scala:965)
+	at scala.tools.nsc.interactive.Global.typedTreeAt(Global.scala:813)
+	at scala.meta.internal.pc.SignatureHelpProvider.signatureHelp(SignatureHelpProvider.scala:23)
+
+2022.04.06 11:07:18 INFO  compiling root (1 scala source)
+2022.04.06 11:07:18 INFO  time: compiled root in 0.27s
+2022.04.06 11:07:38 INFO  compiling root (1 scala source)
+2022.04.06 11:07:40 WARN  3 deprecations (since 2.13.0)
+2022.04.06 11:07:40 WARN  2 deprecations (since 2.13.3)
+2022.04.06 11:07:40 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:07:40 INFO  time: compiled root in 1.48s
+Apr 06, 2022 11:07:40 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 5539
+2022.04.06 11:08:01 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\BreakDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\BreakDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 11:08:21 INFO  compiling root (1 scala source)
+2022.04.06 11:08:23 WARN  3 deprecations (since 2.13.0)
+2022.04.06 11:08:23 WARN  2 deprecations (since 2.13.3)
+2022.04.06 11:08:23 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:08:23 INFO  time: compiled root in 1.64s
+2022.04.06 11:08:25 INFO  compiling root (1 scala source)
+2022.04.06 11:08:27 WARN  3 deprecations (since 2.13.0)
+2022.04.06 11:08:27 WARN  2 deprecations (since 2.13.3)
+2022.04.06 11:08:27 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:08:27 INFO  time: compiled root in 2.02s
+2022.04.06 11:09:34 INFO  compiling root (1 scala source)
+2022.04.06 11:09:36 WARN  3 deprecations (since 2.13.0)
+2022.04.06 11:09:36 WARN  2 deprecations (since 2.13.3)
+2022.04.06 11:09:36 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:09:36 INFO  time: compiled root in 1.46s
+2022.04.06 11:09:55 INFO  compiling root (1 scala source)
+2022.04.06 11:09:56 WARN  3 deprecations (since 2.13.0)
+2022.04.06 11:09:56 WARN  2 deprecations (since 2.13.3)
+2022.04.06 11:09:56 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:09:56 INFO  time: compiled root in 1.25s
+2022.04.06 11:10:20 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\BreakDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\BreakDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+Apr 06, 2022 11:11:27 AM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+Apr 06, 2022 11:11:27 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: null
+java.lang.NullPointerException
+	at scala.reflect.internal.Definitions$DefinitionsClass.isByNameParamType(Definitions.scala:419)
+	at scala.reflect.internal.TreeInfo.isStableIdent(TreeInfo.scala:140)
+	at scala.reflect.internal.TreeInfo.isStableIdentifier(TreeInfo.scala:113)
+	at scala.reflect.internal.TreeInfo.isPath(TreeInfo.scala:102)
+	at scala.tools.nsc.interactive.Global.stabilizedType(Global.scala:965)
+	at scala.tools.nsc.interactive.Global.typedTreeAt(Global.scala:813)
+	at scala.meta.internal.pc.SignatureHelpProvider.signatureHelp(SignatureHelpProvider.scala:23)
+
+2022.04.06 11:13:58 INFO  compiling root (1 scala source)
+2022.04.06 11:13:59 WARN  4 deprecations (since 2.13.0)
+2022.04.06 11:13:59 WARN  3 deprecations (since 2.13.3)
+2022.04.06 11:13:59 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:13:59 INFO  time: compiled root in 1.38s
+2022.04.06 11:14:09 INFO  compiling root (1 scala source)
+2022.04.06 11:14:10 WARN  4 deprecations (since 2.13.0)
+2022.04.06 11:14:10 WARN  3 deprecations (since 2.13.3)
+2022.04.06 11:14:10 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:14:10 INFO  time: compiled root in 1.28s
+2022.04.06 11:14:17 INFO  compiling root (1 scala source)
+2022.04.06 11:14:18 WARN  4 deprecations (since 2.13.0)
+2022.04.06 11:14:18 WARN  3 deprecations (since 2.13.3)
+2022.04.06 11:14:18 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:14:18 INFO  time: compiled root in 1.43s
+2022.04.06 11:15:17 INFO  compiling root (1 scala source)
+2022.04.06 11:15:18 WARN  4 deprecations (since 2.13.0)
+2022.04.06 11:15:18 WARN  3 deprecations (since 2.13.3)
+2022.04.06 11:15:18 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:15:18 INFO  time: compiled root in 1.17s
+2022.04.06 11:16:45 INFO  compiling root (1 scala source)
+2022.04.06 11:16:46 WARN  4 deprecations (since 2.13.0)
+2022.04.06 11:16:46 WARN  3 deprecations (since 2.13.3)
+2022.04.06 11:16:46 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 11:16:46 INFO  time: compiled root in 1.09s
+2022.04.06 11:25:57 INFO  compiling root (1 scala source)
+2022.04.06 11:25:57 INFO  time: compiled root in 0.4s
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 347)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 341)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 343)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 345)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 345)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/Traits.scala, 332, 332, 345)
+2022.04.06 12:13:49 INFO  compiling root (1 scala source)
+2022.04.06 12:13:51 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 12:13:51 INFO  time: compiled root in 1.63s
+Apr 06, 2022 12:14:20 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+Apr 06, 2022 12:14:20 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: null
+java.lang.NullPointerException
+	at scala.reflect.internal.Definitions$DefinitionsClass.isByNameParamType(Definitions.scala:419)
+	at scala.reflect.internal.TreeInfo.isStableIdent(TreeInfo.scala:140)
+	at scala.reflect.internal.TreeInfo.isStableIdentifier(TreeInfo.scala:113)
+	at scala.reflect.internal.TreeInfo.isPath(TreeInfo.scala:102)
+	at scala.tools.nsc.interactive.Global.stabilizedType(Global.scala:965)
+	at scala.tools.nsc.interactive.Global.typedTreeAt(Global.scala:813)
+	at scala.meta.internal.pc.SignatureHelpProvider.signatureHelp(SignatureHelpProvider.scala:23)
+
+2022.04.06 12:14:52 INFO  compiling root (1 scala source)
+2022.04.06 12:14:53 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 12:14:53 INFO  time: compiled root in 1.05s
+2022.04.06 12:14:59 INFO  compiling root (1 scala source)
+2022.04.06 12:15:00 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 12:15:00 INFO  time: compiled root in 1.09s
+2022.04.06 12:18:08 INFO  compiling root (1 scala source)
+2022.04.06 12:18:10 WARN  4 deprecations (since 2.13.0)
+2022.04.06 12:18:10 WARN  3 deprecations (since 2.13.3)
+2022.04.06 12:18:10 WARN  7 deprecations in total; re-run with -deprecation for details
+2022.04.06 12:18:10 INFO  time: compiled root in 1.31s
+2022.04.06 12:19:09 INFO  compiling root (1 scala source)
+2022.04.06 12:19:09 INFO  time: compiled root in 0.37s
+2022.04.06 12:20:06 INFO  compiling root (1 scala source)
+2022.04.06 12:20:06 INFO  time: compiled root in 0.94s
+2022.04.06 12:20:44 INFO  compiling root (1 scala source)
+2022.04.06 12:20:44 INFO  time: compiled root in 0.71s
+Apr 06, 2022 12:20:46 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 7614
+2022.04.06 14:39:40 INFO  compiling root (1 scala source)
+2022.04.06 14:39:42 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:39:42 INFO  time: compiled root in 1.84s
+2022.04.06 14:42:21 INFO  compiling root (1 scala source)
+2022.04.06 14:42:21 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:42:21 INFO  time: compiled root in 0.95s
+2022.04.06 14:43:36 INFO  compiling root (1 scala source)
+2022.04.06 14:43:36 INFO  time: compiled root in 0.38s
+2022.04.06 14:43:48 INFO  compiling root (1 scala source)
+2022.04.06 14:43:48 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:43:48 INFO  time: compiled root in 0.87s
+2022.04.06 14:45:05 INFO  compiling root (1 scala source)
+2022.04.06 14:45:05 INFO  time: compiled root in 0.42s
+2022.04.06 14:45:38 INFO  compiling root (1 scala source)
+2022.04.06 14:45:38 INFO  time: compiled root in 0.4s
+2022.04.06 14:46:01 INFO  compiling root (1 scala source)
+2022.04.06 14:46:01 INFO  time: compiled root in 0.69s
+2022.04.06 14:46:03 INFO  compiling root (1 scala source)
+2022.04.06 14:46:03 INFO  time: compiled root in 0.65s
+2022.04.06 14:46:31 INFO  compiling root (1 scala source)
+2022.04.06 14:46:31 INFO  time: compiled root in 0.35s
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 75)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 69)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 71)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 73)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 73)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala, 60, 60, 73)
+2022.04.06 14:47:17 INFO  compiling root (1 scala source)
+2022.04.06 14:47:17 INFO  time: compiled root in 0.11s
+2022.04.06 14:47:50 INFO  compiling root (1 scala source)
+2022.04.06 14:47:50 INFO  time: compiled root in 0.66s
+2022.04.06 14:48:06 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala:5:1: stale bloop error: class CustomersClass needs to be abstract. Missing implementation for:
+  def fullName(): Unit // inherited from trait CustomersTrait
+> class CustomersClass extends CustomersTrait {
+> 
+> }
+2022.04.06 14:48:06 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/PackageDemo.scala:5:1: stale bloop error: class CustomersClass needs to be abstract. Missing implementation for:
+  def fullName(): Unit // inherited from trait CustomersTrait
+> class CustomersClass extends CustomersTrait {
+> 
+> }
+2022.04.06 14:48:12 INFO  compiling root (1 scala source)
+2022.04.06 14:48:12 INFO  time: compiled root in 0.33s
+2022.04.06 14:48:17 INFO  compiling root (1 scala source)
+2022.04.06 14:48:18 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:48:18 INFO  time: compiled root in 1.08s
+2022.04.06 14:48:53 INFO  compiling root (1 scala source)
+2022.04.06 14:48:53 INFO  time: compiled root in 0.33s
+2022.04.06 14:49:28 INFO  compiling root (1 scala source)
+2022.04.06 14:49:28 INFO  time: compiled root in 0.76s
+2022.04.06 14:49:33 INFO  compiling root (1 scala source)
+2022.04.06 14:49:33 INFO  time: compiled root in 0.67s
+2022.04.06 14:49:55 INFO  compiling root (1 scala source)
+2022.04.06 14:49:55 INFO  time: compiled root in 0.11s
+2022.04.06 14:50:00 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\PackageDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\PackageDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 14:50:02 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\PackageDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\PackageDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 14:50:06 INFO  compiling root (1 scala source)
+2022.04.06 14:50:06 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:50:06 INFO  time: compiled root in 0.98s
+2022.04.06 14:50:40 INFO  compiling root (1 scala source)
+2022.04.06 14:50:40 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:50:40 INFO  time: compiled root in 0.7s
+2022.04.06 14:51:21 INFO  compiling root (1 scala source)
+2022.04.06 14:51:21 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:51:21 INFO  time: compiled root in 0.75s
+2022.04.06 14:53:09 INFO  compiling root (1 scala source)
+2022.04.06 14:53:09 INFO  time: compiled root in 0.13s
+2022.04.06 14:53:17 INFO  compiling root (1 scala source)
+2022.04.06 14:53:17 INFO  time: compiled root in 0.12s
+2022.04.06 14:53:21 INFO  compiling root (1 scala source)
+2022.04.06 14:53:21 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:53:21 INFO  time: compiled root in 0.78s
+2022.04.06 14:54:21 INFO  compiling root (1 scala source)
+2022.04.06 14:54:21 INFO  time: compiled root in 0.1s
+2022.04.06 14:54:30 INFO  compiling root (1 scala source)
+2022.04.06 14:54:30 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 14:54:30 INFO  time: compiled root in 0.97s
+2022.04.06 14:54:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\PackageDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\PackageDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 14:54:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\PackageDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\PackageDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:25:13 INFO  compiling root (1 scala source)
+2022.04.06 15:25:13 INFO  time: compiled root in 0.39s
+Apr 06, 2022 3:25:36 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+Apr 06, 2022 3:25:36 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: null
+java.lang.NullPointerException
+	at scala.reflect.internal.Definitions$DefinitionsClass.isByNameParamType(Definitions.scala:419)
+	at scala.reflect.internal.TreeInfo.isStableIdent(TreeInfo.scala:140)
+	at scala.reflect.internal.TreeInfo.isStableIdentifier(TreeInfo.scala:113)
+	at scala.reflect.internal.TreeInfo.isPath(TreeInfo.scala:102)
+	at scala.tools.nsc.interactive.Global.stabilizedType(Global.scala:965)
+	at scala.tools.nsc.interactive.Global.typedTreeAt(Global.scala:813)
+	at scala.meta.internal.pc.SignatureHelpProvider.signatureHelp(SignatureHelpProvider.scala:23)
+
+2022.04.06 15:25:48 INFO  compiling root (1 scala source)
+2022.04.06 15:25:48 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:25:49 INFO  time: compiled root in 1.01s
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 216)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 210)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 212)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 214)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 214)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala, 201, 201, 214)
+2022.04.06 15:26:57 INFO  compiling root (1 scala source)
+2022.04.06 15:26:57 INFO  time: compiled root in 0.11s
+2022.04.06 15:27:47 INFO  compiling root (1 scala source)
+2022.04.06 15:27:47 INFO  time: compiled root in 0.13s
+2022.04.06 15:28:48 INFO  compiling root (1 scala source)
+2022.04.06 15:28:48 INFO  time: compiled root in 0.12s
+2022.04.06 15:28:58 INFO  compiling root (1 scala source)
+2022.04.06 15:28:58 WARN  3 deprecations (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:28:58 INFO  time: compiled root in 0.92s
+2022.04.06 15:30:27 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\AccessModifiersDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:30:27 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\AccessModifiersDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:30:27 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the build target root is being compiled. Wait until compilation is finished and try again.
+2022.04.06 15:31:04 INFO  compiling root (1 scala source)
+2022.04.06 15:31:04 INFO  time: compiled root in 0.13s
+2022.04.06 15:31:08 INFO  compiling root (1 scala source)
+2022.04.06 15:31:09 WARN  2 deprecations (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:31:09 INFO  time: compiled root in 1.07s
+2022.04.06 15:31:18 INFO  compiling root (1 scala source)
+2022.04.06 15:31:19 WARN  2 deprecations (since 2.13.0)
+2022.04.06 15:31:19 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:31:19 WARN  3 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:31:19 INFO  time: compiled root in 1.09s
+2022.04.06 15:31:52 INFO  compiling root (1 scala source)
+2022.04.06 15:31:52 INFO  time: compiled root in 0.11s
+2022.04.06 15:31:55 INFO  compiling root (1 scala source)
+2022.04.06 15:31:55 WARN  2 deprecations (since 2.13.0)
+2022.04.06 15:31:55 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:31:55 WARN  3 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:31:55 INFO  time: compiled root in 0.86s
+2022.04.06 15:31:58 INFO  compiling root (1 scala source)
+2022.04.06 15:31:58 WARN  2 deprecations (since 2.13.0)
+2022.04.06 15:31:58 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:31:58 WARN  3 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:31:58 INFO  time: compiled root in 0.92s
+2022.04.06 15:32:12 INFO  compiling root (1 scala source)
+2022.04.06 15:32:12 INFO  time: compiled root in 0.1s
+2022.04.06 15:32:43 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala:27:17: stale bloop error: value name in class Outer cannot be accessed as a member of example.Outer from object AccessModifiersDemo in package example
+        println(out.name)
+                ^^^^^^^^
+2022.04.06 15:32:43 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/AccessModifiersDemo.scala:27:17: stale bloop error: value name in class Outer cannot be accessed as a member of example.Outer from object AccessModifiersDemo in package example
+        println(out.name)
+                ^^^^^^^^
+2022.04.06 15:32:53 INFO  compiling root (1 scala source)
+2022.04.06 15:32:53 INFO  time: compiled root in 0.12s
+2022.04.06 15:32:56 INFO  compiling root (1 scala source)
+2022.04.06 15:32:56 INFO  time: compiled root in 0.12s
+2022.04.06 15:33:01 INFO  compiling root (1 scala source)
+2022.04.06 15:33:01 WARN  3 deprecations (since 2.13.0)
+2022.04.06 15:33:01 WARN  2 deprecations (since 2.13.3)
+2022.04.06 15:33:01 WARN  5 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:33:01 INFO  time: compiled root in 0.88s
+2022.04.06 15:33:37 INFO  compiling root (1 scala source)
+2022.04.06 15:33:37 WARN  2 deprecations (since 2.13.0)
+2022.04.06 15:33:37 WARN  2 deprecations (since 2.13.3)
+2022.04.06 15:33:37 WARN  4 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:33:37 INFO  time: compiled root in 0.97s
+2022.04.06 15:34:42 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\AccessModifiersDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:34:42 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\AccessModifiersDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:34:42 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the build target root is being compiled. Wait until compilation is finished and try again.
+2022.04.06 15:34:45 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\AccessModifiersDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\AccessModifiersDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:34:47 INFO  compiling root (1 scala source)
+2022.04.06 15:34:47 WARN  2 deprecations (since 2.13.0)
+2022.04.06 15:34:47 WARN  2 deprecations (since 2.13.3)
+2022.04.06 15:34:47 WARN  4 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:34:48 INFO  time: compiled root in 1s
+2022.04.06 15:41:24 INFO  compiling root (1 scala source)
+2022.04.06 15:41:24 INFO  time: compiled root in 0.43s
+Apr 06, 2022 3:41:28 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: 5 is not a valid line number, allowed [0..2]
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: 5 is not a valid line number, allowed [0..2]
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.IllegalArgumentException: 5 is not a valid line number, allowed [0..2]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.InsertInferredType.$anonfun$contribute$1(InsertInferredType.scala:68)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+
+Apr 06, 2022 3:41:28 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 5 is not a valid line number, allowed [0..2]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:41:34 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 4 is not a valid line number, allowed [0..2]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:41:34 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 4 is not a valid line number, allowed [0..2]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:41:35 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 4 is not a valid line number, allowed [0..2]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+2022.04.06 15:41:36 INFO  compiling root (1 scala source)
+2022.04.06 15:41:36 INFO  time: compiled root in 0.11s
+2022.04.06 15:41:42 INFO  compiling root (1 scala source)
+2022.04.06 15:41:42 INFO  time: compiled root in 97ms
+2022.04.06 15:42:32 INFO  compiling root (1 scala source)
+2022.04.06 15:42:32 INFO  time: compiled root in 0.12s
+2022.04.06 15:42:54 INFO  compiling root (1 scala source)
+2022.04.06 15:42:54 WARN  2 deprecations (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:42:54 INFO  time: compiled root in 0.97s
+2022.04.06 15:43:07 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\ProtectedMemberDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\ProtectedMemberDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:43:29 INFO  compiling root (1 scala source)
+2022.04.06 15:43:29 INFO  time: compiled root in 0.13s
+2022.04.06 15:43:52 INFO  compiling root (1 scala source)
+2022.04.06 15:43:52 WARN  3 deprecations (since 2.13.0)
+2022.04.06 15:43:52 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:43:52 WARN  4 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:43:52 INFO  time: compiled root in 0.92s
+2022.04.06 15:43:57 INFO  compiling root (1 scala source)
+2022.04.06 15:43:57 WARN  3 deprecations (since 2.13.0)
+2022.04.06 15:43:57 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:43:57 WARN  4 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:43:57 INFO  time: compiled root in 0.83s
+2022.04.06 15:44:17 INFO  compiling root (1 scala source)
+2022.04.06 15:44:17 WARN  3 deprecations (since 2.13.0)
+2022.04.06 15:44:17 WARN  1 deprecation (since 2.13.3)
+2022.04.06 15:44:17 WARN  4 deprecations in total; re-run with -deprecation for details
+2022.04.06 15:44:17 INFO  time: compiled root in 0.88s
+2022.04.06 15:46:22 INFO  compiling root (1 scala source)
+2022.04.06 15:46:22 INFO  time: compiled root in 0.36s
+Apr 06, 2022 3:47:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 8 is not a valid line number, allowed [0..6]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:47:26 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 7 is not a valid line number, allowed [0..6]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:47:29 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 8 is not a valid line number, allowed [0..6]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+Apr 06, 2022 3:47:30 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.reflect.InvocationTargetException
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.request(GenericEndpoint.java:120)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleRequest(RemoteEndpoint.java:261)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:190)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor11.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: 9 is not a valid line number, allowed [0..6]
+	at scala.meta.internal.inputs.InternalInput.lineToOffset(InternalInput.scala:37)
+	at scala.meta.internal.inputs.InternalInput.lineToOffset$(InternalInput.scala:32)
+	at scala.meta.inputs.Input$VirtualFile.lineToOffset(Input.scala:80)
+	at scala.meta.inputs.Position$Range$.apply(Position.scala:59)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionPositionLspInverse.toMeta(MtagsEnrichments.scala:143)
+	at scala.meta.internal.parsing.Trees.$anonfun$findLastEnclosingAt$4(Trees.scala:78)
+	at scala.Option.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.Trees.findLastEnclosingAt(Trees.scala:77)
+	at scala.meta.internal.metals.codeactions.PatternMatchRefactor.contribute(PatternMatchRefactor.scala:96)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:64)
+	at scala.meta.internal.metals.CodeActionProvider$$anonfun$1.applyOrElse(CodeActionProvider.scala:63)
+	at scala.collection.immutable.List.collect(List.scala:323)
+	at scala.meta.internal.metals.CodeActionProvider.codeActions(CodeActionProvider.scala:63)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeAction$1(MetalsLanguageServer.scala:1615)
+	at scala.meta.internal.metals.CancelTokens$.future(CancelTokens.scala:38)
+	at scala.meta.internal.metals.MetalsLanguageServer.codeAction(MetalsLanguageServer.scala:1614)
+	... 15 more
+
+2022.04.06 15:47:36 INFO  compiling root (1 scala source)
+2022.04.06 15:47:36 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:47:36 INFO  time: compiled root in 0.8s
+2022.04.06 15:48:17 INFO  compiling root (1 scala source)
+2022.04.06 15:48:17 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:48:17 INFO  time: compiled root in 0.84s
+2022.04.06 15:48:20 INFO  compiling root (1 scala source)
+2022.04.06 15:48:20 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:48:20 INFO  time: compiled root in 0.68s
+2022.04.06 15:48:55 INFO  compiling root (1 scala source)
+2022.04.06 15:48:55 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:48:55 INFO  time: compiled root in 0.82s
+2022.04.06 15:49:04 INFO  compiling root (1 scala source)
+2022.04.06 15:49:05 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:49:05 INFO  time: compiled root in 1.06s
+2022.04.06 15:50:23 INFO  compiling root (1 scala source)
+2022.04.06 15:50:23 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:50:23 INFO  time: compiled root in 0.95s
+2022.04.06 15:50:48 INFO  compiling root (1 scala source)
+2022.04.06 15:50:48 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:50:48 INFO  time: compiled root in 0.84s
+2022.04.06 15:51:41 INFO  compiling root (1 scala source)
+2022.04.06 15:51:41 INFO  time: compiled root in 0.14s
+2022.04.06 15:51:56 INFO  compiling root (1 scala source)
+2022.04.06 15:51:56 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:51:56 INFO  time: compiled root in 0.79s
+2022.04.06 15:52:31 INFO  compiling root (1 scala source)
+2022.04.06 15:52:31 INFO  time: compiled root in 95ms
+2022.04.06 15:52:58 INFO  compiling root (1 scala source)
+2022.04.06 15:52:58 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:52:58 INFO  time: compiled root in 0.84s
+2022.04.06 15:53:04 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CarDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\CarDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 15:53:31 INFO  compiling root (1 scala source)
+2022.04.06 15:53:31 INFO  time: compiled root in 90ms
+2022.04.06 15:53:43 INFO  compiling root (1 scala source)
+2022.04.06 15:53:44 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:53:44 INFO  time: compiled root in 1.35s
+2022.04.06 15:54:12 INFO  compiling root (1 scala source)
+2022.04.06 15:54:12 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:54:12 INFO  time: compiled root in 0.87s
+2022.04.06 15:54:37 INFO  compiling root (1 scala source)
+2022.04.06 15:54:37 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:54:37 INFO  time: compiled root in 0.95s
+2022.04.06 15:54:42 INFO  compiling root (1 scala source)
+2022.04.06 15:54:42 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:54:42 INFO  time: compiled root in 0.98s
+2022.04.06 15:55:27 INFO  compiling root (1 scala source)
+2022.04.06 15:55:27 INFO  time: compiled root in 0.13s
+2022.04.06 15:55:40 INFO  compiling root (1 scala source)
+2022.04.06 15:55:40 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 15:55:40 INFO  time: compiled root in 0.94s
+2022.04.06 16:56:57 INFO  compiling root (1 scala source)
+2022.04.06 16:56:57 INFO  time: compiled root in 0.5s
+2022.04.06 16:57:24 INFO  compiling root (1 scala source)
+2022.04.06 16:57:24 INFO  time: compiled root in 0.88s
+2022.04.06 16:57:39 INFO  compiling root (1 scala source)
+2022.04.06 16:57:39 INFO  time: compiled root in 0.39s
+2022.04.06 16:58:15 INFO  compiling root (1 scala source)
+2022.04.06 16:58:15 INFO  time: compiled root in 0.11s
+2022.04.06 16:58:34 INFO  compiling root (1 scala source)
+2022.04.06 16:58:34 INFO  time: compiled root in 77ms
+2022.04.06 16:58:39 INFO  compiling root (1 scala source)
+2022.04.06 16:58:39 INFO  time: compiled root in 0.12s
+2022.04.06 16:59:00 INFO  compiling root (1 scala source)
+2022.04.06 16:59:00 INFO  time: compiled root in 93ms
+2022.04.06 16:59:22 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\SealedClassUsage.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\SealedClassUsage.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 16:59:22 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\SealedClassUsage.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-4KHYOG6CT66YlCTjw2Gb0Q==\META-INF\semanticdb\src\main\scala\example\SealedClassUsage.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.06 16:59:40 INFO  compiling root (2 scala sources)
+2022.04.06 16:59:40 INFO  time: compiled root in 91ms
+2022.04.06 17:00:11 INFO  compiling root (2 scala sources)
+2022.04.06 17:00:11 INFO  time: compiled root in 88ms
+2022.04.06 17:00:26 INFO  compiling root (2 scala sources)
+2022.04.06 17:00:26 INFO  time: compiled root in 0.9s
+2022.04.06 17:00:51 INFO  compiling root (1 scala source)
+2022.04.06 17:00:51 INFO  time: compiled root in 0.6s
+2022.04.06 17:00:54 INFO  compiling root (1 scala source)
+2022.04.06 17:00:54 INFO  time: compiled root in 0.63s
+2022.04.06 17:00:56 INFO  compiling root (1 scala source)
+2022.04.06 17:00:56 INFO  time: compiled root in 0.54s
+2022.04.06 17:23:28 INFO  compiling root (1 scala source)
+2022.04.06 17:23:28 INFO  time: compiled root in 0.4s
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala, 58, 58, 73)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala, 58, 58, 67)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala, 58, 58, 69)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TupleDemo.scala, 58, 58, 71)
+2022.04.06 17:24:43 INFO  compiling root (1 scala source)
+2022.04.06 17:24:43 INFO  time: compiled root in 0.13s
+2022.04.06 17:25:00 INFO  compiling root (1 scala source)
+2022.04.06 17:25:00 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 17:25:00 INFO  time: compiled root in 0.89s
+2022.04.06 17:28:32 INFO  compiling root (1 scala source)
+2022.04.06 17:28:32 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 17:28:32 INFO  time: compiled root in 0.79s
+2022.04.06 17:30:00 INFO  compiling root (1 scala source)
+2022.04.06 17:30:00 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 17:30:00 INFO  time: compiled root in 0.75s
+2022.04.06 17:30:52 INFO  compiling root (1 scala source)
+2022.04.06 17:30:52 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.06 17:30:52 INFO  time: compiled root in 0.85s

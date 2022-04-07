@@ -1,0 +1,4 @@
+Welcome to Scala!
+This is a new file.
+Created from code.
+We will read this.

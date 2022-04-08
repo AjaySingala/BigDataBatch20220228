@@ -1851,3 +1851,167 @@ trait Laptop  extends Device {
 class Tablet extends Mobile with Laptop {
 }
 
+Custom Exceptions:
+------------------
+Are created by extending the Exception class.
+
+Example:
+package example
+
+//case class DivideByZero extends Exception
+case class DivideByZero(msg: String) extends Exception(msg)
+
+object CustomExDemo {
+    def main(args: Array[String]) {
+        try {
+            println(divide(10,2))
+            println(divide(10,0))
+        }
+        catch {
+            case dbzex: DivideByZero => println(s"You are trying to divide a number by zero! $dbzex")
+            case _: Throwable => println("Something went wrong!")
+        }
+    }
+
+    def divide(x: Int, y: Int) : Int = {
+        println(s"\nDividing $x by $y...")
+        if(y == 0) {
+            throw new DivideByZero("Cannot divide by Zero.")
+        }
+
+        x / y
+    }
+}
+
+Another Example:
+package anotherExample
+
+class InvalidAgeException(msg: String) extends Exception(msg) {}
+
+class ExceptionExample {
+    def validate(age: Int) : Unit = {
+        if(age < 18) {
+            throw new InvalidAgeException("You are not eligible")
+        }
+        else {
+            println(s"${age}: You are eligible!")
+        }
+    }
+}
+
+object CustomException {
+    def main(args: Array[String]) : Unit = {
+        val ee = new ExceptionExample()
+        try {
+            ee.validate(20)
+            ee.validate(12)
+        }
+        catch {
+            case e: InvalidAgeException => println(s"ERROR!!! Invalid Age Exception: ${e.getMessage}")
+            case e: Exception => println(s"Some exception occurred... ${e.getMessage}")
+            case _ => println("Something went wrong...")
+        }
+    }
+}
+
+try/catch/finally:
+Already done.
+
+Try/Success/Failure Exception Handling:
+---------------------------------------
+A cleaner way to handle exceptions.
+If the code succeeds, we return a Success object. Else we return a Failure object.
+
+Example:
+package example
+
+import scala.util.{Try, Success, Failure}
+
+case class DivideByZeroTSF(msg: String) extends Exception(msg)
+
+object TrySuccessFailureDemo {
+    def main(args: Array[String]) {
+        // val res = divideWithTry(10,0)
+        // println(res)
+
+        val result1 = divideWithTry(10,2) match {
+            case Success(i) => println(s"Result is $i")
+            case Failure(DivideByZeroTSF(_)) => None
+        }
+        
+        val result2 = divideWithTry(10,0) match {
+            case Success(i) => println(s"Result is $i")
+            //case Failure(DivideByZeroTSF(_)) => println("You are trying to divide by zero. Not allowed!")
+            case Failure(s) => println(s"You are trying to divide by zero. Not allowed! $s")
+        }
+    }
+
+    def divideWithTry(x: Int, y: Int): Try[Int] = {
+        Try(divide(x,y))
+    }
+    
+    def divide(x: Int, y: Int) : Int = {
+        println(s"\nDividing $x by $y...")
+        if(y == 0) {
+            throw new DivideByZeroTSF("Cannot divide by Zero.")
+        }
+
+        x / y
+    }
+}
+
+Option/Some/None Exception Handling:
+------------------------------------
+Returns an Option object. It can either be None (when there is an exception) or it can be Some.
+
+Example:
+package example
+
+object OptionSomeNoneDemo {
+    def main(args: Array[String]) {
+        val result1 = divideWithOption(10,2)
+        println(result1)
+        val result2 = divideWithOption(10,0)
+        if(result2 == None) { 
+            println("You are trying to divide by Zero!") 
+        }
+        println(result2)
+    }
+
+    def divideWithOption(x: Int, y: Int): Option[Int] = {
+        if(y == 0) {
+            None
+        }
+        else {
+            Some(x/y)
+        }
+    }
+}
+
+Either/Left/Right Exception Handling:
+------------------------------------
+Either represents two, mututally exclusive, possible values, represented using Left and Right.
+
+Example:
+package example
+
+object EitherLeftRightDemo {
+    def main(args: Array[String]) {
+        val result1 = divideWithEither(10,2)
+        println(result1)
+        val result2 = divideWithEither(10,0)
+        println(result2)
+    }
+
+    def divideWithEither(x: Int, y: Int): Either[String,Int] = {
+        if(y == 0) {
+            Left("Cannot divide by Zero!")
+        }
+        else {
+            Right(x/y)
+        }
+    }
+}
+
+Concurrency in Scala:
+a.k.a. Futures in Scala.

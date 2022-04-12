@@ -2275,3 +2275,436 @@ WARNING: Unmatched cancel notification for request id 17821
 2022.04.07 17:12:48 WARN  Could not load snapshot text for C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\FileDemo.scala
 2022.04.07 17:12:49 WARN  Could not load snapshot text for C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\FileDemo.scala
 2022.04.07 17:15:04 WARN  Could not load snapshot text for C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\FileDemo.scala
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 123)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 116)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 117)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[<error>]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 119)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 121)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 121)
+something's wrong: no file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala in Array[String]RangePosition(file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/CustomExDemo.scala, 108, 108, 121)
+2022.04.08 10:13:14 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.08 10:13:14 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.metals\bsp.trace.json or C:\Users\AjayJayantilalSingal\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2022.04.08 10:13:14 INFO  Connected to Build server: Bloop v1.4.13
+2022.04.08 10:13:14 INFO  Connected to Build server: Bloop v1.4.13
+2022.04.08 10:13:14 INFO  compiling root (1 scala source)
+2022.04.08 10:13:14 INFO  time: compiled root in 0.66s
+Apr 08, 2022 10:13:25 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: offset 75, count -11, length 649
+java.lang.StringIndexOutOfBoundsException: offset 75, count -11, length 649
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3304)
+	at java.base/java.lang.String.rangeCheck(String.java:280)
+	at java.base/java.lang.String.<init>(String.java:276)
+	at scala.tools.nsc.interactive.Global.typeCompletions$1(Global.scala:1244)
+	at scala.tools.nsc.interactive.Global.completionsAt(Global.scala:1267)
+	at scala.meta.internal.pc.SignatureHelpProvider.$anonfun$treeSymbol$1(SignatureHelpProvider.scala:375)
+	at scala.Option.map(Option.scala:242)
+	at scala.meta.internal.pc.SignatureHelpProvider.treeSymbol(SignatureHelpProvider.scala:373)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCall$.unapply(SignatureHelpProvider.scala:198)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.visit(SignatureHelpProvider.scala:309)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:303)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:268)
+	at scala.reflect.api.Trees$Traverser.traverseTrees(Trees.scala:2506)
+	at scala.reflect.internal.Trees$Block.traverse(Trees.scala:558)
+	at scala.reflect.internal.Trees.itraverse(Trees.scala:1604)
+	at scala.reflect.internal.Trees.itraverse$(Trees.scala:1603)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.api.Trees$Traverser.traverse(Trees.scala:2497)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.visit(SignatureHelpProvider.scala:343)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:303)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:268)
+	at scala.reflect.internal.Trees$DefDef.$anonfun$traverse$4(Trees.scala:461)
+	at scala.reflect.api.Trees$Traverser.atOwner(Trees.scala:2529)
+	at scala.reflect.internal.Trees$DefDef.traverse(Trees.scala:455)
+	at scala.reflect.internal.Trees.itraverse(Trees.scala:1604)
+	at scala.reflect.internal.Trees.itraverse$(Trees.scala:1603)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.api.Trees$Traverser.traverse(Trees.scala:2497)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.visit(SignatureHelpProvider.scala:343)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:303)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:268)
+	at scala.reflect.api.Trees$Traverser.$anonfun$traverseStats$2(Trees.scala:2520)
+	at scala.reflect.api.Trees$Traverser.atOwner(Trees.scala:2529)
+	at scala.reflect.api.Trees$Traverser.$anonfun$traverseStats$1(Trees.scala:2520)
+	at scala.reflect.api.Trees$Traverser.traverseStats(Trees.scala:2519)
+	at scala.reflect.internal.Trees$Template.traverse(Trees.scala:548)
+	at scala.reflect.internal.Trees.itraverse(Trees.scala:1604)
+	at scala.reflect.internal.Trees.itraverse$(Trees.scala:1603)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.internal.SymbolTable.itraverse(SymbolTable.scala:28)
+	at scala.reflect.api.Trees$Traverser.traverse(Trees.scala:2497)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.visit(SignatureHelpProvider.scala:343)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.traverse(SignatureHelpProvider.scala:303)
+	at scala.meta.internal.pc.SignatureHelpProvider$MethodCallTraverser.fromTree(SignatureHelpProvider.scala:272)
+	at scala.meta.internal.pc.SignatureHelpProvider.signatureHelp(SignatureHelpProvider.scala:27)
+
+2022.04.08 10:13:26 INFO  compiling root (1 scala source)
+2022.04.08 10:13:30 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:13:30 INFO  time: compiled root in 3.83s
+2022.04.08 10:13:56 INFO  compiling root (1 scala source)
+2022.04.08 10:13:58 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:13:58 INFO  time: compiled root in 2.5s
+2022.04.08 10:14:53 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CustomExDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\CustomExDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:14:53 INFO  compiling root (1 scala source)
+2022.04.08 10:14:55 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:14:55 INFO  time: compiled root in 1.77s
+2022.04.08 10:15:25 INFO  compiling root (1 scala source)
+2022.04.08 10:15:27 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:15:27 INFO  time: compiled root in 1.92s
+2022.04.08 10:16:37 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CustomExDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\CustomExDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:16:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CustomExDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\CustomExDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:16:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CustomExDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\CustomExDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:16:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\CustomExDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\CustomExDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:18:45 INFO  compiling root (1 scala source)
+2022.04.08 10:18:45 INFO  time: compiled root in 0.39s
+2022.04.08 10:18:54 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:18:54 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:18:54 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:19:15 INFO  compiling root (1 scala source)
+2022.04.08 10:19:18 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:19:18 INFO  time: compiled root in 2.75s
+2022.04.08 10:20:14 INFO  compiling root (1 scala source)
+2022.04.08 10:20:15 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:20:15 INFO  time: compiled root in 1.28s
+2022.04.08 10:22:51 INFO  compiling root (1 scala source)
+2022.04.08 10:22:51 INFO  time: compiled root in 99ms
+2022.04.08 10:22:56 INFO  compiling root (1 scala source)
+2022.04.08 10:22:56 INFO  time: compiled root in 0.21s
+2022.04.08 10:23:03 INFO  compiling root (1 scala source)
+2022.04.08 10:23:03 INFO  time: compiled root in 0.15s
+2022.04.08 10:23:23 INFO  compiling root (1 scala source)
+2022.04.08 10:23:25 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:23:25 INFO  time: compiled root in 1.56s
+2022.04.08 10:23:47 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:23:49 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:25:04 INFO  compiling root (1 scala source)
+2022.04.08 10:25:05 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:25:05 INFO  time: compiled root in 1.17s
+2022.04.08 10:25:06 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the build target root is being compiled. Wait until compilation is finished and try again.
+Apr 08, 2022 10:26:27 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: Illegal char <:> at index 3: jar:file:///C:/Users/AjayJayantilalSingal/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/util/Try.scala
+java.nio.file.InvalidPathException: Illegal char <:> at index 3: jar:file:///C:/Users/AjayJayantilalSingal/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/util/Try.scala
+	at java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
+	at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
+	at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
+	at java.base/sun.nio.fs.WindowsPath.parse(WindowsPath.java:92)
+	at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:229)
+	at java.base/java.nio.file.Path.of(Path.java:147)
+	at java.base/java.nio.file.Paths.get(Paths.java:69)
+	at scala.meta.io.AbsolutePath$.apply(AbsolutePath.scala:60)
+	at scala.meta.internal.metals.MetalsSymbolSearch.$anonfun$definitionSourceToplevels$2(MetalsSymbolSearch.scala:57)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.MetalsSymbolSearch.definitionSourceToplevels(MetalsSymbolSearch.scala:56)
+	at scala.meta.internal.pc.completions.MatchCaseCompletions$MatchKeywordCompletion.contribute(MatchCaseCompletions.scala:190)
+	at scala.meta.internal.pc.CompletionProvider.filterInteresting(CompletionProvider.scala:322)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:476)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:58)
+
+Apr 08, 2022 10:26:27 AM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: Illegal char <:> at index 3: jar:file:///C:/Users/AjayJayantilalSingal/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/util/Try.scala
+java.nio.file.InvalidPathException: Illegal char <:> at index 3: jar:file:///C:/Users/AjayJayantilalSingal/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6-sources.jar!/scala/util/Try.scala
+	at java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
+	at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
+	at java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
+	at java.base/sun.nio.fs.WindowsPath.parse(WindowsPath.java:92)
+	at java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:229)
+	at java.base/java.nio.file.Path.of(Path.java:147)
+	at java.base/java.nio.file.Paths.get(Paths.java:69)
+	at scala.meta.io.AbsolutePath$.apply(AbsolutePath.scala:60)
+	at scala.meta.internal.metals.MetalsSymbolSearch.$anonfun$definitionSourceToplevels$2(MetalsSymbolSearch.scala:57)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.MetalsSymbolSearch.definitionSourceToplevels(MetalsSymbolSearch.scala:56)
+	at scala.meta.internal.pc.completions.MatchCaseCompletions$MatchKeywordCompletion.contribute(MatchCaseCompletions.scala:190)
+	at scala.meta.internal.pc.CompletionProvider.filterInteresting(CompletionProvider.scala:322)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:476)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:58)
+
+Apr 08, 2022 10:26:28 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: org.scalameta.invariants.InvariantFailedException: invariant failed:
+when verifying cases.!=(null).&&(cases.nonEmpty)
+found that cases.nonEmpty is false
+where cases = List()
+java.util.concurrent.CompletionException: org.scalameta.invariants.InvariantFailedException: invariant failed:
+when verifying cases.!=(null).&&(cases.nonEmpty)
+found that cases.nonEmpty is false
+where cases = List()
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.scalameta.invariants.InvariantFailedException: invariant failed:
+when verifying cases.!=(null).&&(cases.nonEmpty)
+found that cases.nonEmpty is false
+where cases = List()
+	at org.scalameta.invariants.InvariantFailedException$.raise(Exceptions.scala:19)
+	at scala.meta.Term$Match$.internal$85(Trees.scala:121)
+	at scala.meta.Term$Match$.apply(Trees.scala:121)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$matchClause$3(ScalametaParser.scala:1416)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:313)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:315)
+	at scala.meta.internal.parsers.ScalametaParser.matchClause(ScalametaParser.scala:1416)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$expr$2(ScalametaParser.scala:1614)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.expr(ScalametaParser.scala:1476)
+	at scala.meta.internal.parsers.ScalametaParser.expr(ScalametaParser.scala:1356)
+	at scala.meta.internal.parsers.ScalametaParser.exprMaybeIndented(ScalametaParser.scala:1384)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$patDefOrDcl$1(ScalametaParser.scala:3305)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:313)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:315)
+	at scala.meta.internal.parsers.ScalametaParser.patDefOrDcl(ScalametaParser.scala:3291)
+	at scala.meta.internal.parsers.ScalametaParser.defOrDclOrSecondaryCtor(ScalametaParser.scala:3255)
+	at scala.meta.internal.parsers.ScalametaParser.localDef(ScalametaParser.scala:4270)
+	at scala.meta.internal.parsers.ScalametaParser.blockStatSeq(ScalametaParser.scala:4297)
+	at scala.meta.internal.parsers.ScalametaParser.blockWithStats$1(ScalametaParser.scala:2282)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$block$2(ScalametaParser.scala:2284)
+	at scala.meta.internal.parsers.ScalametaParser.inBracesOr(ScalametaParser.scala:216)
+	at scala.meta.internal.parsers.ScalametaParser.inBraces(ScalametaParser.scala:211)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$block$1(ScalametaParser.scala:2284)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.block(ScalametaParser.scala:2281)
+	at scala.meta.internal.parsers.ScalametaParser.blockExpr(ScalametaParser.scala:2278)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$simpleExpr0$1(ScalametaParser.scala:2089)
+	at scala.meta.internal.parsers.ScalametaParser.atPosTry(ScalametaParser.scala:308)
+	at scala.meta.internal.parsers.ScalametaParser.autoPosTry(ScalametaParser.scala:318)
+	at scala.meta.internal.parsers.ScalametaParser.simpleExpr0(ScalametaParser.scala:2060)
+	at scala.meta.internal.parsers.ScalametaParser.simpleExpr(ScalametaParser.scala:2058)
+	at scala.meta.internal.parsers.ScalametaParser.prefixExpr(ScalametaParser.scala:2042)
+	at scala.meta.internal.parsers.ScalametaParser.postfixExpr(ScalametaParser.scala:2018)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$expr$2(ScalametaParser.scala:1587)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.expr(ScalametaParser.scala:1476)
+	at scala.meta.internal.parsers.ScalametaParser.expr(ScalametaParser.scala:1356)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$funDefRest$1(ScalametaParser.scala:3535)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:313)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:315)
+	at scala.meta.internal.parsers.ScalametaParser.funDefRest(ScalametaParser.scala:3484)
+	at scala.meta.internal.parsers.ScalametaParser.funDefOrDclOrExtensionOrSecondaryCtor(ScalametaParser.scala:3421)
+	at scala.meta.internal.parsers.ScalametaParser.defOrDclOrSecondaryCtor(ScalametaParser.scala:3261)
+	at scala.meta.internal.parsers.ScalametaParser.nonLocalDefOrDcl(ScalametaParser.scala:3240)
+	at scala.meta.internal.parsers.ScalametaParser$$anonfun$templateStat$1$1.applyOrElse(ScalametaParser.scala:4225)
+	at scala.meta.internal.parsers.ScalametaParser$$anonfun$templateStat$1$1.applyOrElse(ScalametaParser.scala:4219)
+	at scala.runtime.AbstractPartialFunction.apply(AbstractPartialFunction.scala:38)
+	at scala.meta.internal.parsers.ScalametaParser.statSeq(ScalametaParser.scala:4154)
+	at scala.meta.internal.parsers.ScalametaParser.templateStats(ScalametaParser.scala:4235)
+	at scala.meta.internal.parsers.ScalametaParser.templateStatSeq(ScalametaParser.scala:4211)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$templateBody$1(ScalametaParser.scala:4042)
+	at scala.meta.internal.parsers.ScalametaParser.inBracesOr(ScalametaParser.scala:216)
+	at scala.meta.internal.parsers.ScalametaParser.inBraces(ScalametaParser.scala:211)
+	at scala.meta.internal.parsers.ScalametaParser.templateBody(ScalametaParser.scala:4042)
+	at scala.meta.internal.parsers.ScalametaParser.templateBodyOpt(ScalametaParser.scala:4050)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$templateOpt$1(ScalametaParser.scala:4031)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.templateOpt(ScalametaParser.scala:4005)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$objectDef$1(ScalametaParser.scala:3754)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:313)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:315)
+	at scala.meta.internal.parsers.ScalametaParser.objectDef(ScalametaParser.scala:3746)
+	at scala.meta.internal.parsers.ScalametaParser.tmplDef(ScalametaParser.scala:3623)
+	at scala.meta.internal.parsers.ScalametaParser.topLevelTmplDef(ScalametaParser.scala:3607)
+	at scala.meta.internal.parsers.ScalametaParser$$anonfun$topStat$1.applyOrElse(ScalametaParser.scala:4175)
+	at scala.meta.internal.parsers.ScalametaParser$$anonfun$topStat$1.applyOrElse(ScalametaParser.scala:4163)
+	at scala.runtime.AbstractPartialFunction.apply(AbstractPartialFunction.scala:38)
+	at scala.meta.internal.parsers.ScalametaParser.statSeq(ScalametaParser.scala:4154)
+	at scala.meta.internal.parsers.ScalametaParser.bracelessPackageStats$1(ScalametaParser.scala:4383)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$batchSource$12(ScalametaParser.scala:4389)
+	at scala.meta.internal.parsers.ScalametaParser.autoEndPos(ScalametaParser.scala:313)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$batchSource$1(ScalametaParser.scala:4389)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.batchSource(ScalametaParser.scala:4350)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$source$1(ScalametaParser.scala:4343)
+	at scala.meta.internal.parsers.ScalametaParser.atPos(ScalametaParser.scala:270)
+	at scala.meta.internal.parsers.ScalametaParser.autoPos(ScalametaParser.scala:311)
+	at scala.meta.internal.parsers.ScalametaParser.source(ScalametaParser.scala:4343)
+	at scala.meta.internal.parsers.ScalametaParser.entrypointSource(ScalametaParser.scala:4348)
+	at scala.meta.internal.parsers.ScalametaParser.parseSourceImpl(ScalametaParser.scala:132)
+	at scala.meta.internal.parsers.ScalametaParser.$anonfun$parseSource$1(ScalametaParser.scala:129)
+	at scala.meta.internal.parsers.ScalametaParser.parseRuleAfterBOF(ScalametaParser.scala:56)
+	at scala.meta.internal.parsers.ScalametaParser.parseRule(ScalametaParser.scala:51)
+	at scala.meta.internal.parsers.ScalametaParser.parseSource(ScalametaParser.scala:129)
+	at scala.meta.parsers.Parse$.$anonfun$parseSource$1(Parse.scala:29)
+	at scala.meta.parsers.Parse$$anon$1.apply(Parse.scala:36)
+	at scala.meta.parsers.Api$XtensionParseDialectInput.parse(Api.scala:25)
+	at scala.meta.internal.parsing.Trees.$anonfun$parse$2(Trees.scala:126)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.parsing.Trees.parse(Trees.scala:119)
+	at scala.meta.internal.parsing.Trees.didChange(Trees.scala:91)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$parseTreesAndPublishDiags$2(MetalsLanguageServer.scala:292)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+
+2022.04.08 10:27:21 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:27:33 INFO  compiling root (1 scala source)
+2022.04.08 10:27:33 INFO  time: compiled root in 0.21s
+2022.04.08 10:27:48 INFO  compiling root (1 scala source)
+2022.04.08 10:27:48 INFO  time: compiled root in 0.19s
+2022.04.08 10:28:25 INFO  compiling root (1 scala source)
+2022.04.08 10:28:27 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:28:27 INFO  time: compiled root in 1.38s
+2022.04.08 10:29:29 INFO  compiling root (1 scala source)
+2022.04.08 10:29:29 INFO  time: compiled root in 0.16s
+2022.04.08 10:29:38 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:29:38 INFO  compiling root (1 scala source)
+2022.04.08 10:29:40 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:29:40 INFO  time: compiled root in 2.28s
+2022.04.08 10:30:14 INFO  compiling root (1 scala source)
+2022.04.08 10:30:16 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:30:16 INFO  time: compiled root in 1.25s
+Apr 08, 2022 10:31:15 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 21984
+2022.04.08 10:33:13 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:33:15 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:33:24 INFO  compiling root (1 scala source)
+2022.04.08 10:33:24 INFO  time: compiled root in 0.17s
+2022.04.08 10:33:36 INFO  compiling root (1 scala source)
+2022.04.08 10:33:37 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:33:37 INFO  time: compiled root in 1.08s
+2022.04.08 10:34:05 INFO  compiling root (1 scala source)
+2022.04.08 10:34:05 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:34:06 INFO  time: compiled root in 1s
+2022.04.08 10:34:24 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:34:37 INFO  compiling root (1 scala source)
+2022.04.08 10:34:38 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:34:38 INFO  time: compiled root in 1.45s
+2022.04.08 10:35:14 INFO  compiling root (1 scala source)
+2022.04.08 10:35:14 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:35:14 INFO  time: compiled root in 0.83s
+2022.04.08 10:35:19 INFO  compiling root (1 scala source)
+2022.04.08 10:35:20 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:35:20 INFO  time: compiled root in 1.21s
+2022.04.08 10:35:41 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:36:14 INFO  compiling root (1 scala source)
+2022.04.08 10:36:16 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:36:16 INFO  time: compiled root in 1.56s
+2022.04.08 10:37:28 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TrySuccessFailureDemo.scala:12:23: stale bloop warning: match may not be exhaustive.
+It would fail on the following input: Failure((x: Throwable forSome x not in example.DivideByZeroTSF))
+        val result1 = divideWithTry(10,2) match {
+                      ^^^^^^^^^^^^^^^^^^^
+2022.04.08 10:37:28 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TrySuccessFailureDemo.scala:17:23: stale bloop warning: match may not be exhaustive.
+It would fail on the following input: Failure((x: Throwable forSome x not in example.DivideByZeroTSF))
+        val result2 = divideWithTry(10,0) match {
+                      ^^^^^^^^^^^^^^^^^^^
+2022.04.08 10:37:28 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TrySuccessFailureDemo.scala:12:23: stale bloop warning: match may not be exhaustive.
+It would fail on the following input: Failure((x: Throwable forSome x not in example.DivideByZeroTSF))
+        val result1 = divideWithTry(10,2) match {
+                      ^^^^^^^^^^^^^^^^^^^
+2022.04.08 10:37:28 INFO  file:///C:/Temp/BigDataBatch20220228/Scala/sbtsamples/firstsbt/src/main/scala/example/TrySuccessFailureDemo.scala:17:23: stale bloop warning: match may not be exhaustive.
+It would fail on the following input: Failure((x: Throwable forSome x not in example.DivideByZeroTSF))
+        val result2 = divideWithTry(10,0) match {
+                      ^^^^^^^^^^^^^^^^^^^
+2022.04.08 10:37:30 INFO  compiling root (1 scala source)
+2022.04.08 10:37:31 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:37:31 INFO  time: compiled root in 1.11s
+2022.04.08 10:37:51 INFO  compiling root (1 scala source)
+2022.04.08 10:37:52 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:37:52 INFO  time: compiled root in 1.19s
+2022.04.08 10:40:46 INFO  compiling root (1 scala source)
+2022.04.08 10:40:46 INFO  time: compiled root in 0.43s
+2022.04.08 10:40:49 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the build target root is being compiled. Wait until compilation is finished and try again.
+2022.04.08 10:40:52 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\OptionSomeNoneDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\OptionSomeNoneDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:41:13 INFO  compiling root (1 scala source)
+2022.04.08 10:41:13 INFO  time: compiled root in 0.11s
+2022.04.08 10:41:23 INFO  compiling root (1 scala source)
+2022.04.08 10:41:23 INFO  time: compiled root in 93ms
+2022.04.08 10:41:32 INFO  compiling root (1 scala source)
+2022.04.08 10:41:32 INFO  time: compiled root in 0.16s
+2022.04.08 10:42:36 INFO  compiling root (1 scala source)
+2022.04.08 10:42:36 INFO  time: compiled root in 0.16s
+2022.04.08 10:42:56 INFO  compiling root (1 scala source)
+2022.04.08 10:42:56 INFO  time: compiled root in 0.12s
+2022.04.08 10:43:30 INFO  compiling root (1 scala source)
+2022.04.08 10:43:31 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:43:31 INFO  time: compiled root in 1.09s
+2022.04.08 10:43:47 INFO  compiling root (1 scala source)
+2022.04.08 10:43:47 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:43:47 INFO  time: compiled root in 0.79s
+2022.04.08 10:44:08 INFO  compiling root (1 scala source)
+2022.04.08 10:44:08 INFO  time: compiled root in 0.13s
+2022.04.08 10:44:18 INFO  compiling root (1 scala source)
+2022.04.08 10:44:18 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:44:18 INFO  time: compiled root in 0.77s
+2022.04.08 10:44:40 INFO  compiling root (1 scala source)
+2022.04.08 10:44:40 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:44:40 INFO  time: compiled root in 0.95s
+Apr 08, 2022 10:44:44 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 23124
+2022.04.08 10:45:59 INFO  compiling root (1 scala source)
+2022.04.08 10:45:59 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:45:59 INFO  time: compiled root in 0.87s
+2022.04.08 10:46:08 INFO  compiling root (1 scala source)
+2022.04.08 10:46:08 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:46:08 INFO  time: compiled root in 0.78s
+2022.04.08 10:48:14 INFO  compiling root (1 scala source)
+2022.04.08 10:48:14 INFO  time: compiled root in 0.46s
+2022.04.08 10:48:16 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the build target root is being compiled. Wait until compilation is finished and try again.
+2022.04.08 10:48:19 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:48:23 INFO  compiling root (1 scala source)
+2022.04.08 10:48:23 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:48:23 INFO  time: compiled root in 0.87s
+2022.04.08 10:48:38 INFO  compiling root (1 scala source)
+2022.04.08 10:48:38 INFO  time: compiled root in 0.14s
+2022.04.08 10:48:55 INFO  compiling root (1 scala source)
+2022.04.08 10:48:55 INFO  time: compiled root in 0.12s
+Apr 08, 2022 10:49:00 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 23491
+2022.04.08 10:49:01 INFO  compiling root (1 scala source)
+2022.04.08 10:49:01 INFO  time: compiled root in 0.11s
+2022.04.08 10:49:03 INFO  compiling root (1 scala source)
+2022.04.08 10:49:03 INFO  time: compiled root in 0.18s
+2022.04.08 10:49:11 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:11 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:13 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:13 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:15 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:15 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:16 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:19 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 10:49:20 INFO  compiling root (1 scala source)
+2022.04.08 10:49:22 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:49:22 INFO  time: compiled root in 1.54s
+2022.04.08 10:50:11 INFO  compiling root (1 scala source)
+2022.04.08 10:50:11 WARN  1 deprecation (since 2.13.0); re-run with -deprecation for details
+2022.04.08 10:50:11 INFO  time: compiled root in 0.74s
+2022.04.08 10:52:34 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:30:18 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:30:18 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:30:18 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\TrySuccessFailureDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\TrySuccessFailureDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:31:00 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:31:00 ERROR code navigation does not work for the file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\src\main\scala\example\EitherLeftRightDemo.scala' because the SemanticDB file 'C:\Temp\BigDataBatch20220228\Scala\sbtsamples\firstsbt\.bloop\root\bloop-bsp-clients-classes\classes-Metals-Xi3Pi6lrTau0d8GWsOZ43A==\META-INF\semanticdb\src\main\scala\example\EitherLeftRightDemo.scala.semanticdb' doesn't exist. There can be many reasons for this error. 
+2022.04.08 11:35:54 INFO  shutting down Metals
+2022.04.08 11:35:54 INFO  Shut down connection with build server.
+java.util.concurrent.RejectedExecutionException: Task scala.concurrent.impl.CallbackRunnable@69293147 rejected from java.util.concurrent.ThreadPoolExecutor@1376695a[Shutting down, pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 221810]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1355)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)

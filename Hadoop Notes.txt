@@ -1,0 +1,140 @@
+Hadoop:
+	MapReduce
+	YARN - Yet Another Resource Negotiator. Acts as an Operating System to Hadoop.
+	HDFS - Hadoop Distributed File System.
+Cluster: A collection of servers that work together to achieve parallel processing and/or distributed storage.
+Namenode & Datanodes
+	- only 1 active namenode (that manages / monitors all datanodes).
+	- there can be many datanodes.
+Distributed Storage: HDFS:
+Storing data on HDFS:
+	- split the data into blocks of 128 MB each.
+	- store these blocks on different nodes.
+	- and create replicas as well on different nodes.
+Parallel Processing: MapReduce:
+	- Processing is done on datanodes. Never on Namenode.
+	- Namenode collects the final result and returns it back to the client program.
+	- An example of a WordCount using MapReduce.
+YARN: Yet Another Resource Negotiator.
+	- Acts as an Operating System to Hadoop.
+	- Slide #23, 3rd node, add AppMaster.
+Apache Pig:
+	- ETL: Extract, Transform, Load (DataWarehousing, Business Analytics).
+Apache Hive:
+	- JDBC: Java DataBase Connectivity
+	- ODBC: Open DataBase Connectivity
+	
+On the hortonworks VM, open the Ambari dashboard by going to localhost:1080.
+Launch Dashboard (disable pop-blocker first).
+Enter username / password as maria_dev / maria_dev
+The services will take some time to start and till then, some alerts may be displayed.
+The alerts will go off once the services have started.
+
+HDFS Commands:
+Very similar to unix commands.
+ls
+mkdir
+cp
+mv
+
+hdfs dfs -ls /
+hdfs dfs -ls /user
+hdfs dfs -ls /user/maria_dev
+
+hadoop fs -ls /
+hadoop fs -ls /user
+hadoop fs -ls /user/maria_dev
+
+hdfs dfs -ls 	=> List contents of current user's home dir on HDFS (/user/maria_dev)
+
+Top copy file from local folder to HDFS:
+hdfs dfs -copyFromLocal <local path> <path on HDFS>
+hdfs dfs -copyFromLocal ./firstfile.txt /user/maria_dev/FirstFolder
+OR
+hdfs dfs -put ./firstfile.txt /user/maria_dev/FirstFolder
+
+hdfs dfs -cat <path to file on HDFS>
+hdfs dfs -cat /user/maria_dev/abc.txt
+
+Copy from HDFS to local dir:
+hdfs dfs -copyToLocal <path on HDFS> <local path>
+hdfs dfs -copyToLocal FirstFolder/firstfile.txt ./tmp
+	hdfs dfs -copyToLocal /user/maria_dev/FirstFolder/firstfile.txt ./tmp
+		FirstFolder and /user/maria_dev/FirstFolder are same.
+OR
+hdfs dfs -get /user/maria_dev/FirstFolder/firstfile.txt ./tmp
+
+Move file from local dir to HDFS:
+hdfs dfs -moveFromLocal  <local path> <path on HDFS>
+
+Cannot move from HDFS to local.
+
+To copy within HDFS:
+hdfs dfs -cp <HDFS src> <HDFS target>
+
+To move within HDFS:
+hdfs dfs -mv <HDFS src> <HDFS target>
+
+
+Troubleshooting the Hortonworks VM:
+1) Majority of the time, the issue is with HDFS not starting properly.
+Stop the "Start all services" ops.
+connect to the VM using root: ssh root@127.0.0.1 -p 2222 OR PuTTY.
+	If you connect using root first time, you are forced to change the password.
+	After successful login, it wilk ask you to enter the current password (hadoop) and the new password (twice).
+	Run these commands to "reset" HDFS:
+	Change the current user to run as an HDFS admin:
+		su - hdfs
+	Check if HDFS is running in safe mode:
+		hdfs dfsadmin -safemode get
+	If the previous command returns "HDFS safemode is ON", then you have turn it off.
+	Run this command:
+		hdfs dfsadmin -safemode leave
+	Check status again:
+		hdfs dfsadmin -safemode get
+	It should say HDFS Safemode is OFF.
+	Then, go to Ambari and select Actions -> Start All to restart the services on the VM.
+	This should fix the issue most of the time.
+
+2) Shut down the VM and restart it.
+
+3) Drastic measures:
+Delete the VM from VirtualBox.
+Reconfigure it again on VirtualBox and try to use it.
+
+Gives the size of files in specified folder:
+hdfs dfs -du <HDFS foldername>
+
+Gives the total size of all files in the given folder:
+hdfs dfs -du -s <HDFS foldername>
+
+Gives the last modified date+time of the given folder/file:
+hdfs dfs -stat <HDFS foldername>
+
+Change the replication factor of the given file/folder:
+hdfs dfs -setrep -w 4 <file or foldername on HDFS>
+
+Change the replication factor recursively for all folders and subfolder for the given folder using -R:
+hdfs dfs -setrep -R -w 4 <foldername on HDFS>
+
+Delete files from a HDFS folder recursively:
+hdfs dfs -rmr <file/folder on HDFS>			// Deprecated.
+hdfs dfs -rm -r <path to file/folder on HDFS>		// New
+
+Delete an individual file:
+hdfs dfs -rm <path to file on HDFS>
+
+How to copy files from your Windows (host) machine to the VM:
+scp -P 2222 <path to src file on your host machine> username@dns:target_path_on_VM
+For e.g.;
+scp -P 2222 .\mapper.py maria_dev@127.0.0.1:/home/maria_dev/mapreduce_samples
+scp -P 2222 .\reducer.py maria_dev@127.0.0.1:/home/maria_dev/mapreduce_samples
+
+MapReduce:
+On the VM, navigate to the folder where you copied the mapper and reducer programs.
+Run:
+	echo "foo foo bar quid dollar quid range" | mapper.py | sort | reducer.py
+
+To run the map-reduce with a file, create a text file with some lines in it and then run:
+	cat <filename> | python mapper.py | sort | python reducer.py
+	

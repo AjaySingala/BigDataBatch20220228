@@ -138,3 +138,86 @@ Run:
 To run the map-reduce with a file, create a text file with some lines in it and then run:
 	cat <filename> | python mapper.py | sort | python reducer.py
 	
+Running the MapReduce program on Hadoop+HDFS:
+hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming-2.7.3.2.6.5.0-292.jar \
+-file /home/maria_dev/PythonSamples/mapper.py -mapper /home/maria_dev/PythonSamples/mapper.py \
+-file /home/maria_dev/PythonSamples/reducer.py -reducer /home/maria_dev/PythonSamples/reducer.py \
+-input /tmp/gutenberg/* -output /tmp/gutenberg-output -numReduceTasks 5
+
+The url to monitor Jobs on Hadoop: localhost:8088 OR http://sandbox-hdp.hortonworks.com:8088/cluster
+
+
+Hive:
+=====
+What is Apache Hive?
+It is a Data Warehouse System built on top of Hadoop.
+It is used for analyzing structured and semi-structured data.
+
+OLTP: OnLine Transaction Processing.
+	This is transactional data like, orders, customers, products, movies, banking transactions.
+	Normalized form.
+OLAP: OnLine Analytical Processing.
+	Converting the transactional data into de-normalized for for reporting and analyzing purpose.
+	This is done using a process called ETL (Extract, Transform, Load)
+	
+OLAP databases are knowns as Data Warehouse systems.
+
+Hive is not:
+- an RDBMS.
+- a design for OLTP.
+- a language for real-time queries and row-level updates.
+
+Read/Import data from another data source (probably an RDBMS).
+	Most probably, this will be a .csv file.
+Transform and Load it onto HDFS.
+Use Hive to access this data and run queries on it for reporting and analysis.
+	- by way of Hive databaes and tables.
+	
+Hive features:
+It stores schema in a database and processed data in HDFS.
+It is designed for OLAP.
+It provides a SQL type of language called HiveQL or HQL.
+It is fast, scalable, extensible.
+
+Hive commands:
+show databases;
+create database <dbname>;
+create database if not exists <dbname>;
+drop database <dbname>;
+drop database if exists <dbname>;
+create database demo3 WITH DBPROPERTIES("creator" = "Ajay Singala", "createdon" = "2022-04-13");
+describe database <dbname>;
+describe database extended <dbname>;		# displays the properties as well.
+
+Hive Tables:
+Two types:
+	- internal
+	- external
+	
+create table dbname.tablename (col1 type, col2 type, col3 type,....)
+row format delimited
+fields terminated by ',';
+
+create table demo3.employee (Id int, Name string, Salary float)
+row format delimited
+fields terminated by ',';
+
+describe demo3.employee;
+
+create table if not exists demo3.employee (Id int, Name string, Salary float)
+row format delimited
+fields terminated by ',';
+
+create table if not exists demo3.employee (Id int comment 'Employee Id', Name string comment 'Employee Name', Salary float comment 'Employee Salary')
+comment 'This is an Employee Table'
+row format delimited
+fields terminated by ','
+TBLPROPERTIES("creator" = "Ajay Singala", "createdon" = "2022-04-13");
+
+create table if not exists demo3.employee_copy
+like demo3.employee;
+
+Load data into a Hive table:
+load data local inpath '/home/maria_dev/tmp/hive/emp_details' into table demo3.employee;
+
+SELECT * FROM demo3.employee;

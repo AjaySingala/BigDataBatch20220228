@@ -221,3 +221,328 @@ Load data into a Hive table:
 load data local inpath '/home/maria_dev/tmp/hive/emp_details' into table demo3.employee;
 
 SELECT * FROM demo3.employee;
+
+Load data into Hive from a file stored on HDFS:
+load data inpath '<path to file on HDFS>' into table demo3.employee;
+
+Hive Tables:
+Two types:
+	- internal (managed)
+	- external
+
+Managed (internal) Tables:
+Managed by Hive.
+Hive is responsible for managing the data of a managed table.
+If you load data from a file on HDFS into a managed table and you issue a DROP command on that table, the table along with it's metadata will be deleted. Even the data of the table is deleted. And you cannot retrieve it once it is deleted. EVEN THE SOURCE FILE THAT HAD THE DATA IS DELETED FROM HDFS!!!
+
+create table demo3.employee_copy (Id int, Name string, Salary float)
+row format delimited
+fields terminated by ',';
+
+Load data from HDFS:
+$ hdfs dfs -put ./emp_details /user/maria_dev/hive_data
+
+hive> load data inpath '/user/maria_dev/hive_data/emp_details' into table demo3.employee_copy;
+
+hive> DROP TABLE demo3.employee_copy 
+	- This will delete the table as well as the source data file from HDFS.
+
+If source file is in local folder, then it is not deleted if you drop the table:
+hive> load data local inpath '/home/maria_dev/tmp/hive/emp_details' into table demo3.employee;
+
+All Hive metadata about databases and tables is stored on HDFS in the Hive Warehouse directory.
+On the Hortonworks VM, it is /apps/Hive/Warehouse.
+conf/hive-site.xml (configuration file for Hive).
+This config file has an entry for hive.metastore.warehouse that has the HDFS path for the metastore warehouse location.
+
+External Tables:
+Not managed by Hive.
+Hive is not responsible for managing the data of external tables.
+If you LOAD data into an external table, Hive will create the data in the warehouse dir.
+If you DROP the table, it will delete the metadata, but not the source data file even if it is on HDFS.
+
+Syntax:
+create EXTERNAL table dbname.tablename (col1 type, col2 type...)
+LOCATION 'hdfs path to source data file'
+
+create EXTERNAL table demo3.employee_ext (Id int, Name string, Salary float)
+row format delimited
+fields terminated by ','
+LOCATION '/user/maria_dev/hive_data';
+
+Add / Load more data into the table:
+load data inpath '/user/maria_dev/hive_data/emp_details2' into table demo3.employee_ext;
+
+Partitions and Buckets:
+-----------------------
+Partitions:
+The data in a table is grouped together in partitions based on a column.
+For e.g.;
+A table having Order data with millions of rows.
+A query will scan through all millions of rows to return the resultset.
+Group the data and store them in partitions based on the "city" column of the Order table.
+What this will do is, physically store data in separate sections called partitions, where each partition will only have data for the specified city.
+So when you execute a query for a specific city (WHERE CITY = 'Dallas'), it will be executed only on that partition returning the result much faster.
+
+Each table can have one or more partition keys (columns).
+
+2 types of Partitioning:
+-Static Partitioning.
+-Dynamic Partitioning.
+
+Static Partitioning:
+It is required to pass the partitioned column manually while loading the data into the table.
+The data file does not contain the partitioned column.
+
+Example:
+create table student (id int, name string, age int)
+partitioned by (course string)
+row format delimited
+fields terminated by ',';
+
+describe student;
+
+load data local inpath '/home/maria_dev/tmp/hive/students_java.txt' into table student
+partition(course="java");
+
+load data local inpath '/home/maria_dev/tmp/hive/students_bigdata.txt' into table student
+partition(course="Big Data");
+
+load data local inpath '/home/maria_dev/tmp/hive/students_2_java.txt' into table student
+partition(course="java");
+
+load data local inpath '/home/maria_dev/tmp/hive/students_3_java.txt' into table student
+partition(course="java");
+
+Dynamic Partitioning:
+The values of the partitioned column exists within the table.
+It is not required to pass the values for the partitioned columns manually.
+
+For dynamic paritioning to work, you have change some Hive settings first on the Hive CLI:
+set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+# Create the source (main) table for the data:
+create table student_dynpart_source (id int, name string, age int, course string)
+row format delimited
+fields terminated by ',';
+# Load the data into the table.
+load data local inpath '/home/maria_dev/tmp/hive/students.txt' into table student_dynpart_source;
+
+# Create the table that will have dynamic parition based on the source table's data.
+create table student_dynpart (id int, name string, age int)
+partitioned by (course string)
+row format delimited
+fields terminated by ',';
+
+# Load data into the new table with partitions:
+insert into student_dynpart
+partition(course)
+select id, name, age, course
+from student_dynpart_source;
+
+Bucketing:
+Quite similar to partitioning in the sense we group data into buckets instead of partitions.
+Paritioning is usually based on columns that have data that cab easily bifurcated / separated / grouped.
+For e.g.; state, city, country, subject, category
+What if you want to group the data based on numeric values like quantity, age, id.
+Even non-numeric values like name.
+How does bucketing work:
+I want 3 buckets to be created on the table on the "id" column.
+For each row, it will take the value from the "id" column, and apply a hashing technique (function) to it.
+Then, it will apply the modulo operator on the result from the hashing function by the no. of buckets requested, in this case, 3.
+For e.g.; id = 101. f(101) % 3. Based on the result of this, it will determine in which of the 3 buckets does this row go.
+The result of the modulo operation will either be 0, 1 or 2 as we have asked 3 buckets.
+
+create table emp_demo (id int, name string, salary float)
+row format delimited
+fields terminated by ',';
+
+load data local inpath '/home/maria_dev/tmp/hive/emp_details' into table emp_demo;
+
+hive> set hive.enforce.bucketing=true;
+
+create table emp_buckets (id int, name string, salary float)
+clustered by(id) into 3 buckets
+row format delimited
+fields terminated by ',';
+
+insert overwrite table emp_buckets
+select * from emp_demo;
+
+
+HiveQL Operators:
+=================
+Arithmetic Operators:
++ - / * %
+
+Relational Operators:
+A = B 
+A < B
+A <= B 
+A > B
+A >= B
+A IS NULL
+A IS NOT NULL
+
+HQL Functions:
+==============
+Maths functions:
+round(num)
+sqrt(num)
+abs(num)
+tan(num)
+atan(n)
+
+Aggregate functions:
+count()
+sum()
+avg()
+min()
+max()
+
+Other functions:
+length(string)
+reverse(string)
+concat(str1,str2,....)
+substr(str, start_index)			// index is 1-based.
+substr(str, start_index, length)	// index is 1-based.
+upper(str)
+lower(str)
+trim(str)
+ltrim(str)
+rtrim(str)
+
+HQL GROUP BY and HAVING Clause:
+===============================
+create table emp_group (id int, name string, salary float, department string)
+row format delimited
+fields terminated by ',';
+
+load data local inpath '/home/maria_dev/tmp/hive/emp_data_grouping' into table emp_group;
+
+select department, sum(salary) from emp_group group by department;
+select department, sum(salary) from emp_group group by department HAVING sum(salary) > 40000;
+
+HQL ORDER BY and SORT BY Clause:
+--------------------------------
+select * From employee order by name;
+select * From employee order by salary DESC;
+
+select * From employee sort by name;
+select * From employee sort by salary DESC;
+
+HQL JOINS:
+----------
+INNER JOIN
+LEFT OUTER JOIN
+RIGHT OUTER JOIN
+FULL OUTER JOIN
+
+create table emp_join_demo (id int, name string, state string, departmentId int)
+row format delimited
+fields terminated by ',';
+
+load data local inpath '/home/maria_dev/tmp/hive/employee_state_dept.txt' into table emp_join_demo;
+
+create table departments (id int, department string)
+row format delimited
+fields terminated by ',';
+
+load data local inpath '/home/maria_dev/tmp/hive/employee_department.txt' into table departments;
+
+INNER JOIN:
+Return rows from joined tables where the join conidition is satisfied and there are matching records in both tables.
+select e.id, e.name, e.departmentId,
+d.id, d.department
+from emp_join_demo e
+INNER JOIN departments d ON e.departmentId = d.id;
+
+LEFT OUTER JOIN:
+Returns rows from the left table and only matching records from the right table. 
+For records in the left table that do not have a match in the right table, it shows NULL for values from the right table.
+select e.id, e.name, e.departmentId,
+d.id, d.department
+from emp_join_demo e
+LEFT OUTER JOIN departments d ON e.departmentId = d.id;
+
+RIGHT OUTER JOIN:
+Returns rows from the right table and matching rows from the left table.
+For records in the right table that do not have a match in the left table, it shows NULL for values from the left table.
+select e.id, e.name, e.departmentId,
+d.id, d.department
+from emp_join_demo e
+RIGHT OUTER JOIN departments d ON e.departmentId = d.id;
+
+FULL OUTER JOIN:
+Returns records from both tables.
+It assigns NULL for missing records in either tables.
+select e.id, e.name, e.departmentId,
+d.id, d.department
+from emp_join_demo e
+FULL OUTER JOIN departments d ON e.departmentId = d.id;
+
+CROSS JOIN (Cartesian Product/Join):
+select *
+from emp_join_demo, departments;
+
+Hadoop 1 vs Hadoop 2:
+---------------------
+Services / Daemons:
+Hadoop1					Hadoop 2
+------------------------------------------
+MapReduce				MapReduce (MRv2 or MapReduce ver 2)
+HDFS					HDFS
+Namenode				Namenode
+Datanode				Datanode
+Secondary Namenode		Secondary Namenode
+Job Tracker				Resource Manager (YARN)
+Task Tracker			Node Manager
+
+In Hadoop 1, resource management and data processing was done by MapReduce.
+In Hadoop 2, resource management is done by YARN. Data processing is done by MapReduce.
+
+Some built-in Hive Table Properties:
+TBLPROPERTIES("comment"="some comment about the table go here")
+TBLPROPERTIES("skip.header.line.count"="1") // When importing data, ignore the top "n" rows from the source data file.
+TBLPROPERTIES("skip.footer.line.count"="1") // When importing data, ignore the bottom "n" rows from the source data file.
+
+How to connect to Hive from Scala:
+==================================
+Driver used to connect to Hive from Scala:
+var driverName = "org.apache.hive.jdbc.HiveDriver"
+
+The Hive connection string:
+syntax: jdbc:hive2:<url of server where hive is installed:port>/<dbname>"
+
+For e.g;
+val conStr = "jdbc:hive2://sandbox-hdp.hortonworks.com:10000/default";
+
+// For Hive1:
+//var driverName = "org.apache.hadoop.hive.jdbc.HiveDriver"
+//val conStr = "jdbc:hive://sandbox-hdp.hortonworks.com:10000/default";
+
+Steps to run the program:
+0. Edit code and Save. Compile.
+1. Create a deployment package (.jar).
+	In SBT, execute the command "package".
+2. Copy the .jar to the VM.
+	On the command prompt/terminal of your Windows machine, run:
+	scp -P 2222 .\scalahive_2.11-0.1.0-SNAPSHOT.jar maria_dev@127.0.0.1:/home/maria_dev
+3. Run the .jar on the VM.
+	On the VM, navigate to the folder where you copied the jar file and run the package as follows:
+	spark-submit ./scalahive_2.11-0.1.0-SNAPSHOT.jar  --class example.HiveDemo
+
+
+load data local inpath '/home/maria_dev/tmp/a.txt' into table  testHiveDriverTable;
+
+When running a query that will return a result set, use executeQuery().
+When running a command that does not return a result set, use execute().
+
+
+Scala - HDFS:
+spark-submit ./scalahdfs_2.13-0.1.0-SNAPSHOT.jar  --class example.HdfsDemo
+
+
+Spark Basics:
+=============

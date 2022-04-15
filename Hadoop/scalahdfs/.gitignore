@@ -1,0 +1,10 @@
+/.bsp/
+target/
+*.class
+*.log
+.bloop/
+.bsp/
+.metals/
+.vscode/
+com/
+target/scala-2.13/scalahdfs_2.13-0.1.0-SNAPSHOT.jar

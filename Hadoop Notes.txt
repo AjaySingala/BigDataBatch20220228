@@ -543,6 +543,16 @@ When running a command that does not return a result set, use execute().
 Scala - HDFS:
 spark-submit ./scalahdfs_2.13-0.1.0-SNAPSHOT.jar  --class example.HdfsDemo
 
+Hive modes:
+Local mode:
+•	If the Hadoop installed under pseudo mode with having one data node, we use Hive in this mode.
+•	If the data size is smaller in term of limited to single local machine, we can use this mode.
+•	Processing will be very fast on smaller data sets present in the local machine.
+Map Reduce mode:
+•	If Hadoop is having multiple data nodes and data is distributed across different node, we use Hive in this mode
+•	It will perform on large amount of data sets and the query is going to execute in parallel way.
+•	Processing of large data sets with better performance can be achieved through this mode.
 
-Spark Basics:
-=============
+By default, it works on Map Reduce mode and for local mode you can have the following setting (in the yarn-site.xml or mapred-site.xml):
+SET mapred.job.tracker=local;
+

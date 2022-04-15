@@ -1,0 +1,213 @@
+Apache Spark:
+No. 1 Big Data tool these days to process datasets and perform analysis.
+It is even considered to be a "Hadoop Killer".
+Spark has advantages over Hadoop.
+Spark is written in Scala.
+
+Hadoop, which uses MapReduce (MR) for processing, performs of lot Disk I/O.
+Spark completely avoids Disk I/O. It does processing in-memory! 
+In-memory cluster computing is the main feature of Spark.
+Because of this, Spark is considered ~100 times faster than Hadoop MR.
+
+Spark distributes processing across nodes, which is why it fault-tolerant and highly scalable.
+With Spark, you can use AWS S3 instead of HDFS for storage.
+
+Spark is NOT a modified version of Hadoop.
+
+Features:
+Speed: due to in-memory cluster computing.
+Supports multiple languages: Scala, Java, Python. There are some features of Spark that do not work with Python.
+Advanced Analytics: Has it's own "map" & "reduce". Also supports SQL queries, Streaming data, Machine Learning (ML) and Graph algorithms.
+
+Hadoop vs Spark:
+----------------
+					Hadoop MapReduce			Spark
+					------------------------------------------------------
+Storage				Disk only.					In-memory or disk.
+Operations			Map and Reduce.				Map, Reduce, Join, Group etc.
+Execution Model		Batch						Batch, streaming, interactive.
+Programming env.	Java, Python Scala.			Java, Scala and Python (with limitations in Python). Also supports R.
+
+Spark Architecture:
+Driver program listens for incoming connections, accepts them and gives them to the Worker Node for execution.
+Driver program co-ordinates with the Executor on each node.
+Each Worker Node has 1 Executor, some Cache storage and tasks that are executed (and monitored by the Executor).
+You can configure the amount of memory that will used by the executor. You can do this by setting a property called spark.executor.memory.
+
+How to determine no. of executors for a job:
+Nodes = 10.
+Each node has 16 cores (-1 for OS).
+Each node has 61GB RAM (-1 for OS).
+A general rule of thumb is an executor can run 5 concurrent tasks in parallel.
+No. of cores available is 15.
+No. of executors = no. of cores available / concurrent tasks = 15 / 5 = 3.
+
+= no. of nodes * no. of executors on each node
+= 10 * 3
+= 30 executors per Spark Job.
+
+RDD - Resilient Distributed Datasets:
+--------------------------------------
+Fundamental data structure in Spark.
+It is an immutable distributed collection of objects.
+Each dataset in RDD is divided into logical partitions, which may be computed on different nodes of the cluster.
+RDDs can contain objects of Python, Java, Scala. Even objects of classes you create in your code.
+Resilient because they are able to withstand failure / recover quickly from failure. They are fault-tolerant.
+
+There are 2 ways in which you can create an RDD:
+1. parallelizing existing collections
+2. Referencing a dataset read from an external storage system like HDFS, AWS S3, HBase etc.
+
+Data Sharing in MapReduce is slow.
+	because MR does a lot of Disk i/o.
+	
+The RDDs with the data are processed in-memory by Spark when you run queries etc. on the RDDs.
+Whereas MapReduce would have used disk to share data between iterations.
+
+Two ways Data Sharing works with Spark RDD:
+1. Iterative Operations on Spark RDD.
+	Store intermediate results in distributed memory which is used by different iterations.
+	
+2. Intreactive Operations on Spark RDD.
+	Different queries are executed on the same set of data repeatedly.
+	
+It may happen that when data is stored in distributed memory, the node(s) run out of memory. Then in such cases, the intermediate results are stored on disk.
+
+Spark Core Programming:
+Open the spark-shell
+read a file from the local disk on the VM:
+val file = sc.textFile("file:///home/maria_dev/SparkSamples/sparkscala/src/main/scala/example/twinkle.txt")
+
+if we are reading from HDFS:
+val file = sc.textFile("twinkle.txt")		// Path would be /user/maria_dev/twinkle.txt
+
+We have to count no. of words in the file.
+val wordCount = file.flatMap(line => line.split(" ")).map(word => (word,1)).reduceByKey(_+_)
+
+Steps are:
+read each line
+split into words separated by the " "
+initiaze each word with 1. For e.g.; (Twinkle, 1) where the word is the "key" and the number, 1 in this case, is the value.
+finally, reduce the keys by adding values of similar keys.
+
+For e.g.;
+twinkle twinkle little star
+(twinkle,1)
+(twinkle,1)
+(litte,1)
+(star,1)
+
+Save the resulting RDD to HDFS:
+wordCount.saveAsTextFile("twinkle-output")		// path is /user/maria_dev/twinkle-output
+
+It creates a folder on HDFS with the given name and that folder will have 1 or more files with result as follows:
+(diamond,1)
+(are,1)
+(high,1)
+(how,1)
+(twinkle,4)
+(star,2)
+(what,1)
+(so,1)
+(little,2)
+(world,1)
+(wonder,1)
+(up,1)
+(you,1)
+(a,1)
+(above,1)
+(I,1)
+(in,1)
+(like,1)
+(the,2)
+(sky,1)
+
+Save the resulting RDD to local disk on VM:
+wordCount.saveAsTextFile("file:///home/maria_dev/tmp/twinkle-output")		// path is /user/maria_dev/twinkle-output
+
+This will create a folder on your local disk on VM at /home/maria_dev/tmp/twinkle-output, which will have 1 or more files with the result as mentioned above.
+
+We did 2 things here:
+1) Transformation.
+2) Action.
+
+RDD Transformations:
+They return a new RDD and also allows you to create dependencies between RDDs, thus creating a dependency chain by creating one RDD from another.
+This is known as RDD Lineage.
+
+Some transformation functions are:
+flatMap()
+map()
+reduceByKey()
+
+RDD Transformations in Spark are "LAZY"!!!!
+Meaning, in the following code:
+val file = sc.textFile("twinkle.txt")
+val wordCount = file.flatMap(line => line.split(" ")).map(word => (word,1)).reduceByKey(_+_)
+wordCount.saveAsTextFile("twinkle-output")
+
+The file is not processed (the flatMap, Map and reduceByKey operations are not performed) when that particular is executed!
+It is executed / processed ONLY when you perform an "ACTION" on the RDD!!!
+So, when you exeucted .saveAsTextFile(), that is when the RDD was processed, that is when the file was actually read.
+
+To determine no. of partitions of an RDD use getNumPartitions:
+println(s"Initial Partition count: ${file.getNumPartitions}")					// prints 2.
+
+To change the no., of partitions, use repartition(n):
+val repartitionedRDD = file.repartition(4)			// Transformation.
+println(s"Initial Partition count: ${repartitionedRDD.getNumPartitions}")		// prints 4.
+
+Some Transformations and Actions:
+.collect()	: Action: Returns/Collects the data in the RDD.
+	file.collect()
+	wordCount.collect()
+.foreach()	: Action: iterate the data and process.
+	file.collect().foreach(println)
+	wordCount.collect().foreach(println)
+.flatMap: Transformation.
+	val rdd2 = file.flatMap(f => f.split(" "))
+	rdd2.foreach(f => println(f))
+.map: Transformation.
+	val rdd3 = rdd2.map(m => (m,1))
+	rdd3.foreach(println)
+.filter(): Transformation.
+	val rdd4 = rdd3.filter(f => f._1.startsWith("a"))
+	rdd4.foreach(println)
+.reduceByKey: Transformation.
+	val rdd5 = rdd3.reduceByKey(_ + _)
+	rdd5.foreach(println)
+.sortByKey: Transformation
+	// Swap the K-V and then sort.
+	val rdd6 = rdd5.map(w => (w._2, w._1)).sortByKey()
+	rdd6.foreach(println)
+.count:	Action.
+	println(s"There are ${rdd6.count()} words...")
+.first: Action.
+	val firstRecRDD = rdd6.first()
+	println(s"First record: ${firstRecRDD._1} : ${firstRecRDD._2}")
+.max: Action
+	val maxRDD = rdd6.max()
+	println(s"Max record: ${maxRDD._1} : ${maxRDD._2}")
+.reduce: Action.
+	val totalWordCountRDD = rdd6.reduce((a,b) => (a._1 + b._1, a._2))
+	println(s"${totalWordCountRDD._1}")
+.take: Action.
+	val takeRDD = rdd6.take(3)
+	takeRDD.foreach(println)
+	takeRDD.foreach(f => { println(s"Key: ${f._1}, Value: ${f._2}") } )
+.collect: Action.	
+	val collectRDD = rdd6.collect()
+	collectRDD.foreach(f => { println(s"Key: ${f._1}, Value: ${f._2}") } )
+.saveAsTextFile: Transformation.
+	rdd6.saveAsTextFile("wordCount")					// Creates a folder on HDFS.
+	rdd6.saveAsTextFile("file:///tmp/wordCount")		// Creates a folder on local machine (VM).
+	
+Creating RDDS using parallelizing technique:
+--------------------------------------------
+val parallelRDD = sc.parallelize(Seq(("A", 1), ("B", 2), ("C", 3)))
+parallelRDD.collect().foreach(println)
+val parallelRDD2 = sc.parallelize(Seq(("B", 4), ("E", 5)))
+parallelRDD2.collect().foreach(println)
+
+val cogroupRDD = parallelRDD.cogroup(parallelRDD2)
+cogroupRDD.collect().foreach(println)

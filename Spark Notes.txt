@@ -198,7 +198,7 @@ Some Transformations and Actions:
 .collect: Action.	
 	val collectRDD = rdd6.collect()
 	collectRDD.foreach(f => { println(s"Key: ${f._1}, Value: ${f._2}") } )
-.saveAsTextFile: Transformation.
+.saveAsTextFile: Action.
 	rdd6.saveAsTextFile("wordCount")					// Creates a folder on HDFS.
 	rdd6.saveAsTextFile("file:///tmp/wordCount")		// Creates a folder on local machine (VM).
 	
@@ -211,3 +211,262 @@ parallelRDD2.collect().foreach(println)
 
 val cogroupRDD = parallelRDD.cogroup(parallelRDD2)
 cogroupRDD.collect().foreach(println)
+
+Spark Basics Overview:
+----------------------
+RDD - Resilient Distributed Datasets
+	Resilient - means able to withstand or recover quickly from failure / difficult conditions.
+	Fault-tolerant
+	val rdd1 = sc.textFile("....")
+	val rdd2 = rdd1.flatMap(...)
+	val rdd3 = rdd2.map(...)
+	val rdd4 = rdd3.reduceByKey(...)
+	
+Transformations return a RDD.
+RDDs are immutable.
+Transformations are lazily evaluated.
+	They will be availuated when you perform an Action on the RDD.
+	
+Some Actions:
+rdd1.collect()
+rdd2.count()
+rdd3.collect().foreach()
+rdd4.saveAsTextFile("...")
+
+RDD Lineage: when you create a RDD from another RDD. Basically, create a "lineage".
+	For e.g.; created rdd4 from rdd3. rdd3 from rdd2 and rdd2 from rdd1.
+	
+Spark Deploy Modes:
+-------------------
+Two Deploy Modes:
+1. Local (client).
+2. Cluster Mode.
+
+1. Client Mode (Local):
+When the driver program runs on the same machine from which the job was submitted.
+For e.g.; a single node cluster or you do a remote connection to a server on the cluster and run the Spark job manually either using spark-shell or spark-submit.
+The problem with this mode is that if the driver program fails, then the entire job fails.
+Not very efficient from a performance perspective (because you are running it locally). You are not making use of the cluster.
+This mode will never be used in a production (live) environment.
+
+To run a jonb in client mode:
+spark-submit --deploy-mode client ....
+For e.g.; spark-submit ./scalahive_2.11-0.1.0-SNAPSHOT.jar  --class example.HiveDemo --deploy-mode client
+
+This mode (client mode) is also the default mode when you start the spark-shell.
+
+2. Cluster mode:
+The driver program does not run on the machine from where the job was submitted. It runs on the cluster as a sub-process of the Application Master.
+Makes use of the cluster features.
+If the driver program crashes or fails, it will automatically be re-instantiated by YARN.
+
+To run a job in cluster mode:
+spark-submit --deploy-mode cluster ....
+For e.g.; spark-submit ./scalahive_2.11-0.1.0-SNAPSHOT.jar  --class example.HiveDemo --deploy-mode cluster
+
+Here, the application / spark jon will run on the cluster.
+Cluster mode is not supported in the interactive shell mode (spark-shell).
+
+Cluster mode is used in a production (live) environment.
+
+Steps to run scala files from spark-shell:
+1. Start spark-shell (from the folder where the .scala files are located).
+2. :load <scala filename>
+Note: In your scala code, comment the lines where you:
+	- create the SparkSession and SparkContext objects.
+	- specify the pakcage name (at the top).
+	- create the object and the main method.
+	- and the closing curly-braces (}) for the object and main method (at the end of the code).
+
+Steps to run scala code using spark-submit:
+1. Import packages:
+import org.apache.spark.rdd.RDD
+import org.apache.spark.sql.SparkSession
+
+2. Create SparkSession:
+    val spark:SparkSession = SparkSession.builder()
+      .master("local[3]")
+      .appName("ajaysingala.com")
+      .getOrCreate()
+	  
+	 here, "local[3]" means run the code locally and use 3 cores. To use all cores, specify "[*]".
+	 
+3. Create the SparkContext:
+    val sc = spark.sparkContext
+
+1. compile your sbt project.
+2. create the jar file (run package command in sbt).
+3. copy the jar file to your vm using the scp command:
+scp -P 2222 .\sparkscala_2.11-0.1.0-SNAPSHOT.jar maria_dev@sandbox-hdp.hortonworks.com:/home/maria_dev
+
+4. Run the job as follows:
+spark-submit --deploy-mode client ./sparkscala_2.11-0.1.0-SNAPSHOT.jar  --class sparkbasics.WordCountExample 
+
+
+SparkSession and SparkContext:
+------------------------------
+SparkContext (SC):
+In earlier versions of Spark (or PySpark), SC was the entry point to Spark programming with RDD and connect to cluster.
+With Spark 2.0 SparkSession (SS) has been introduced as the entry point from which you create the SC.
+Also, with Spark 2.0, SS became the entry point for programming with DataFrame and DataSet.
+
+SC is used to programmatically create RDD, accumulators and broadcast variables on the cluster.
+With Spark 2.0, most of the functionalities in SC are available in SS as well.
+
+In spark-shell, the SparkContext is available by default in the variable named "sc".
+
+SparkSession:
+Introduced in Spark 2.0.
+Is an entry point to the underlying Spark functionality to programmatically create Spark RDD, DataFrame and DataSet.
+
+In spark-shell, the SparkSession is available by default in the variable named "spark".
+
+SS also includes APIs for different contexts:
+- Spark Context
+- SQL Context
+- Hive Context
+- Streaming Context
+
+- Create SparkSession:
+    val spark:SparkSession = SparkSession.builder()
+      .master("local[3]")
+      .appName("ajaysingala.com")
+      .getOrCreate()
+	  
+	 here, "local[3]" means run the code locally and use 3 cores. To use all cores, specify "[*]".
+	 
+- Create the SparkContext:
+    val sc = spark.sparkContext
+
+RDD Lineage a.k.a. RDD Dependency Graph.
+Transformations are of 2 types:
+- Narrow Transformations.
+map() and filter()
+All the elements that are required to compute the records in single partition live in the single partition of the parent RDD.
+a limited subset of partition is used to calculate the result.
+These transformations compute the data that live on a single partition. There will not be any movement of data between partitions to execute narrow transformations.
+
+- Wide Transformations.
+All the elements that are required to compute the records in the single partition may live in many partitions of the parent RDD.
+These transformations compute data that live on may partitions. There will be data movement between partitions to execute wide transformations.
+Since this data movement "shuffles" data between partitions, it is known as shuffle transformations.
+reduceByKey(), groupByKey(), repartition()
+
+Shared Variables:
+=================
+2 types of Shared Variables:
+- Broadcast Variables: used to efficiently distribute large datasets across nodes.
+- Accumulators: used to aggregate information of a collection.
+
+Broadcast Variables (BVs):
+They are cached on each machine (node) rather than making a copy of the data with the tasks.
+Spark uses very efficient broadcast algorithms to distribute broadcast variables so as to reduce cross-node communication. Hence it is much faster.
+By using BVs, you reduce the number of shuffles and hence increase the performance.
+
+How to create and use BVs:
+1. Define a collection:
+  val states = Map(("NY","New York"),("CA","California"),("FL","Florida"), ("NSW", "New South Wales"))
+  val countries = Map(("USA","United States of America"),("AU","Australia"))
+
+2. Create a BV using spark.sparkContext.broadcast():
+  val broadcastStates = spark.sparkContext.broadcast(states)
+  val broadcastCountries = spark.sparkContext.broadcast(countries)
+  
+  OR
+  
+  val broadcastStates = sc.broadcast(states)
+  val broadcastCountries = sc.broadcast(countries)
+ 
+3. Create the source data:
+  val data = Seq(("James","Smith","USA","CA"),
+    ("Michael","Rose","USA","NY"),
+    ("Robert","Williams","USA","CA"),
+    ("David","Warner","AU","NSW"),
+    ("Maria","Jones","USA","FL")
+  )
+
+4. Parallelize the source data:
+  val rdd = spark.sparkContext.parallelize(data)  // sc.parallelize(data)
+
+5. Process the data and extract names of states and countries from BVs:
+  val rdd2 = rdd.map(f=>{
+    val country = f._3
+    val state = f._4
+    val fullCountry = broadcastCountries.value.get(country).get
+    val fullState = broadcastStates.value.get(state).get
+    (f._1,f._2,fullCountry,fullState)
+  })
+
+6. Print the original source data:
+  rdd.foreach(println)
+
+7. Print the data with values extracted from BVs:
+  println(rdd2.collect().mkString("\n"))
+
+Accumulators:
+Are shared variables used for aggregating data across executors (nodes).
+Similar to how MapReduce counters.
+
+Log file: City,State,Product,Amount
+Sample data:
+-------------------------
+Dallas,TX,Erasers,100
+
+Orlando,FL,Pencils,125
+Bad data packet
+Boston,MA,Markers,0
+--------------------------
+
+In the log file, there are some records that are corrupted.
+For e.g.; 2nd line is blank. 4th line has some error info. Last line has sales amount as 0 (not possible).
+
+Determine how many blank lines are there in the log file.
+
+var blankLinesCount: Int = 0
+sc.textFile("sales.log")
+	.foreach { line => if(line.length == 0) blankLinesCount += 1 }
+
+println(s"There are $blankLinesCount blank lines in the file.")
+
+This will print "There are 0 blank lines in the file."
+This is because when Spark distributes (ships) this code to every executor, the variable "blankLinesCount" becomes local to that executor.
+So, it's updated value is not relayed back to the driver program.
+To avoid this, we can make "blankLinesCount" variable as an "Accumulator" such that all the updates from all executors to this variable is relayed back to the driver.
+
+var blankLinesCount: sc.accumulator(0, "Blank Lines")
+sc.textFile("sales.log")
+	.foreach { line => if(line.length == 0) blankLinesCount += 1 }
+
+println(s"There are $blankLinesCount blank lines in the file.")
+
+Reading data files into RDD:
+============================
+Read files using the sc.textFile method.
+It takes 2 params:
+	- 1st is the path to the file(s).
+	- 2nd is an optional param to specify no. of partitions.
+	
+val rddFromFile = spark.sparkContext.textFile("file:///home/maria_dev/SparkSamples/resources/csv/text01.txt")
+val rddFromFile = spark.sparkContext.textFile("file:///home/maria_dev/SparkSamples/resources/csv/text01.txt", 3)
+
+Wildcards:
+* means 0 or more characters
+Text*.txt: Text.txt Text0.txt Text01.txt Text001.text Texts00000001.txt
+? means 1 and only 1 character.
+Text?.txt: Text0.txt Text1.txt TextA.txt Text_.txt
+Text??.txt: Text00.txt Text01.txt Text0A.txt Text_A.txt
+
+Paired RDDs:
+============
+Key-Value Pair RDDs.
+RDDs that have key-value pairs in them.
+
+
+Transformations:
+	-aggregate()
+	-aggregateByKey()
+
+These transformations take 3 parameters:
+Param1: is the initial value to begin aggregation (which usually is 0).
+Param2: (Sequence Operator) the operator (function to perform) to accumulate the results of each partition, and stores the running accumulated result and returns it to the driver.
+Param3: (Combined Operator) This operator is used to combine the results of all partitions and give the final result.

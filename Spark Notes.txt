@@ -470,3 +470,170 @@ These transformations take 3 parameters:
 Param1: is the initial value to begin aggregation (which usually is 0).
 Param2: (Sequence Operator) the operator (function to perform) to accumulate the results of each partition, and stores the running accumulated result and returns it to the driver.
 Param3: (Combined Operator) This operator is used to combine the results of all partitions and give the final result.
+
+AWS EMR:
+========
+AWS = Amazon Web Service. Cloud platform from Amazon. Cloud Service Provider (CSP).
+Other CSPs are Microsoft Azure, Google Cloud Platform (GCP) and many more.
+EMR = Elastic MapReduce.
+	- The Hadoop Cluster you can setup on AWS.
+	- You don't have to install anything. The Hadoop cluster is readily available.
+	- You just select you want on the cluster and provision it.
+	- AWS will then provision some VMs (EC2 (Elastic Compute Cloud) instances) and have the Hadoop cluster configured on them.
+	
+Big Data on Cloud:
+- on AWS: AWS EMR.
+- on Azure: MS Azure HDInsight.
+- on GCP: Google DataProc.
+
+Storage is a big decision when hosting Hadoop cluster on cloud.
+Options are:
+- HDFS
+- AWS S3
+
+What is AWS S3:
+---------------
+S3 is a distributed managed file system provided by AWS.
+Similar to HDFS: distributed, fault-tolerant etc.
+
+Why S3 and not HDFS?
+When you provision a Hadoop Cluster on AWS EMR and use HDFS for storage, and run a spark job on the cluster.
+The job will read an input file from HDFS, process it, write the results back to HDFS.
+Remember:
+	- on AWS (or for that matter any CSP), you will be charged fo the time the VMs are running. so as long as the VMs (instances) are running, you will be charged of it.
+	- After the Spark job has completed and the instances are still running (doing nothing, just idle), you still get charged for it because the instances are running.
+Ideally, after the Spark job completes, the cluster is "de-provisioned" or "terminated". This is not same as "Start" and "Stop".
+This is so that you do not get charged for idle instances.
+But, when the cluster terminates, the instances are not accessible and hence the HDFS storage is also not accessible.
+Which means the result generated and saved by the Spark job is lost!!!
+What's the solution to this?
+	Keep the cluster running and keep paying for idle time!
+	Not advisable!
+Alternate solution:
+	Use AWS S3!
+	It does not depend on any VM instance to be idle/ terminated / running etc.
+	You still run your Spark job on the AWS EMR (Hadoop) Cluster.
+	But use S3 as the storage instead of HDFS.
+	Your input file will be on S3.
+	And the Spark job will save/store the results on S3 as well.
+	So, when the job complets and the cluster is terminated, you still have the data (input and the output) on S3 which is accessible.
+	In this way, you do not pay for idle instances.
+	S3 is decoupled from the AWS EMR cluster.
+	You only pay for the storage used and not the VMs (EC2 instances of the cluster).
+	
+How to use AWS Cloud:
+1. You have to register.
+2. There are some services that are free.
+3. But there are many that are not free. You have to pay for those. AWS EMR is one of them.
+4. You need a credit card to register on AWS.
+5. Billing is per month.
+
+AWS S3: IaaS, SaaS
+S3 is a distributed managed file system provided by AWS.
+It is very similar to any file system where you can organize your files in folders and sub-folders.
+On S3, you have to first create a "bucket" and within a bucket, you can then create as many folders and sub-folders as you want.
+
+EC2: Elastic Compute Cloud: IaaS
+===========================
+When you provision a VM on AWS, you are actually using the EC2 service of AWS.
+The VM is known as an "EC2 instance".
+So, when we provision an AWS EMR cluster, it will be made of some EC2 instances.
+
+Types of instances in AWS:
+- on-demand instance: 
+	- Procure when you need them. You provision it based on your requirements and then shut it down or terminate it.
+	- Pay for what you use on hourly basis.
+	- If you shut down a VM (EC2 instance), you do not pay the "running charges".
+	- An instance that has been shut down, can be restarted.
+	- But an instance that has been terminated, cannot be restarted.
+	- AWS EMR dos not have a "shut down" option. You can only terminate it.
+- spot instances:
+	- AWS has many instances that remain unused. Lot of free capacity.
+	- AWS gives these to users at a highly discounted price. ~90% cheaper compared on-demand.
+	- But, AWS can take it back whenever it wants at a 2-minute notice.
+	- This is because the spot-instances are based on the "auction" strategy.
+	- Used for non-critical application and when you have very low budget.
+	- Use it wisely!
+- Reserved instances:
+	- Commit upfront on the usage of the instance(s).
+	- AWS will give discounts for upfront payments and long term commitments.
+	- It is cheaper compared to on-demand, provided you use it properly.
+	- Mostly used for PRODUCTION environments.
+	
+Node Types on AWS EMR Spark Cluster:
+------------------------------------
+1. Master node:
+	- Manages the cluster.
+	- Single EC2 instance.
+2. Core Node:
+	- One or more core nodes.
+	- Hosts HDFS data and also capable of running tasks (both storage and compute).
+3. Task Node:
+	- Only compute (you cannot use it for HDFS storage).
+	- Can only be used for running tasks.
+	- Have as many as you want.
+	
+Each node is an EC2 instance.
+
+If your application is compute-heavy (requires a lot of processing, less storage), then you can go for more task nodes to adds more computing power to your cluster.
+For Taks Nodes, you can also go for spot instances because even if an instance taken away, you are not losing any data.
+
+
+The Cluster can be of two types:
+- Transient cluster.
+	- Will auto-terminate after all the steps in a job are completed.
+	- a.k.a. Step Execution.
+- Long running cluster.
+	- when you are doing some R&D, continuous analysis etc.
+	- Make sure you terminate the cluster when not in use to avoid recurring charges.
+	
+Scenario: A reporting Spark Job that needs to run at 12:00 pm daily.
+	- Go for Transient cluster.
+	- Do the job and terminate the cluster.
+	
+Creating an AWS EMR Cluster:
+1. EC2 Key pair for SSH.
+	- Create and download the .ppl file to be used in PuTTY to connect to the EC2 instance.
+2. Create an AWS EMR Cluster.
+	- 2 Launch modes:
+		- Cluster (select this mode).
+		- Step Execution.
+	- When creating the cluster, status is "Starting".
+	- When it is ready for use, status is "Waiting".
+	- When terminated, status is "Terminated".
+
+Run a Word Count Spark Job on the Long running cluster:
+1. Create the package (jar file) of the scala project in sbt.
+2. Create a S3 bucket and folder for the text file to be processed by the WordCount Spark Job.
+3. Copy the text file to S3 in the bucket+folder created in step 2.
+4. Create a S3 bucket (can use the same bucket) and folder for the jar file (package) created in step 1.
+5. Copy the jar file from step 1 to the bucket+folder created in step 4.
+6. Using PuTTY, connect to the server (master node of the cluster). 
+	Hostname: hadoop@<public dns address of the master node> (The dns can be found on the EMR Cluster's dashboard).
+	Port: 22
+	In Connection -> SSH -> Auth: Select the .ppk file downloaded earlier (EC2 Key Pair file).
+	Select Open.
+7. It will fail initially because the port 22 is not open on the master node.
+8. From AWS EC2 section, select the master node instance and then the "Security" tab in the bottom pane.
+9. Scroll down to "Security Groups" in the Security tab and click on the link there.
+10. Select the Inbound Rules tab.
+11. Click on Edit Inbound Rules.
+12. Scroll down and select Add Rule.
+13. Select SSH, Port 22, My IP.
+14. Click on Save Rules at the bottom.
+15. Try PuTTY again on Step 6.
+16. Success!
+17. Copy the jar file from s3 to a folder on the instance by executing:
+	aws s3 cp <url of the jar on s3> .
+	For e.g.; aws s3 cp s3://ajshdoop/jars/wordcount-SNAPSHOT.jar .
+18. Run the spark job as:
+	spark-submit ./wordcount-SNAPSHOT.jar --class example.WordCount
+
+Tomorrow:
+Spark Cluster settings:
+Memory
+Executors
+Caching
+
+SparkSQL and DataFrames
+

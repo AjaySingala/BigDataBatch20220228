@@ -629,11 +629,387 @@ Run a Word Count Spark Job on the Long running cluster:
 18. Run the spark job as:
 	spark-submit ./wordcount-SNAPSHOT.jar --class example.WordCount
 
-Tomorrow:
+Spark Architecture:
+Cluster Manager can be any one of the following:
+- YARN.
+- Spark Standalone Mode.
+- Mesos.
+- Kubernetes.
+
+Driver:
+It is a Java process.
+This is the process where the main() method of our Scala, Java, Python program runs.
+It executes the user code, creates a SparkSession / SparkContext.
+SS / SC are responsible to create RDDs, DFs, DS, execute SQL, perform Transformations, Actions etc.
+It determines what tasks are to be executed based on the RDD Lineage.
+It helps to create a Logical and Physical Plan, which are then scheduled for execution on the worker nodes in co-ordination with the Cluster Manager.
+
+Executor:
+Executor resides on the worker node.
+They are launched at the start of a Spark Application in co-ordination with the Cluster Manager.
+It's responsibility is to run individual tasks and return the results to the driver.
+If required, it will cache the data in the worker node.
+
+Cluster Manager:
+Spark is dependent on the Cluster Manager to launch executors and also the driver.
+When we do a spark-submit, this is the Spark job launch command which helps us connect with the cluster manager, which in turn controls / allocates the necessary resources for the job to be executed on the worker nodes.
+It also monitors each worker node.
+
+
 Spark Cluster settings:
-Memory
 Executors
+Memory
 Caching
 
-SparkSQL and DataFrames
+In code:
+val spark: SparkSession = SparkSession
+.builder()
+.master("local[1]")
+.appName("AjaySingala.com")
+.getOrCreate()
 
+spark.conf.set("spark.executor.instances", 4)
+spark.conf.set("spark.executor.cores", 2)
+
+using spark-submit:
+spark-submit 
+	--executor-memory 16g 
+	--executor-cores 2
+	--drive-memory 8g
+	--num-executors 4
+	--deploy-mode cluster
+	--class <name of the package.classname to run>
+	--master yarn
+
+Caching:
+rdd.cache()
+rdd.persist()
+
+Types of caching storage level that can be used:
+MEMORY_ONLY: 
+default. 
+RDD is stored as deserialized Java objects in JVM.
+If the size of the RDD is > the memory, it may not cache some partition and will recompute them next time whenever needed.
+The space used for storage is very high, the CPU computation time is low, the data is stored in memory.
+It does not make use of disk.
+
+MEMORY_AND_DISK:
+RDD is stored as deserialized Java objects in the JVM.
+When the RDD size is > the memory, it stores the excess partition on disk, and retrieves it from disk whenever required.
+The level of space used for storage is high, CPU computation time is medium, it makes use of both, in-memory and disk storage.
+
+MEMORY_ONLY_SER:
+RDD is stored as serialized Java objects.
+It is more space efficient as compared to deserialized objects.
+But because it has to do this serialization, there is a overhead on the CPU.
+The storage space is low, CPU computation time is high, the data is stored in-memory.
+It does not make use of disk.
+
+MEMORY_AND_DISK_SER:
+Very similar to MEMORY_AND_DISK and MEMORY_ONLY_SER.
+RDD is stored as serialized Java objects.
+So any partition that does not fit into memory is dropped on the disk.
+Storage space used is low.
+Computation is high, makes use of both in-memory and disk storage.
+
+DISK_ONLY:
+RDD is stored only on disk.
+The storage space used is low, CPU computation time is high, makes use of disk storage.
+
+rdd.cache()
+rdd.persist(StorageLevel.MEMORY_ONLY_SER)
+
+To remove the data (Rdd) from cache:
+rdd.unpersist()
+
+
+SparkSQL and DataFrames:
+========================
+Spark SQL is a Spark module for structured data processing.
+You can do analysis on the data using SQL queries.
+It internally performs extra optimzations to do the operations and return the result.
+Different ways in which you can interact with Spark SQL:
+	- using SQL.
+	- Dataset API.
+
+Any operation you perform with Spark SQL, it will return DataFrame/Dataset.
+
+Datasets (DS) and DataFrames (DF):
+----------------------------------
+A Dataset is distributed collection data.
+It is a new interface that has been added in Spark 1.6.
+Provides benefits of RDDs (strong typing, use lambda functions) along with benefits of SparkSql's optimized execution engine.
+You can construct Datasets from JVM objects and then manipulate them using transformations like map, flatMap, filter etc.
+This Dataset API is only available in Scala and Java. 
+Python does not support the Dataset API.
+	Same with R.
+Optimization Engine is known as the Catalyst Optimizer.
+Can find the schema automatically.
+Faster than RDDs but slower than DF.
+
+A Dataframe is a Dataset organized into named columns.
+Conceptually, it is equivalent to a table in and RDBMS. R/Python have their Dataframes which are similar.
+DF can be constructed from a wide array of sources like: structured data files, tables in Hive, external databases, existing RDDs.
+DF API is available in Scala, Java, Python and R.
+In Scala+Java, DF is represented as a Dataset of Rows.
+	Scala: Dataframe is simple a type alias of Dataset[Row]
+	Java: Dataset<Row>
+Optimization Engine is known as the Catalyst Optimizer.
+Can find the schema automatically.
+Faster than RDDs and DS.
+
+RDDs:
+There is no built-in optimization engine for RDDs.
+Schema needs to be defined manually.
+Are slower than both DS and DF.
+
+Temp View vs Global Temp View created from a DF:
+To create:
+df.createOrReplaceTempView("name of the temp view")			===> Temp View
+df.createGlobalTempView("name of the global temp view")		===> Global Temp View
+
+To use:
+spark.sql("SELECT * FROM tempview")
+spark.sql("SELECT * FROM global_temp.globaltempview")
+
+TempView: Is available as long as the Spark Session is active, but within the same Spark Session only.
+GlobalTempView: Is available across Spark Sessions.
+    spark.newSession().sql("SELECT * FROM global_temp.people").show()		// Works.
+    spark.newSession().sql("SELECT * FROM people").show()     				// Does not work.
+
+Read a json file, create a DF and convert it into a DS of type Person:
+case class Person(name: String, age: Long)
+Create a DF:
+val peopleDF = spark.read.json(path)
+Convert the DF into a DS:
+val peopleDS = peopleDF.as[Person]
+
+val peopleDS = spark.read.json(path).as[Person]
+
+Read text file into an RDD and convert it into a DF:
+- returns an RDD: 
+	spark.sparkContext.textFile("file:///home/maria_dev/SparkSamples/resources/spark_examples/people.txt")
+	similar to sc.textFile("filename")
+- split the lines into words separate by comma:
+	.map(_.split(","))
+- map the attributes from the RDD (file read) to the Person class and create objects of type Person for each row:
+	.map(attributes => Person(attributes(0), attributes(1).trim.toInt))
+		- read the attributes in each line.
+		- map the name (attribute(0)) to the Name property of the Person class.
+		- map the age (attribute(1)) to the Age property of the Person class.
+			- but since the text file has a blank space in the age value, we have to trim the spaces first before converting it into an integer.
+- Convert the resulting RDD into a DF:
+	.toDF()
+
+spark.sparkContext.textFile: 	returns a RDD.
+spark.read.json:				returns a DF.
+	Here, "spark" is the SparkSession object.
+
+
+Creating a schema programmatically:
+You need an object of type StructType.
+This StructType will have objects of type StructField for each field in the schema.
+
+For e.g.:
+	- Id
+	- Firstname
+	- Lastname
+	- City
+	- Age
+
+Create the schema of type StructType:
+StructType(
+	Array(
+		StructField("Id", StringType, nullable=true),
+		StructField("Firstname", StringType, nullable=true),
+		StructField("Lastname", StringType, nullable=true),
+		StructField("City", StringType, nullable=true),
+		StructField("Age", IntType, nullable=true)
+	)
+)
+
+Struct means Structure.
+
+Example code:
+    // Specify the schema required in a string.
+    val schemaString = "name age"
+
+    // Generate the schema based on the string of schema
+	// Split the string schema into words separated by " ".
+	// For each word (which is the column/field name), convert it into an object of type StructType
+	// Return the result into a collection of StructField objects.
+    val fields = schemaString.split(" ")
+      .map(fieldName => StructField(fieldName, StringType, nullable = true))
+
+	// The above code will return this:
+	//StructField("name", StringType, nullable = true)
+	//StructField("age", StringType, nullable = true)
+	  
+	// Create the StructType object that has the collection of fields of type StructField:
+    val schema = StructType(fields)
+	// This will give:
+	//StructType (
+	//	StructField("name", StringType, nullable = true),
+	//	StructField("age", StringType, nullable = true)
+	//)
+	
+	// To create a DF from a RDD, use the spark.createDataFrame() method.
+	// Create a DF by applying the schema to a RDD.
+	val df = spark.createDataFrame(rdd, schema)			
+	
+	
+This will also work:
+	val df = spark.createDataFrame(rdd)
+
+
+Different ways to create DataFrames:
+------------------------------------
+1. Create a DF from a RDD by using .toDF() on the RDD.
+For e.g.; val df = rdd.toDF()
+
+2. Create a DF from a RDD using .toDF() and specifying column names:
+For e.g.; val df = rdd.toDF("name", "age")
+
+3. Create a DF using SparkSession object's createDataFrame() method:
+For e.g.; val df = spark.createDataframe(rdd).toDF()
+
+4. Create a DF using SparkSession object's createDataFrame() method and also specify the schema as a collection:
+For e.g.: 
+val columns = Seq("language", "users_count")
+val df = spark.createDataframe(rdd).toDF(columns:_*)
+
+5. Create a DF using SparkSession object's createDataFrame() with Row type:
+    val schema = StructType(
+      Array(
+        StructField("language", StringType, true),
+        StructField("users_count", StringType, true)
+      )
+    )
+	
+	Here, we are creating a StructType object that has a collection (Array) of StructField objects.
+	Each StructField object is for a "column" in the schema.
+	
+	Create an RDD of Row type for each row in the original RDD:
+	val rowRDD = rdd.map(attributes => Row(attributes._1, attributes._2))
+	
+	Create the DF by applying the schema defined (the StructType object):
+	val dfFromRDD3 = spark.createDataFrame(rowRDD, schema)
+
+6. Create a DF from a Scala collection (Seq, List etc.) using .toDF():
+val data = Seq(("Java", "20000"), ("Python", "100000"), ("Scala", "3000"))
+val df = data.toDF()
+
+The above example will not have a "proper" schema for the DF and hence will print _1 and _2 for the column names.
+
+7. Create a DF from a Scala collection (Seq, List etc.) and specify a Schema using spark.createDataFrame().toDF():
+val columns = Seq("language", "users_count")
+val data = Seq(("Java", "20000"), ("Python", "100000"), ("Scala", "3000"))		// A Sequence of Tuples.
+var dfFromData2 = spark.createDataFrame(data).toDF(columns: _*)
+
+8. Create a DF from a Seq (or List) of Row types using spark.createDataFrame() and specify schema as well:
+val columns = Seq("language", "users_count")
+val rowData = Seq(Row("Java", "20000"), Row("Python", "100000"), Row("Scala", "3000"))		// Sequence of Rows.
+var dfFromData3 = spark.createDataFrame(rowData, schema)
+
+9. Create a DF from a csv file using spark.read.csv():
+    val df2 = spark.read.csv(
+      "file:///home/maria_dev/SparkSamples/resources/spark_examples/people.csv"
+    )
+    df2.printSchema()
+    df2.show()
+	
+10. Create a DF from a json file using spark.read.json().
+11. Create an empty DF using spark.emptyDataFrame
+12. Create an empty DF using spark.createDataFrame with a schema:
+    val schemaEmptyDF = StructType(
+		StructField("firstName", StringType, true) ::
+        StructField("lastName", IntegerType, false) ::
+        StructField("middleName", IntegerType, false) :: Nil
+    )
+
+    val dfEmpty2 =
+      spark.createDataFrame(spark.sparkContext.emptyRDD[Row], schemaEmptyDF)
+    dfEmpty2.printSchema()
+
+13. Create an empty DF from a sequence.
+    val colSeq = Seq("firstName", "lastName", "middleName")
+    val dfEmpty3 = Seq.empty[(String, String, String)].toDF(colSeq: _*)
+
+14. Create an empty DF using a case class:
+case class Name(firstName: String, lastName: String, middleName: String)
+    val dfEmpty4 = Seq.empty[Name].toDF()       // case class defined outside of "main".
+    dfEmpty4.printSchema()
+
+15. Create a DataSet from a RDD using SparkSession's createDataset() method:
+    val ds = spark.createDataset(rdd3)
+	
+	
+.show():
+--------
+By default, show() will display only the first 20 records in the DF.
+Overloaded methods of show():
+show(): Display first 20 records. Values are truncated to first 20 characters.
+show(numRows: Int):	Display first "numRows" records.
+show(truncate: Boolean): Display full content of values and not truncated. Default is true.
+show(numRows: Int, truncate: Boolean): Display first "numRows" records and do not truncate column values.
+show(numRows: Int, truncate: Int): Display first "numRows" records and display first "truncate" chars of values.
+show(numRows: Int, truncate: Int, vertical: Boolean): Display first "numRows" records and display first "truncate" chars of values and display the rows vertically (if true. Default is false).
+
+Different ways to define schemas using StructType:
+1. Simple schema using Array:
+    val simpleSchema = StructType(
+      Array(
+        StructField("firstname", StringType, true),
+        StructField("middlename", StringType, true),
+        StructField("lastname", StringType, true),
+        StructField("id", StringType, true),
+        StructField("gender", StringType, true),
+        StructField("salary", IntegerType, true)
+      )
+    )
+	
+2. Nested schema using .add:
+    val structureData = Seq(
+      Row(Row("James ", "", "Smith"), "36636", "M", 3100),
+      Row(Row("Michael ", "Rose", ""), "40288", "M", 4300),
+      Row(Row("Robert ", "", "Williams"), "42114", "M", 1400),
+      Row(Row("Maria ", "Anne", "Jones"), "39192", "F", 5500),
+      Row(Row("Jen", "Mary", "Brown"), "", "F", -1)
+    )
+	
+    val structureSchema = new StructType()
+      .add(
+        "name",
+        new StructType()
+          .add("firstname", StringType)
+          .add("middlename", StringType)
+          .add("lastname", StringType)
+      )
+      .add("id", StringType)
+      .add("gender", StringType)
+      .add("salary", IntegerType)
+	  
+	The above can be split as follows:
+    val structureSchema = new StructType()
+	structureSchema.add("name",
+        new StructType()
+          .add("firstname", StringType)
+          .add("middlename", StringType)
+          .add("lastname", StringType)
+		)
+	structureSchema.add("id", StringType)
+	structureSchema.add("gender", StringType)
+	structureSchema.add("salary", IntegerType)
+
+	OR:
+	val fullname = new StructType()
+	fullname.add("firstname", StringType)
+	fullname.add("middlename", StringType)
+	fullname.add("lastname", StringType)
+
+	val structureSchema = new StructType()
+	structureSchema.add("name", fullname)
+	
+	structureSchema.add("id", StringType)
+	structureSchema.add("gender", StringType)
+	structureSchema.add("salary", IntegerType)

@@ -1013,3 +1013,217 @@ Different ways to define schemas using StructType:
 	structureSchema.add("id", StringType)
 	structureSchema.add("gender", StringType)
 	structureSchema.add("salary", IntegerType)
+
+Select Columns from a DF:
+-------------------------
+select() is used to select column(s) from a DF.
+You can select
+	- one or more columns,
+	- nested columns,
+	- cols by index,
+	- all columns,
+	- from a list
+	
+1. Specify column names as strings:
+df.select("colname1", "colname2"...).show()
+2. Specify col names as strings on the DF object:
+df.select(df("colname1"), df("colname2")...).show()
+3. Specify col names with the col(). Provide an alias, if required.
+df.select(col("colname1").alias("aliasname"), col("colname2")...).show()
+4. Select all cols:
+    df.select("*").show()
+5. Extract all cols into a collection and then give that collection to select():
+    val columnsAll = df.columns.map(m => col(m))
+    df.select(columnsAll: _*).show()
+6. The same thing, but in a single operation.
+    df.select(columns.map(m => col(m)): _*).show()
+7. Specify cols from a list (very similar to 5 & 6 above):
+    val listCols = List("lastname", "country")
+    df.select(listCols.map(m => col(m)): _*).show()
+8.  Select First N Columns.
+    Select Column By Position or Index//Select first 3 columns:
+    df.select(df.columns.slice(0, 3).map(m => col(m)): _*).show()
+9.  Select Column By Position or Index//Select first 3 columns.
+    Selects 4th column (index starts from zero):
+    df.select(df.columns(3)).show()
+    Selects columns from index 2 to 4:
+    println("select columns 2 to 4 using slice() (upto 4, not including 4)...")
+    df.select(df.columns.slice(2, 4).map(m => col(m)): _*).show()
+10. Nested cols:
+    df2.select("name").show(false)		// displays the nested col as a single value.
+    // to get the specific column from a struct, you need to explicitly qualify.
+    df2.select("name.firstname","name.lastname").show(false)
+    // to get all columns from struct column.
+    df2.select("name.*").show(false)	// displays each sub-column as an individual value.
+	
+collect():
+----------
+It is an operation (action) used to retrieve the data from a DF.
+Retrieve all the elements of the RDD/DF/DS.
+Use collect() after you perform a filter(), group(), count().
+Caution: do not perform collect() on a very large dataset! If you do, you may run out of memory!
+collect() vs select().
+	- select() returns a RDD/DF that holds the columns that are selected.
+	- collect() returs the entire contents of the RDD/DF/DS.
+	- select() is a Transformation.
+	- collect() is an Action.
+
+withColumn():
+-------------
+It is a DF function used to:
+	- add a new column to the DF.
+	- change the value of an existing column.
+	- convert the data type of a column.
+	- derive a new column from an existing column.
+	
+withColumnRenamed():
+--------------------
+	Used to rename a column.
+	val dfRen=df2.withColumnRenamed("gender","sex")
+
+drop():
+-------
+Used to drop one or more columns from a DF/DS.
+-df.drop("colname")
+-df.drop(df("colname"))
+-df.drop(col("colname"))
+-df.drop("firstname","middlename","lastname")	// Drop multiple cols.
+-val cols = Seq("firstname","middlename","lastname")
+ df.drop(cols:_*)								// Drop multiple cols from a collection.
+
+filter() and where():
+---------------------
+Both work exactly the same way.
+If you are from SQL background, you may prefer to use where().
+
+df.filter(df("state") === "OH").show(false)
+df.filter("gender == 'M'").show(false)
+df.filter(df("state") === "OH" && df("gender") === "M").show(false)
+df.filter(array_contains(df("languages"),"Java")).show(false)
+df.filter(df("name.lastname") === "Williams").show(false)
+
+sort() or orderBy():
+--------------------
+Used to sort by either ascending or descending order, based on single column or multiple columns.
+using sort():
+	df.sort("department","state").show(false)
+using col() with sort():
+	df.sort(col("department"),col("state")).show(false)
+using orderBy():	
+  df.orderBy("department","state").show(false)
+using col() with orcerBy():
+  df.orderBy(col("department"),col("state")).show(false)
+In ASC order:
+	df.sort(col("department").asc,col("state").asc).show(false)
+	df.orderBy(col("department").asc,col("state").asc).show(false)
+In DESC order:
+	df.sort(col("department").asc,col("state").desc).show(false)
+	df.orderBy(col("department").asc,col("state").desc).show(false)
+Using SQL Syntax:
+	df.createOrReplaceTempView("EMP")
+	spark.sql(" select employee_name,department, state,salary,age,bonus from EMP ORDER BY department ASC, state DESC").show(false)
+
+groupBy():
+Similar the SQL "GROUP BY" clause.
+Used to collect data into groups from the DF/DS and perform aggregation on the grouped data.
+Aggregate functions:
+count()
+mean()
+max()
+min()
+sum()
+avg()
+agg()
+
+join():
+-------
+Very similar to SQL joins and there are:
+INNER
+LEFT OUTER
+RIGHT OUTER
+
+join() results in Wider Transformations (data is shuffled across partitions).
+
+- inner:
+	empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"inner")
+	SELECT ... FROM emp INNER JOIN dept ON emp.dept_id = dept.dept_id
+
+- outer, full, fullouter:
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"outer")
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"full")
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"fullouter")
+
+- right, rightouter:
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"right")
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"rightouter")
+
+- left, leftouter:
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"left")
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"leftouter")
+
+- leftsemi:
+  // Similar to INNER JOIN, returns all columns from the left DF/DS for matching records
+  // and ignores all columns from the right DF/DS.
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"leftsemi")
+
+- leftanti:
+  // Returns only columns from the left DF/DS for non-matched records.
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"leftanti")
+
+- crossjoin as part of join():
+	Similar to inner join, except that you are specifying the type as "cross" but with a match condition.
+  empDF.join(deptDF,empDF("emp_dept_id") ===  deptDF("dept_id"),"cross")
+
+- crossJoin():
+  empDF.crossJoin(deptDF).show(false)
+	SELECT * FROM emp, dept
+	
+- self join:
+  empDF.as("emp1").join(empDF.as("emp2"),
+    col("emp1.superior_emp_id") === col("emp2.emp_id"),"inner")
+    .select(col("emp1.emp_id"),col("emp1.name"),
+      col("emp2.emp_id").as("superior_emp_id"),
+      col("emp2.name").as("superior_emp_name"))
+	  
+distinct() dropDuplicates():
+----------------------------
+Remove / drop duplicate rows.
+distinct(): used to remove rows that have the same values on all columns in the DF.
+dropDuplicates(): used to remove rows that have the same values on multiple selected columns.
+
+val distinctDF = df.distinct()
+val df2 = df.dropDuplicates()	// same as df.distinct()
+
+val dropDisDF = df.dropDuplicates("department","salary")
+
+map() and flatMap():
+--------------------
+map()	 : Spark map() function applies a function to each in the DF/DS and returns a new transformed DF/DS.
+flatMap(): Spark flatMap() function transformation flattens the DF/DS after applying the function on every element and returns a new transformted DS/DF.
+	flatMap() returns more rows than in the original DF/DS.
+	a.k.a. One-to-many transformation function.
+	
+	Spark flatMap() will take each element in a list and convert it into rows of those elements.
+	So, [Java, Python, C++, VB] will be converted into rows as:
+		Java
+		Python
+		C++
+		VB
+
+Points to note:	
+- Both map() and flatMap() return a DS.
+- Both these transformations are narrow, meaning they do not result in shuffles.
+- flatMap() results in redundant data on some columns.
+- map() always returns the same size/records as the input DF., whereas flatMap() returns many records for each record in the input DF (one-to-many).
+
+union() and unionAll():
+-----------------------
+union():
+- Used to combine two DFs that have the same schema/structure.
+- If the schema/structure is not the same, it returns an error.
+- Originally, it used to eliminate duplicate records.
+- But after Spark 2.0.0, they removed unionAll() and replaced it with union() and hence, it shows duplicate records as well.
+
+unionAll(): deprecated since Spark 2.0.0.
+- Combines the two DS/DF including the duplicate records.
+- Replaced with union().

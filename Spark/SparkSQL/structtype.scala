@@ -133,17 +133,18 @@ object StructTypeDemo {
     df5.printSchema()
     df5.show(false)
 
-    // Convert case class to Spark StructType. Reverse Engineering. Advanced stuff!!!
-    println("Convert case class to Spark StructType...")
-    import org.apache.spark.sql.catalyst.ScalaReflection
-    import org.apache.spark.sql.Encoders
-    println("Defining schema from case class...")
-    val schema =
-      ScalaReflection.schemaFor[Employee].dataType.asInstanceOf[StructType]
+    // Advanced stuff!!! Not required.
+    // Convert case class to Spark StructType. Reverse Engineering.
+    // // println("Convert case class to Spark StructType...")
+    // // import org.apache.spark.sql.catalyst.ScalaReflection
+    // // import org.apache.spark.sql.Encoders
+    // // println("Defining schema from case class...")
+    // // val schema =
+    // //   ScalaReflection.schemaFor[Employee].dataType.asInstanceOf[StructType]
 
-    println("Encoding the schema...")
-    val encoderSchema = Encoders.product[Employee].schema
-    encoderSchema.printTreeString()
+    // // println("Encoding the schema...")
+    // // val encoderSchema = Encoders.product[Employee].schema
+    // // encoderSchema.printTreeString()
 
   }
 }

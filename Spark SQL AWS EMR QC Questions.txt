@@ -1,0 +1,59 @@
+How to add column to a DataFrame?
+How does a broadcast join work?
+What is SparkSQL?
+Catalyst optimizer.
+Are DF lazily evaluated?
+Some functions to use on DF?
+Some actions to use on DF?
+Some transformations to use on DF?
+DF vs DS.
+Join 2 datasets with 10 records each. What is the max no. of records as output (ds1.join(ds2))?
+how to rename a column in DF?
+Storage levels in Spark.
+Access spark context via spark session?
+APIs for SparkSQL?
+When joining DS/DF, when to choose to broadcast one of them?
+Steps to execute a SparkSQL query?
+How to query a DF?
+How to convert a DF to DS?
+Broadcast for join ops, will increase or reduce shuffles?
+How to change no. of partitions on an existing DF?
+MAx no. of records by joining 2 tables of 20 records each?
+Command to delete rows in DF with null values?
+Return type of spark query in DF?
+Benefits of partitioning data in Spark?
+DF and DS are unified in Spark 2.0. Why?
+Read CSV into DF?
+Are DF fault tolerant?
+How to select rows where salary is > 20000?
+Are transformations in DF lazy?
+Inner join vs Outer Join.
+Global Temp View vs createOrReplaceTempView.
+Left outer join vs right outer join.
+Aggregate functions of DF?
+Role of shuffle operation.
+How to define a schema and then create a DF?
+Worker node in Spark.
+How to access storage in AWS?
+What is the return type of sparl.sql("SELECT * FROM mytable")?
+Step execution in AWS EMR.
+What is AWS S3?
+What is AWS EC2?
+SparkSession?
+SparkContext?
+How to partition in Spark?
+What is Spark Executor?
+Explain Spark architecture.
+What is a driver program?
+What is Spark?
+MapReduce vs Spark.
+persistence levels in Spark.
+How to upload a .jar file to an AWS EC2 instance using command line.
+Benefits of storing data in partitions.
+Convert RDD to DF.
+How to enable Hivecontext in Spark?
+Connect to Hive using Spark.
+Run Hive query in Spark.
+View schema of a DF.
+Ways to create a DF.
+Ways to create a RDD.

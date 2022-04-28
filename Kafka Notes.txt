@@ -1,0 +1,320 @@
+Kafka:
+======
+Streaming:
+Means listening to music, watching videos in "real time", instead of downloading files to your computer and listening/watching it later.
+It is a relatively recent development, because broadband connection has to run fast enough to be able to show the data (music/video) in real time.
+Files encoded for streaming are often highly compressed to use as little bandwidth as possible.
+There can be an interruption due to congestion in the network, which can result in drop outs or screen going blank.
+To minimize this problem, the computer stores a "buffer" of data that has already been received. 
+If there is a drop out, you still see the video (from the buffer) - it is not interrupted.
+If there is no more data in the buffer, it will usually stop and display "buffering" while it catches up.
+
+Event Streaming:
+Practice of capturing data in real-time from event sources like databases, mobiles, sensors, cloud services, other software applications etc. in the form of "streams of events".
+These stream of events are stored durably for later retrieval, manipulating, processing and reacting to the even streams in real-time.
+Somes uses of Event Streaming (real-time streams of events):
+- Payment processing, financial transactions. Stock exchanges, banks, insurances etc.
+- To track and monitor cars, trucks, fleets, shipments in real-time. Logistics and automotive industry.
+- To continuously capture and analyze sensor data from IoT (Internet-of-Things) devices in factories, wind mills.
+- To collect and immediately react to customer interactions and orders - retail, travel / hotel industry, mobile apps.
+- To monitor patients in hospital care and predict changes in condition of patients to ensure timely treatment.
+
+Apache Kafka is an event streaming platform:
+Combines 3 key capabilities to implement event streaming end-to-end:
+1. to publish (write) and subscribe (read) stream of events (data), including continuous import/export of data to/from other systems.
+2. to store streams of events durably and reliably for as long as you want.
+3. to process streams of events as they occur (live) or retrospectively.
+
+All of this functionality is a provided in a distributed, highly scalable, elastic, fault-tolerant and secure manner.
+Kafka can be deployed on bare-metal hardware (physical machines) or on VMs. On-premises as well as on the cloud.
+Self-managed kafka environment, or fully managed services from different vendors.
+
+Servers:
+Kafka cluster of one or more servers.
+These servers form the storage layer, called the "brokers".
+There are other servers on the cluster that run "Kafka Connect" to continuously import/export data as event streams, to integrate with other systems such as databases or maybe other Kafka clusters.
+ 
+Clients:
+Distribute applications that read, write and process the streams of data (events) in parallel, at scale and in a fault-tolerant manner.
+Can be written using Scala, Python, Java, C/C++, Go and many other languages.
+
+Main Concepts and Terminologies of Kafka:
+=========================================
+An event record:
+----------------
+A fact that "something happened" in the world or in a business.
+When you read from or write to Kafka, yo uare doing this in the form of events.
+Conceptually, an event has a "key", "value" and a "timestamp". And optional metadata.
+An example of an event:
+Event Key: "Mary"
+Event value: "Made a payment of $350 to Joe"
+Event timestamp: "Apr 25, 2022 at 11:07 am"
+
+Producers:
+----------
+Those client applications that publish (write) events to Kafka.
+
+Consumers:
+----------
+Those client applications that subscribe (read and process) events from Kafka.
+
+These Producers and Consumers are fully decoupled and agnostic of each other.
+Producers do not have to wait for consumers to read and process the events.
+
+Topics:
+-------
+Events are organized and durably stored in "topics".
+Topics are similar to a folder in a a file system. And events are the files that you store in that folder (topic).
+Topics in Kafka are always multi-producer and multi-consumer (multi-subscriber).
+	- A topic can have zero, one or many producers that write events to it.
+	- A topic can have zero, one or more consumers that read (and process) events from it.
+Events can be read as often as required. They are not deleted after consumption.
+You define how long do you want to retain events in a topic.
+Topics are partitioned.
+	- A topic is spread over a number of "buckets" located on different Kafka brokers.
+	- Very important from a scalability perspective as it allows clients to read/write data from.to many brokers at the same time.
+	- When a new event is published to a topic, it is appended to one of the topic's partitions.
+	- Events with the same event key (customerId, vehicleId) are written to the same partition.
+	- Kafka guarantees any consumer of a given topic-partition will always read that parition's events in the same order that they were written. Events are read in FIFO (First-In-First-Out) order.
+	
+Kafka APIs:
+-----------
+- Admin API:
+	- manage topics, inspect topics, brokers and other Kafka objects.
+- Producer API:
+	- to publish (write) stream of events to one or more Kafka topics.
+- Consumer API:
+	- to subscibe (read) one or more topics and to process the stream of events.
+- Kafka Streams API:
+	- to implement stream processing applications.
+	- It provides high-level functions to process event streams, including transformations, aggregations, joins, etc.
+- Kafka Connect API:
+	- to build and run reusable data import/export connectors that read / write streams of events from and to external systems and applications to interate with Kafka.
+	
+Kafka was originally developed by LinkedIn sometime in 2011.
+The main goal of Apache Kafka is to be a unified platform that is scalable for handling real-time data streams.
+
+Apache Kafka Core Capabilities:
+- High Throughput:
+	- deliver messages at network limited throughout using a cluster of machines (brokers) with latencies as low as 2ms.
+- Scalable:
+	- Scale your production cluster to a thousand servers, trillions of messages per day, petabytes of data, hundreds of thousands of partitions.
+- Permanent Storage:
+	- Stores the streams of data (events) safely in a distributed, durable and fault-tolerant cluster.
+High Availability:
+	- The cluster can be efficiently distributed (stretched) across regions (availability zones) or you can connect separate clustes across geographic regions.
+	
+Partitions are also replicated.
+While creating a topic, you can specify how many partitions to create and how many replicas (replication factor) of each partition to create.
+
+For the paritions, Kafka has the concept of Leader and Followers.
+For every partition, 1 broker is selected as the leader.
+And this leader takes care of all client interactions.
+When a producer is sending some data, it connects to the leader and starts sending the data.
+It is the leader's responsibility to receive the message, store it in the local disk and send an acknowledgment back to the producer.
+
+Similarly for a consumer, when it is reading data, it sends a request to the leader.
+The leader is responsible to read the data and send it back to the consumer.
+
+For every partition, we havfe a leader and the leader takes care of all requests and responses.
+Leader maintains the 1st copy.
+Assume RF = 3.
+Kafka will identify 2 more brokers as "followers" to maintain the other 2 copies.
+These followers will copy the data from the leader.
+They (followers) do not directly interact with the producer or consumer clients.
+
+Design Goals of Kafka:
+- Scalability
+- high-volume
+- Data transformation
+- Low latency
+- fault-tolerance
+- Reliability: distributed, partitioned, replicated, fault-tolerant
+- Durable
+- Performance: high-throughput for publishing and subscribing events.
+
+Producers (P) / Consumers (C) sends / receive event data to/from Kafka as messages.
+So Kafka store all this data so that P & C can work asynchronously.
+How does Kafka manage all this?
+
+Kafka Messaging System!!!
+=========================
+What is a Messaging System (MS)?
+--------------------------------
+MS transfer data between applications.
+One app produces the data (rading from sensors, or from APIs, or from a DB etc.).
+And the other app retrieves the data, processes it to be ready to be visualized.
+There are two MS used in this scenario:
+	1. Point-to-Point System.
+	2. Publish-Subscribe System.
+	
+1. Point-to-Point System.
+Messages are transmitted (stored) to a queue.
+- Producer sends messages to the queue.
+- Each message is read by only one consumer.
+- Once the message is consumed, it vanishes from the queue.
+- Multiple consumers can read messages from the queue.
+
+2. Publish-Subscribe System.
+Messages are transmitted (stored) to a queue.
+- Message producers are known as "Publishers".
+- Message consumers are knows as "Subscribers".
+- Queues are known as "Topics".
+- a Publisher sends messages into 1 or more Topics.
+- Subscribers can receive messages from 1 or more topics and process them.
+- Multiple subscribers can "subscribe" to a single topic and read+process the same message.
+- Messages do not disappear after read once. They disappear either after all subscribers have read+processed the message or depends on the configuration of the platform (duration etc.).
+
+Kafka Messaging System works on the Publish-Subscribe System mechanism.
+
+In your .bashrc file in /home/maria_dev and add this line:
+export KAFKA_HOME="/usr/hdp/current/kafka-broker"
+Then run the following command:
+$ source .bashrc
+Verify the env var:
+$ echo $KAFKA_HOME
+
+List topics:
+$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+Create a topic:
+Syntax:
+$KAFKA_HOME/bin/kafka-topics.sh 
+	--create 
+	--zookeeper <severname:port>
+	--partitions <num_of_Partitions_required> 
+	--replication-factor <num of replicas required> 
+	--topic <topic name>
+
+$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181  --partitions 1 --replication-factor 1 --topic sampleTopic
+$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+On the HDP VM:
+$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper sandbox-hdp.hortonworks.com:2181
+
+Delete a topic:
+$KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic sampleTopic
+To delete a topic, the Kafka config option "delete.topic.enable" has to be changed to true as an Admin user on Ambari.
+
+Describe a topic:
+$KAFKA_HOME/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic sampleTopic
+
+Assuming RF=3:
+Topic:sampleTopic       PartitionCount:1        ReplicationFactor:3     Configs:
+        Topic: sampleTopic      Partition: 0    Leader: 1    Replicas: 1,2,0  Isr: 1,2,0
+
+ISR: In-sync Replicas.
+
+Kafka Broker:
+Is an instance of Kafka that communicates with ZooKeeper (ZK).
+Each broker holds partitions of topics.
+Some of those partitions are leaders and others are replicas (followers) of leader partitions from other brokers.
+
+Role of ZooKeeper:
+ZK used to automatically select a leader for a partition.
+In case a broker shuts down, an election is held, by ZK for the leader position of partitions that were on that specific broker).
+Also, metadata like in which broker a leader partition is residing etc. are held by the ZK.
+Any Producer or Consumer that read streams of data from topics, contact ZK for the nearest or less occupied broker.
+
+Create a Producer from the command line (in a new terminal):
+$KAFKA_HOME/bin/kafka-console-producer.sh  --topic sampleTopic --broker-list localhost:9092
+
+On the HDP VM:
+$KAFKA_HOME/bin/kafka-console-producer.sh  --topic sampleTopic --broker-list sandbox-hdp.hortonworks.com:6667
+
+Create a Consumer from the command line (in a new terminal):
+$KAFKA_HOME/bin/kafka-console-consumer.sh  --topic sampleTopic --bootstrap-server localhost:9092
+
+On the HDP VM:
+$KAFKA_HOME/bin/kafka-console-consumer.sh  --topic sampleTopic --bootstrap-server sandbox-hdp.hortonworks.com:6667 --from-beginning
+
+Open a new terminal and create a new consumer.
+Send some new messages from the producer and they should show up on both consumers.
+
+Using Connectors:
+In the KAFKA_HOME/config folder, copy the following files to /home/maria_dev:
+	connect-standalone.properties
+	connect-file-sink.properties
+	connect-file-source.properties
+	
+cd $KAFKA_HOME/config
+cp connect-standalone.properties ~
+cp connect-file-sink.properties ~
+cp connect-file-source.properties ~
+
+Switch back to home dir:
+cd
+
+Edit the files as follows:
+vi connect-standalone.properties
+Change the value of the property "bootstrap-servers" as follows:
+bootstrap-servers=sandbox-hdp.hortonworks.com:6667
+
+# This is for the source file that is to be read:
+vi connect-file-source.properties
+Change the values of the properties "file" and "topics" as follows:
+file=ttt2.txt
+topic=connectTest1
+
+# This is for the target file that is to be created after reading from the topic:
+vi connect-file-sink.properties
+Change the values of the properties "file" and "topics" as follows:
+file=testlog.out.txt
+topics=connectTest1
+
+Create the  topic:
+$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181  --partitions 1 --replication-factor 1 --topic connectTest1
+$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+In a 2nd terminal, Start the connector console program:
+$KAFKA_HOME/bin/connect-standalone.sh ~/connect-standalone.properties ~/connect-file-source.properties ~/connect-file-sink.properties
+
+In a 3rd terminal, start a consumer for the topic:
+$KAFKA_HOME/bin/kafka-console-consumer.sh  --topic connectTest1 --bootstrap-server sandbox-hdp.hortonworks.com:6667 --from-beginning
+
+Spark Streaming:
+----------------
+It is an extension of the core Spark API.
+Spark Streaming receives the live input data streams and divides the data into batches.
+These batches are then processed by the Spark Engine to generate the final stream of results, in batches.
+Spark Streaming provides a high-level abstraction called Discretized Stream or DStream, which represents a continuous stream of data.
+DStreams can be created either from input data streams (from sources like Kafka, Kinesis etc.) or by applying high-level operations on other DStreams.
+Internally, a DStream is represented as a sequence of RDDs.
+Spark Streaming has 3 major components:
+- input sources - Kafka, Flume, HDFS/S3, API (Twitter).
+- streaming engine - processing incoming data from the various input sources.
+- sink - store processed data from Spark Streaming engine to HDFS/S3, RDBMS, NoSQL, Kafka, API.
+
+Structured Streaming:
+---------------------
+Different output modes:
+- Append: Spark will only output newly processed rows since the last trigger.
+- Update: Spark will output only updated rows since the last trigger. If we are not using aggregation on the streaming data, then it will behave similar to append mode.
+- Complete: Spark will output all the rows it has processed so far.
+
+Sample code for Kafak Topic usage:
+$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181  --partitions 1 --replication-factor 1 --topic json_topic
+$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181  --partitions 1 --replication-factor 1 --topic json_output_topic
+
+$KAFKA_HOME/bin/kafka-topics.sh --list --zookeeper localhost:2181
+
+$KAFKA_HOME/bin/kafka-console-consumer.sh  --topic json_topic --bootstrap-server sandbox-hdp.hortonworks.com:6667
+$KAFKA_HOME/bin/kafka-console-consumer.sh  --topic json_output_topic --bootstrap-server sandbox-hdp.hortonworks.com:6667
+
+$KAFKA_HOME/bin/kafka-console-producer.sh  --topic json_topic --broker-list sandbox-hdp.hortonworks.com:6667
+
+Run your Kafka-Scala-Spark program from spark-shell by running spark-shell as follows:
+spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.3.0
+
+Sample data in Console Producer:
+{"id":1,"firstname":"James ","middlename":"","lastname":"Smith","dob_year":2018,"dob_month":1,"gender":"M","salary":3000}
+{"id":2,"firstname":"Michael ","middlename":"Rose","lastname":"","dob_year":2010,"dob_month":3,"gender":"M","salary":4000}
+{"id":3,"firstname":"Robert ","middlename":"","lastname":"Williams","dob_year":2010,"dob_month":3,"gender":"M","salary":4000}
+{"id":4,"firstname":"Maria ","middlename":"Anne","lastname":"Jones","dob_year":2005,"dob_month":5,"gender":"F","salary":4000}
+{"id":5,"firstname":"Jen","middlename":"Mary","lastname":"Brown","dob_year":2010,"dob_month":7,"gender":"","salary":-1}
+
+{"id":6,"firstname":"Joe ","middlename":"May","lastname":"Clien","dob_year":1978,"dob_month":5,"gender":"F","salary":4000}
+{"id":7,"firstname":"Cary","middlename":"Sen","lastname":"Latham","dob_year":1990,"dob_month":7,"gender":"","salary":-1}
+
+$KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic json_topic
+

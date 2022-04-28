@@ -1227,3 +1227,66 @@ union():
 unionAll(): deprecated since Spark 2.0.0.
 - Combines the two DS/DF including the duplicate records.
 - Replaced with union().
+
+Working with JSON Datasets.
+
+
+Working with Parquet files:
+===========================
+Apache Parquet is a columnar file format that provides optimization to speed up queries.
+It provides far more efficient file format than CSV, JSON and XML.
+It is supported by many data processing systems, including Hadoop, HDFS, Spark, Scala, Python.
+Can also be used with SparkSQL.
+
+Reduces storage by almost 75% on average.
+It also captures the schema of the data automatically when you read and write Parquet files.
+
+Advantages:
+- Reduces IO operations.
+- Fetches specific columns that you need to access.
+- Consumes less space.
+
+The .toDF() function on a Sequence collection is only available when you import the spark.sqlContext.implicits._ package.
+
+Unstructured social media data processing using Spark:
+======================================================
+Sales Details
+20220425
+
+Sales Person: John
+
+Code Product Quantity Price
+A0001 Product1 200 79.50
+A0002 Product2 145 198.99
+
+SparkSQL Shuffle Partitions:
+============================
+The Spark SQL Shuffle is a mechanism for redistributing / repartitioning the data so that the data is grouped differently across partitions, based on the size of the data you may want to either reduce or increase the no. of partitions of your RDD/DF.
+Do this with the help of spark.sql.shuffle.partitions configuration option or from code.
+
+Spark Shuffle is a very expensive operation as it moves data between executors or even between worker nodes in the cluster.
+Use it wisely.
+Reasons:
+- Disk I/O.
+- Involves data serialization and deserialization.
+- Network I/O.
+
+Some transformations operations that result in shuffling:
+groupByKey()
+reduceByKey()
+sortByKey()
+countByKey()
+join()
+union()
+repartition()
+
+getNumPartitions()
+repartition(n)
+
+Spark Default Shuffle Partitions:
+DF increases the number to 200 automatically when Spark operation performs data shuffling (join(), union(), aggregate functions etc.).
+this default partition number is defined by the property spark.sql.shuffle.partitions in the SparkSQL configuration.
+
+It can be changed as follow in your code:
+spark.conf.set("spark.sql.shuffle.partitions", 50)
+
